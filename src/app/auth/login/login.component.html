@@ -25,27 +25,24 @@
         <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <h1 class="text-center">LOGO</h1>
-                    <form>
+                    <h1 class="text-center">Envios</h1>
                         <div class="form-group">
-                            <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"
+                            <input type="email" class="form-control form-control-lg" [(ngModel)]="user.email" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" placeholder="Email">
                             <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control form-control-lg" id="exampleInputPassword1"
+                            <input type="password" class="form-control form-control-lg" [(ngModel)]="user.password" id="exampleInputPassword1"
                                 placeholder="Password">
                         </div>
                         <!--<div class="form-group form-check">
                                           <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                           <label class="form-check-label" for="exampleCheck1">Check me out</label>
                                         </div>-->
-                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                    </form>
+                        <button type="submit" class="btn btn-primary btn-block" (click)="login()">Submit</button>
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <h1 class="text-center">LOGO</h1>
-                    <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
                             <input type="email" class="form-control" id="exampleInputEmail1"
@@ -63,7 +60,6 @@
                             <label class="form-check-label" for="exampleCheck1">Check me out</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
                 </div>
             </div>
         </div>

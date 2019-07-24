@@ -1,1 +1,19 @@
-<p>home works!</p>
+<h2>Shipments</h2>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#ID</th>
+        <th scope="col">#API ID</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let shipment of shipments.data">
+        <th scope="row">{{shipment.id}}</th>
+        <td>{{shipment.api_id}}</td>
+        <td>{{shipment.status}}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
