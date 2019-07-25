@@ -5,8 +5,7 @@ import { AppBodyComponent } from './layouts/app-body/app-body.component';
 import { SiteBodyComponent } from './layouts/site-body/site-body.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
-
-import { AdminGuard } from  './admin/admin.guard';
+import { QuoteComponent } from './site/quote/quote.component';
 
 
 
@@ -20,7 +19,6 @@ const routes: Routes = [
         path: '', 
         component: HomeComponent, 
         pathMatch: 'full',
-        canActivate: [AdminGuard],
       },
     ]
 },
@@ -32,8 +30,13 @@ const routes: Routes = [
       path: '', 
       component: HomeComponent, 
       pathMatch: 'full',
-      canActivate: [AdminGuard],
     },
+    { 
+      path: 'quote', 
+      component: QuoteComponent, 
+      pathMatch: 'full',
+    },
+    
   ]
 },
 

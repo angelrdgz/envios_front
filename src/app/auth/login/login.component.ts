@@ -9,6 +9,8 @@ import { ApiService } from '../../services/api.service';
 export class LoginComponent implements OnInit {
 
   public user = {email:"",password:""};
+  public userIndividual = {name:"", lastname:"", email:"", type_id:"1", phone:"", business:0, password:"",confirm:"", terms:true};
+  public userBusiness = {name:"", lastname:"", company:"", email:"", type_id:"1", phone:"", business:1, shipments:"2", password:"",confirm:"", terms:true};
   public data:any;
 
   constructor(private _apiService: ApiService) {
@@ -24,6 +26,25 @@ export class LoginComponent implements OnInit {
       err => console.error(err),
       () => localStorage.setItem('user_ses', JSON.stringify(this.data))
     );
+  }
+
+  register(type){
+    if(type == 0){
+      this._apiService.register(this.userIndividual).subscribe(
+        data => {  console.log(data) },
+        err => console.error(err),
+        () => {}
+      );
+
+    }else{
+      this._apiService.register(this.userBusiness).subscribe(
+        data => { console.log(data) },
+        err => console.error(err),
+        () => {}
+      );
+
+    }
+
   }
 
 }

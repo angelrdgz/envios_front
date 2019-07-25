@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  APIEndpoint: 'https://dev.endpoint.com',
+  srEnvioEndpoint: 'https://api-demo.srenvio.com/v1',
+  srEnvioToken: 'Token token=HCjec5n0TQ2l68riyOMkPH8LkMb3bGRGVafEL5zBZlgt',
+
 };
 
 /*

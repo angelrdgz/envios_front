@@ -17,6 +17,10 @@ export class ApiService {
     return this.http.post('http://localhost:8000/api/auth/login', data);
   }
 
+  register(data){
+    return this.http.post('http://localhost:8000/api/auth/register', data);
+  }
+
   getShipments() {
     return this.http.get('http://localhost:8000/api/shipments');
   }

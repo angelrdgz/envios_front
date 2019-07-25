@@ -19,8 +19,7 @@
   .nav li {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    a{
-
+    a {
     }
   }
 }
@@ -45,4 +44,36 @@
 }
 .text-cyan {
   color: #35bdff;
+}
+.nav-horizontal {
+  overflow: hidden;
+  border: 0 !important;
+  li {
+    border: 0 !important;
+    display: block;
+    width: 50%;
+    text-align: center;
+    a {
+      color: #000;
+      border-radius: 0 !important;
+      -webkit-transition: width 0.3s, right 0.3s;
+      -moz-transition: width 0.3s, right 0.3s;
+      -o-transition: width 0.3s, right 0.3s;
+      transition: width 0.3s, right 0.3s;
+
+      &:hover,
+      &:focus {
+        border: 0;
+        border-bottom: 3px solid #000;
+        -webkit-transition: width 0.3s, right 0.3s, background-color 0.3s;
+        -moz-transition: width 0.3s, right 0.3s, background-color 0.3s;
+        -o-transition: width 0.3s, right 0.3s, background-color 0.3s;
+        transition: width 0.3s, right 0.3s, background-color 0.3s;
+      }
+    }
+    a.active {
+      border: 0;
+      border-bottom: 3px solid #000 !important;
+    }
+  }
 }

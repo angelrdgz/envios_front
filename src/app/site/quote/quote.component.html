@@ -1,0 +1,60 @@
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h2>Cotizador</h2>
+                <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled
+                    so you can use it as a boilerplate or starting point for you own landing page designs! This template
+                    features:</p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label for="exampleInputEmail1">Origen</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" [(ngModel)]="quote.zip_from" placeholder="Código Postal">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="exampleInputPassword1">Destino</label>
+                                <input type="text" class="form-control" [(ngModel)]="quote.zip_to" id="exampleInputPassword1"
+                                    placeholder="Código Postal">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label for="exampleInputEmail1">Alto</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label for="exampleInputPassword1">Ancho</label>
+                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                    placeholder="">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label for="exampleInputPassword1">Fondo</label>
+                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                    placeholder="">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                    <label for="exampleInputPassword1">Peso</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1"
+                                        placeholder="">
+                                </div>
+                            <div class="col-sm-6 offset-sm-3">
+                                <button type="submit" class="btn btn-primary btn-block" (click)="getQuote()">Cotizar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="list-group" [@listAnimation]="rates.length">
+                            <li class="list-group-item" *ngFor="let rate of rates">{{rate.provider}} {{rate.service_level_name}} 
+                                <small class="float-right">
+                                    <b>{{rate.amount_local | currency}} {{rate.currency_local}}</b>
+                                </small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
