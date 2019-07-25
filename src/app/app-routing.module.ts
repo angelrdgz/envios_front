@@ -7,43 +7,57 @@ import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { QuoteComponent } from './site/quote/quote.component';
 
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ListComponent } from './shipments/list/list.component';
+import { NewShipmentComponent } from './shipments/new-shipment/new-shipment.component';
+
 
 
 const routes: Routes = [
   //Site routes goes here 
-  { 
-    path: 'admin', 
+  {
+    path: 'admin',
     component: AppBodyComponent,
     children: [
-      { 
-        path: '', 
-        component: HomeComponent, 
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
         pathMatch: 'full',
       },
+      {
+        path: 'shipments',
+        component: ListComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'shipments/new',
+        component: NewShipmentComponent,
+        pathMatch: 'full',
+      }
     ]
-},
-{ 
-  path: '', 
-  component: SiteBodyComponent,
-  children: [
-    { 
-      path: '', 
-      component: HomeComponent, 
-      pathMatch: 'full',
-    },
-    { 
-      path: 'quote', 
-      component: QuoteComponent, 
-      pathMatch: 'full',
-    },
-    
-  ]
-},
+  },
+  {
+    path: '',
+    component: SiteBodyComponent,
+    children: [
+      {
+        path: '',
+        component: DashboardComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'quote',
+        component: QuoteComponent,
+        pathMatch: 'full',
+      },
 
-//no layout routes
-{ path: 'login', component: LoginComponent},
-// otherwise redirect to home
-{ path: '**', redirectTo: '' }
+    ]
+  },
+
+  //no layout routes
+  { path: 'login', component: LoginComponent },
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

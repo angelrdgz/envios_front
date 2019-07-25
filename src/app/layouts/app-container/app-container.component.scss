@@ -1,0 +1,16 @@
+$gray-container: #e6ebee;
+.content{
+  width: calc(100% - 250px) !important;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 250px;
+  background: $gray-container;
+  padding: 0;
+  max-width: 100%;
+
+  .card-transparent{
+      background: transparent;
+      border: 0;
+  }
+}

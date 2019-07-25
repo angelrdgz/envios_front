@@ -20,6 +20,10 @@ import { AppFooterComponent } from './layouts/app-footer/app-footer.component';
 import { HomeComponent } from './home/home.component';
 import { QuoteComponent } from './site/quote/quote.component';
 import { ListComponent } from './shipments/list/list.component';
+import { AppAsideComponent } from './layouts/app-aside/app-aside.component';
+import { AppContainerComponent } from './layouts/app-container/app-container.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewShipmentComponent } from './shipments/new-shipment/new-shipment.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { ListComponent } from './shipments/list/list.component';
     AppFooterComponent,
     HomeComponent,
     QuoteComponent,
-    ListComponent
+    ListComponent,
+    AppAsideComponent,
+    AppContainerComponent,
+    DashboardComponent,
+    NewShipmentComponent
   ],
   imports: [
     BrowserModule,
