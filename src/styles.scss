@@ -56,5 +56,18 @@ html{
                 border-color: #f4c22b;
             }
         }
+
+        .btn-outline-danger {
+            color: #e74c3c;
+            background-color: transparent;
+            background-image: none;
+            border-color: #e74c3c;
+
+            &:hover {
+                color: #fff;
+                background-color: #e74c3c;
+                border-color: #e74c3c;
+            }
+        }
     }
 }

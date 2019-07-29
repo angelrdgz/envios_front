@@ -24,4 +24,20 @@ export class ApiService {
   getShipments() {
     return this.http.get('http://localhost:8000/api/shipments');
   }
+
+  getPackages() {
+    return this.http.get('http://localhost:8000/api/packages');
+  }
+
+  getPackage(id) {
+    return this.http.get('http://localhost:8000/api/packages/'+id);
+  }
+
+  savePackage(data){
+    return this.http.post('http://localhost:8000/api/packages', data);
+  }
+
+  updatePackage(id, data){
+    return this.http.put('http://localhost:8000/api/packages/'+id, data);
+  }
 }

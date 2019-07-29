@@ -11,6 +11,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListComponent } from './shipments/list/list.component';
 import { NewShipmentComponent } from './shipments/new-shipment/new-shipment.component';
 
+import { ListPackagesComponent } from './packages/list-packages/list-packages.component';
+import { NewPackageComponent } from './packages/new-package/new-package.component';
+import { EditPackageComponent } from './packages/edit-package/edit-package.component';
+
 
 
 const routes: Routes = [
@@ -32,6 +36,21 @@ const routes: Routes = [
       {
         path: 'shipments/new',
         component: NewShipmentComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'packages',
+        component: ListPackagesComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'packages/new',
+        component: NewPackageComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'packages/:id/edit',
+        component: EditPackageComponent,
         pathMatch: 'full',
       }
     ]

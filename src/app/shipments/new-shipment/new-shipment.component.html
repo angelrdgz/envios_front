@@ -1,1 +1,155 @@
-<p>new-shipment works!</p>
+<div class="card-body">
+    <h5 class="card-title">Guías</h5>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Nueva Guía</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Favor de llenar la información de origen y destino, junto con la información del envío.</h6>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            Información de Origen
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4">Domicilios de Origen</label>
+                                    <select name="" id="" class="form-control">
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Nombre</label>
+                                    <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="shipment.address_from.name" placeholder="">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Email</label>
+                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.address_from.email" placeholder="">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4">Dirección</label>
+                                    <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="shipment.address_from.address1" placeholder="Av. Empresarios #200">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Código Postal</label>
+                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.address_from.zip" placeholder="">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputAddress">Colonia</label>
+                                    <select name="" id="" [(ngModel)]="shipment.address_from.address2" class="form-control"></select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Ciudad</label>
+                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.address_from.city" placeholder="">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputAddress">Estado</label>
+                                    <select name="" id="" [(ngModel)]="shipment.address_from.province" class="form-control">
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            Información de Destino
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4">Domicilios de Origen</label>
+                                    <select name="" id="" class="form-control">
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Nombre</label>
+                                    <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="shipment.address_to.name" placeholder="">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Email</label>
+                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.address_to.email" placeholder="">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4">Dirección</label>
+                                    <input type="text" class="form-control" id="inputEmail4"
+                                        [(ngModel)]="shipment.address_to.address1" placeholder="Av. Empresarios #200">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Código Postal</label>
+                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.address_to.zip" placeholder="">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputAddress">Colonia</label>
+                                    <select name="" id="" [(ngModel)]="shipment.address_to.address2" class="form-control"></select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Ciudad</label>
+                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.address_to.city" placeholder="">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputAddress">Estado</label>
+                                    <select name="" id="" [(ngModel)]="shipment.address_to.province" class="form-control">
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            Información del Paquete
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4">Mis paquetes</label>
+                                    <select name="" id="" class="form-control">
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputEmail4">Alto</label>
+                                    <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="shipment.parcels[0].height" placeholder="">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputPassword4">Ancho</label>
+                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.parcels[0].width" placeholder="">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputEmail4">Largo</label>
+                                    <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="shipment.parcels[0].length" placeholder="">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="inputPassword4">Peso</label>
+                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.parcels[0].weight" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            Featured
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

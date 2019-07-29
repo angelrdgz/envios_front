@@ -24,6 +24,9 @@ import { AppAsideComponent } from './layouts/app-aside/app-aside.component';
 import { AppContainerComponent } from './layouts/app-container/app-container.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewShipmentComponent } from './shipments/new-shipment/new-shipment.component';
+import { NewPackageComponent } from './packages/new-package/new-package.component';
+import { ListPackagesComponent } from './packages/list-packages/list-packages.component';
+import { EditPackageComponent } from './packages/edit-package/edit-package.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { NewShipmentComponent } from './shipments/new-shipment/new-shipment.comp
     AppAsideComponent,
     AppContainerComponent,
     DashboardComponent,
-    NewShipmentComponent
+    NewShipmentComponent,
+    NewPackageComponent,
+    ListPackagesComponent,
+    EditPackageComponent
   ],
   imports: [
     BrowserModule,
