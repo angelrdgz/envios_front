@@ -60,8 +60,13 @@ aside {
   .menu {
     padding: 0;
     list-style: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
     li {
       font-family: "Open Sans", sans-serif;
+      position: relative;
       a {
         color: #a9b7d0;
         text-decoration: none;
@@ -81,6 +86,26 @@ aside {
         a {
           color: #1dc4e9;
         }
+      }
+    }
+    li.hasmenu {
+      &::after {
+        content: "\f105";
+        font-family: 'Font Awesome 5 Free' !important;
+        font-size: 15px;
+        border: none;
+        position: absolute;
+        top: 11px;
+        right: 20px;
+        -webkit-transition: 0.3s ease-in-out;
+        transition: 0.3s ease-in-out;
+        color: #fff;
+      }
+      a{
+        position: relative;
+      }
+      ul{
+        display: none;
       }
     }
     li.active {

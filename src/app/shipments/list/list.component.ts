@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
 
   getShipments(){
     this._apiService.getShipments().subscribe(
-      data => { this.shipments = data},
+      data => { this.shipments = data.data},
       err => console.error(err),
       () => console.log(this.shipments)
     );

@@ -15,6 +15,8 @@ import { ListPackagesComponent } from './packages/list-packages/list-packages.co
 import { NewPackageComponent } from './packages/new-package/new-package.component';
 import { EditPackageComponent } from './packages/edit-package/edit-package.component';
 
+import { ListLocationsComponent } from './locations/list-locations/list-locations.component';
+
 
 
 const routes: Routes = [
@@ -52,7 +54,12 @@ const routes: Routes = [
         path: 'packages/:id/edit',
         component: EditPackageComponent,
         pathMatch: 'full',
-      }
+      },
+      {
+        path: 'locations',
+        component: ListLocationsComponent,
+        pathMatch: 'full',
+      },
     ]
   },
   {

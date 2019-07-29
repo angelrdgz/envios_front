@@ -18,7 +18,7 @@ export class ListPackagesComponent implements OnInit {
 
   getPackages(){
     this._apiService.getPackages().subscribe(
-      data => { this.packages = data},
+      data => { this.packages = data.data},
       err => console.error(err),
       () => console.log(this.packages)
     );

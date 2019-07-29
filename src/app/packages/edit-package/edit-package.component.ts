@@ -10,7 +10,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class EditPackageComponent implements OnInit {
 
   public package:any;
-  public packageId:number;
+  public packageId:string;
 
   constructor(
     private _apiService: ApiService,
@@ -20,8 +20,8 @@ export class EditPackageComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.packageId = params.params.id
-      this.getPackage(params.params.id)
+      this.packageId = params.get('id');
+      this.getPackage(params.get('id'))
     });
   }
 
@@ -39,7 +39,7 @@ export class EditPackageComponent implements OnInit {
     this._apiService.updatePackage(this.packageId, this.package).subscribe(
       data => { console.log(data)},
       err => console.error(err.error),
-      () => console.log()
+      () => this.router.navigate(['admin/packages'])
     );
   }
 

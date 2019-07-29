@@ -27,6 +27,7 @@ import { NewShipmentComponent } from './shipments/new-shipment/new-shipment.comp
 import { NewPackageComponent } from './packages/new-package/new-package.component';
 import { ListPackagesComponent } from './packages/list-packages/list-packages.component';
 import { EditPackageComponent } from './packages/edit-package/edit-package.component';
+import { ListLocationsComponent } from './locations/list-locations/list-locations.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { EditPackageComponent } from './packages/edit-package/edit-package.compo
     NewShipmentComponent,
     NewPackageComponent,
     ListPackagesComponent,
-    EditPackageComponent
+    EditPackageComponent,
+    ListLocationsComponent
   ],
   imports: [
     BrowserModule,
