@@ -20,11 +20,15 @@
                 <span>Dashboard</span>
             </a>
         </li>
-        <li class="">
-            <a routerLink="/admin/shipments" routerLinkActive="active">
+        <li class="hasmenu">
+            <a routerLinkActive="active">
                 <i class="fas fa-shipping-fast"></i>
                 <span>Ordenes</span>
             </a>
+            <ul>
+                <li><a routerLink="/admin/shipments" routerLinkActive="active">Guías Generadas</a></li>
+                <li><a routerLink="/admin/shipments/new" routerLinkActive="active">Generar Guía</a></li>
+            </ul>
         </li>
         <li>
             <a routerLink="/admin/packages" routerLinkActive="active">
