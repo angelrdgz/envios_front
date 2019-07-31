@@ -10,8 +10,7 @@ const httpOptions = {
   headers: new HttpHeaders(
     { 
       'Content-Type': 'application/json', 
-      'Authorization':  srEnviToken,
-      'Access-Control-Allow-Origin': '*'
+      'Authorization':  srEnviToken
     }
     )
 };

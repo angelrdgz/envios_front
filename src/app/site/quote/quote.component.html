@@ -2,45 +2,47 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 mx-auto">
-                <h2>Cotizador</h2>
-                <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled
-                    so you can use it as a boilerplate or starting point for you own landing page designs! This template
-                    features:</p>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="row">
-                            <div class="form-group col-sm-6">
+                            <div class="col-sm-12">
+                                <h3 class="text-center">Cotizador</h3>
+                            </div>
+                            <div class="form-group col-sm-5">
                                 <label for="exampleInputEmail1">Origen</label>
                                 <input type="text" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp" [(ngModel)]="quote.zip_from" placeholder="Código Postal">
                             </div>
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-2 text-center">
+                                <label for=""></label>
+                                <i class="fas fa-long-arrow-alt-right" style="font-size: 2.3em; margin-top: 0.7em;"></i>
+                            </div>
+                            <div class="form-group col-sm-5">
                                 <label for="exampleInputPassword1">Destino</label>
                                 <input type="text" class="form-control" [(ngModel)]="quote.zip_to" id="exampleInputPassword1"
                                     placeholder="Código Postal">
                             </div>
                             <div class="form-group col-sm-3">
                                 <label for="exampleInputEmail1">Alto</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="">
+                                <input type="text" class="form-control" id="exampleInputEmail1" (ngModelChange)="calcWeight($event)"  [(ngModel)]="quote.parcel.height" aria-describedby="emailHelp" placeholder="">
                             </div>
                             <div class="form-group col-sm-3">
                                 <label for="exampleInputPassword1">Ancho</label>
-                                <input type="text" class="form-control" id="exampleInputPassword1"
-                                    placeholder="">
+                                <input type="text" class="form-control" id="exampleInputPassword1" (ngModelChange)="calcWeight($event)" [(ngModel)]="quote.parcel.width" placeholder="">
                             </div>
                             <div class="form-group col-sm-3">
                                 <label for="exampleInputPassword1">Fondo</label>
-                                <input type="text" class="form-control" id="exampleInputPassword1"
-                                    placeholder="">
+                                <input type="text" class="form-control" id="exampleInputPassword1" (ngModelChange)="calcWeight($event)" [(ngModel)]="quote.parcel.length" placeholder="">
                             </div>
                             <div class="form-group col-sm-3">
                                     <label for="exampleInputPassword1">Peso</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1"
-                                        placeholder="">
+                                    <input type="text" class="form-control" id="exampleInputPassword1" (ngModelChange)="calcWeight($event)" [(ngModel)]="quote.parcel.weight" placeholder="">
                                 </div>
+                            <div class="col-sm-12">
+                                    <small class="text-muted">Peso volumetrico: {{volumetric}}</small>
+                            </div>
                             <div class="col-sm-6 offset-sm-3">
-                                <button type="submit" class="btn btn-primary btn-block" (click)="getQuote()">Cotizar</button>
+                                <button type="submit" class="btn btn-block btn-outline-primary" (click)="getQuote()">Cotizar</button>
                             </div>
                         </div>
                     </div>

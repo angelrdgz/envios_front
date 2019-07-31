@@ -5,3 +5,14 @@
 section {
     padding: 150px 0;
   }
+  .list-group-item {
+    margin: 5px 0;
+}
+.list-group-item:first-child {
+    border-top-right-radius: 0em;
+    border-top-left-radius: 0rem;
+}
+.list-group-item:last-child {
+    border-bottom-right-radius: 0em;
+    border-bottom-left-radius: 0rem;
+}

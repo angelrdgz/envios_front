@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppBodyComponent } from './layouts/app-body/app-body.component';
 import { SiteBodyComponent } from './layouts/site-body/site-body.component';
 import { LoginComponent } from './auth/login/login.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './site/home/home.component';
 import { QuoteComponent } from './site/quote/quote.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -68,7 +68,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: DashboardComponent,
+        component: HomeComponent,
         pathMatch: 'full',
       },
       {

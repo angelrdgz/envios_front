@@ -18,6 +18,10 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
+  quote(data){
+    return this.http.post<Res>('http://localhost:8000/api/srenvio/quote', data, httpOptions);
+  }
+
   login(data){
     return this.http.post<Res>('http://localhost:8000/api/auth/login', data);
   }
