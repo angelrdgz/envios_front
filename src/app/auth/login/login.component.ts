@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,18 +14,29 @@ export class LoginComponent implements OnInit {
   public userBusiness = {name:"", lastname:"", company:"", email:"", type_id:"1", phone:"", business:1, shipments:"2", password:"",confirm:"", terms:true};
   public data:any;
 
-  constructor(private _apiService: ApiService) {
+  constructor(
+    private _apiService: ApiService,
+    private route: ActivatedRoute,
+    private router: Router
+    ) {
   }
 
   ngOnInit() {
-    console.log(localStorage.getItem('user_ses'));
+    if(localStorage.getItem('token_user') !== null){
+      this.router.navigate(['admin/dashboard'])
+    }
   }
 
   login(){
     this._apiService.login(this.user).subscribe(
       data => { this.data = data},
       err => console.error(err),
-      () => localStorage.setItem('user_ses', JSON.stringify(this.data))
+      () => {
+        console.log(this.data)
+        localStorage.setItem('user_ses', JSON.stringify(this.data.user))
+        localStorage.setItem('token_user', this.data.api_key)
+        this.router.navigate(['admin/shipments'])
+      }
     );
   }
 

@@ -26,6 +26,10 @@ export class ApiService {
     return this.http.post<Res>('http://localhost:8000/api/auth/login', data);
   }
 
+  logout(){
+    return this.http.get<Res>('http://localhost:8000/api/auth/logout');
+  }
+
   register(data){
     return this.http.post<Res>('http://localhost:8000/api/auth/register', data);
   }
@@ -48,6 +52,10 @@ export class ApiService {
 
   updatePackage(id, data){
     return this.http.put<Res>('http://localhost:8000/api/packages/'+id, data);
+  }
+
+  deletePackage(id){
+    return this.http.delete<Res>('http://localhost:8000/api/packages/'+id);
   }
 
   getOrigenes(){

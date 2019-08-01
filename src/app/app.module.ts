@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
@@ -10,6 +10,8 @@ import { ApiService } from './services/api.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
 
 import { SiteHeaderComponent } from './layouts/site-header/site-header.component';
 import { SiteBodyComponent } from './layouts/site-body/site-body.component';
@@ -29,6 +31,7 @@ import { NewPackageComponent } from './packages/new-package/new-package.componen
 import { ListPackagesComponent } from './packages/list-packages/list-packages.component';
 import { EditPackageComponent } from './packages/edit-package/edit-package.component';
 import { ListLocationsComponent } from './locations/list-locations/list-locations.component';
+import { ListRechargesComponent } from './recharges/list-recharges/list-recharges.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,8 @@ import { ListLocationsComponent } from './locations/list-locations/list-location
     NewPackageComponent,
     ListPackagesComponent,
     EditPackageComponent,
-    ListLocationsComponent
+    ListLocationsComponent,
+    ListRechargesComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,11 @@ import { ListLocationsComponent } from './locations/list-locations/list-location
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [ApiService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

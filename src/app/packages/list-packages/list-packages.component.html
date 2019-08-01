@@ -7,7 +7,8 @@
                     <tr>
                         <th scope="col">Nombre</th>
                         <th scope="col">Tipo</th>
-                        <th scope="col">Medidas</th>
+                        <th scope="col">Medidas (cm)</th>
+                        <th scope="col">Peso (kg)</th>
                         <th scope="col">Estatus</th>
                         <th></th>
                     </tr>
@@ -17,6 +18,7 @@
                         <td>{{package.name}}</td>
                         <td>{{package.type}}</td>
                         <td>{{package.height}} x {{package.width}} x {{package.length}}</td>
+                        <td>{{package.weight}}</td>
                         <td>{{package.status == 1 ? 'Activo':'Inactivo'}}</td>
                         <td>
                             <a routerLink="/admin/packages/{{package.id}}/edit" class="btn btn-icon btn-rounded btn-outline-warning">

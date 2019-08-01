@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './_guards/auth.guard';
 
 import { AppBodyComponent } from './layouts/app-body/app-body.component';
 import { SiteBodyComponent } from './layouts/site-body/site-body.component';
@@ -15,6 +16,8 @@ import { ListPackagesComponent } from './packages/list-packages/list-packages.co
 import { NewPackageComponent } from './packages/new-package/new-package.component';
 import { EditPackageComponent } from './packages/edit-package/edit-package.component';
 
+import { ListRechargesComponent } from './recharges/list-recharges/list-recharges.component';
+
 import { ListLocationsComponent } from './locations/list-locations/list-locations.component';
 
 
@@ -29,6 +32,7 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         pathMatch: 'full',
+        canActivate: [AuthGuard]
       },
       {
         path: 'shipments',
@@ -53,6 +57,11 @@ const routes: Routes = [
       {
         path: 'packages/:id/edit',
         component: EditPackageComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'recharges',
+        component: ListRechargesComponent,
         pathMatch: 'full',
       },
       {
