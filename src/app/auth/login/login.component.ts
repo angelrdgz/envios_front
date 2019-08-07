@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-login',
@@ -57,6 +58,13 @@ export class LoginComponent implements OnInit {
 
     }
 
+  }
+
+  public saveEmail(email: string): void {
+    // ... save user email
+  }
+
+  showSwal(){
   }
 
 }
