@@ -3,7 +3,8 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Nueva Guía</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Favor de llenar la información de origen y destino, junto con la información del envío.</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Favor de llenar la información de origen y destino, junto con la
+                información del envío.</h6>
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card">
@@ -12,41 +13,81 @@
                         </div>
                         <div class="card-body">
                             <div class="form-row">
+                                <div class="form-group col-sm-12">
+                                    <div>
+                                        <span class="float-left">¿Desea generar un nuevo domicilio de origen?</span>
+                                        <label class="switch float-right">
+                                            <input type="checkbox" [(ngModel)]="extraInfo.origen.active">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
                                 <div class="form-group col-md-12">
                                     <label for="inputEmail4">Domicilios de Origen</label>
-                                    <select name="" id="" class="form-control">
-                                            <option value="{{origen.id}}" *ngFor="let origen of origenes">{{origen.nickname}}</option>
+                                    <select name="" id="" (change)="getOrigen($event.target.value)"
+                                        class="form-control">
+                                        <option value="">Selecciones un origen</option>
+                                        <option value="{{origen.id}}" *ngFor="let origen of origenes">
+                                            {{origen.nickname}}</option>
                                     </select>
+                                </div>
+                                <div class="form-group col-md-12" *ngIf="extraInfo.origen.active">
+                                    <label for="inputEmail4">Identificador de Domicilio</label>
+                                    <input type="text" class="form-control" id="inputEmail4"
+                                        [(ngModel)]="extraInfo.origen.nickname" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Nombre</label>
-                                    <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="shipment.address_from.name" placeholder="">
+                                    <input type="text" class="form-control" id="inputEmail4"
+                                        [(ngModel)]="shipment.address_from.name" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Email</label>
-                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.address_from.email" placeholder="">
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [(ngModel)]="shipment.address_from.email" placeholder="">
                                 </div>
-                                <div class="form-group col-md-12">
-                                    <label for="inputEmail4">Dirección</label>
-                                    <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="shipment.address_from.address1" placeholder="Av. Empresarios #200">
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">País</label>
+                                    <select name="" id="" [(ngModel)]="shipment.address_from.country" class="form-control">
+                                        <option value="{{country.code}}"  *ngFor="let country of countries">
+                                            {{country.name}}</option>
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Código Postal</label>
-                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.address_from.zip" placeholder="">
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [(ngModel)]="shipment.address_from.zip" placeholder="">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Calle y Número</label>
+                                    <input type="text" class="form-control" id="inputEmail4"
+                                        [(ngModel)]="shipment.address_from.address1" placeholder="Av. Empresarios #200">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputAddress">Colonia</label>
-                                    <select name="" id="" [(ngModel)]="shipment.address_from.address2" class="form-control"></select>
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [(ngModel)]="shipment.address_from.address2" placeholder="">
+                                    <!--<select name="" id="" [(ngModel)]="shipment.address_from.address2"
+                                        class="form-control"></select>-->
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Ciudad</label>
-                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.address_from.city" placeholder="">
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [(ngModel)]="shipment.address_from.city" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputAddress">Estado</label>
-                                    <select name="" id="" [(ngModel)]="shipment.address_from.province" class="form-control">
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [(ngModel)]="shipment.address_from.province" placeholder="">
+                                    <!--<select name="" id="" [(ngModel)]="shipment.address_from.province"
+                                        class="form-control">
 
-                                    </select>
+                                    </select>-->
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="inputPassword4">Referencia</label>
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [(ngModel)]="shipment.address_from.reference" placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -59,42 +100,81 @@
                         </div>
                         <div class="card-body">
                             <div class="form-row">
+                                <div class="form-group col-sm-12">
+                                    <div>
+                                        <span class="float-left">¿Desea generar un nuevo domicilio de origen?</span>
+                                        <label class="switch float-right">
+                                            <input type="checkbox" [(ngModel)]="extraInfo.destination.active">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
                                 <div class="form-group col-md-12">
-                                    <label for="inputEmail4">Domicilios de Origen</label>
-                                    <select name="" id="" class="form-control">
-                                            <option value="{{destination.id}}" *ngFor="let destination of destinations">{{destination.nickname}}</option>
+                                    <label for="inputEmail4">Domicilios de Destino</label>
+                                    <select name="" id="" (change)="getDestination($event.target.value)"
+                                        class="form-control">
+                                        <option value="">Selecciones un destino</option>
+                                        <option value="{{destination.id}}" *ngFor="let destination of destinations">
+                                            {{destination.nickname}}</option>
                                     </select>
+                                </div>
+                                <div class="form-group col-md-12" *ngIf="extraInfo.destination.active">
+                                    <label for="inputEmail4">Identificador de Domicilio</label>
+                                    <input type="text" class="form-control" id="inputEmail4"
+                                        [(ngModel)]="extraInfo.destination.nickname" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Nombre</label>
-                                    <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="shipment.address_to.name" placeholder="">
+                                    <input type="text" class="form-control" id="inputEmail4"
+                                        [(ngModel)]="shipment.address_to.name" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Email</label>
-                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.address_to.email" placeholder="">
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [(ngModel)]="shipment.address_to.email" placeholder="">
                                 </div>
-                                <div class="form-group col-md-12">
-                                    <label for="inputEmail4">Dirección</label>
+                                <div class="form-group col-md-6">
+                                        <label for="inputPassword4">País</label>
+                                        <select name="" id="" [(ngModel)]="shipment.address_to.country" class="form-control">
+                                            <option value="{{country.code}}" *ngFor="let country of countries">
+                                                {{country.name}}</option>
+                                        </select>
+                                    </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Calle y Número</label>
                                     <input type="text" class="form-control" id="inputEmail4"
                                         [(ngModel)]="shipment.address_to.address1" placeholder="Av. Empresarios #200">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Código Postal</label>
-                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.address_to.zip" placeholder="">
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [(ngModel)]="shipment.address_to.zip" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputAddress">Colonia</label>
-                                    <select name="" id="" [(ngModel)]="shipment.address_to.address2" class="form-control"></select>
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [(ngModel)]="shipment.address_to.address2" placeholder="">
+                                    <!--<select name="" id="" [(ngModel)]="shipment.address_to.address2"
+                                        class="form-control"></select>-->
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Ciudad</label>
-                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.address_to.city" placeholder="">
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [(ngModel)]="shipment.address_to.city" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputAddress">Estado</label>
-                                    <select name="" id="" [(ngModel)]="shipment.address_to.province" class="form-control">
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [(ngModel)]="shipment.address_to.province" placeholder="">
+                                    <!--<select name="" id="" [(ngModel)]="shipment.address_to.province"
+                                        class="form-control">
 
-                                    </select>
+                                    </select>-->
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="inputPassword4">Referencia</label>
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [(ngModel)]="shipment.address_to.reference" placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -112,25 +192,31 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="inputEmail4">Mis paquetes</label>
-                                    <select name="" id="" class="form-control">
-                                      <option value="{{package.id}}" *ngFor="let package of packages">{{package.name}}</option>
+                                    <select name="" (change)="onChange($event.target.value)" id="" class="form-control">
+                                        <option value="">Seleccione un Paquete</option>
+                                        <option value="{{package.id}}" *ngFor="let package of packages">{{package.name}}
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputEmail4">Alto</label>
-                                    <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="shipment.parcels[0].height" placeholder="">
+                                    <input type="text" class="form-control" id="inputEmail4"
+                                        [(ngModel)]="shipment.parcels[0].height" placeholder="">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputPassword4">Ancho</label>
-                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.parcels[0].width" placeholder="">
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [(ngModel)]="shipment.parcels[0].width" placeholder="">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputEmail4">Largo</label>
-                                    <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="shipment.parcels[0].length" placeholder="">
+                                    <input type="text" class="form-control" id="inputEmail4"
+                                        [(ngModel)]="shipment.parcels[0].length" placeholder="">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Peso</label>
-                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.parcels[0].weight" placeholder="">
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [(ngModel)]="shipment.parcels[0].weight" placeholder="">
                                 </div>
                                 <div class="form-group col-sm-3 offset-sm-4">
                                     <button (click)="getQuote()">Cotizar</button>
@@ -145,13 +231,14 @@
                             Paqueterias
                         </div>
                         <div class="card-body">
-                                <ul class="list-group" [@listAnimation]="rates.length">
-                                        <li class="list-group-item" *ngFor="let rate of rates">{{rate.provider}} {{rate.service_level_name}} 
-                                            <small class="float-right">
-                                                <b>{{rate.amount_local | currency}} {{rate.currency_local}}</b>
-                                            </small>
-                                        </li>
-                                    </ul>
+                            <ul class="list-group" [@listAnimation]="rates.length">
+                                <li class="list-group-item selected" (click)="selectParcel(rate.id)"
+                                    *ngFor="let rate of rates">{{rate.provider}} {{rate.service_level_name}}
+                                    <small class="float-right">
+                                        <b>{{rate.amount_local | currency}} {{rate.currency_local}}</b>
+                                    </small>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>

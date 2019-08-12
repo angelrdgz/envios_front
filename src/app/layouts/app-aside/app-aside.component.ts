@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -8,9 +9,19 @@ declare var $: any;
 })
 export class AppAsideComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router){ }
 
   ngOnInit() {
+  }
+
+  signOut(){
+    localStorage.removeItem('user_ses');
+    localStorage.removeItem('token_user');
+    localStorage.clear();
+    this.router.navigate(['login'])
+
   }
 
 }

@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { ApiService } from './services/api.service';
 
@@ -63,7 +62,6 @@ import { ListRechargesComponent } from './recharges/list-recharges/list-recharge
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    SweetAlert2Module
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

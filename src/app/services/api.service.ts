@@ -65,4 +65,14 @@ export class ApiService {
   getDestinations(){
     return this.http.get<Res>('http://localhost:8000/api/locations/get-destinations');
   }
+
+  getLocation(id){
+    return this.http.get<Res>('http://localhost:8000/api/locations/'+id);
+  }
+
+
+
+  getCountries(){
+    return this.http.get<Res>('http://localhost:8000/api/countries');
+  }
 }
