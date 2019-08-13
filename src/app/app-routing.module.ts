@@ -19,6 +19,8 @@ import { EditPackageComponent } from './packages/edit-package/edit-package.compo
 import { ListRechargesComponent } from './recharges/list-recharges/list-recharges.component';
 import { NewRechargeComponent } from './recharges/new-recharge/new-recharge.component';
 
+import { NewCardComponent } from './cards/new-card/new-card.component';
+
 import { ListLocationsComponent } from './locations/list-locations/list-locations.component';
 
 
@@ -68,6 +70,11 @@ const routes: Routes = [
       {
         path: 'recharges/new',
         component: NewRechargeComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'cards/new',
+        component: NewCardComponent,
         pathMatch: 'full',
       },
       {
