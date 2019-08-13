@@ -32,6 +32,9 @@ import { ListPackagesComponent } from './packages/list-packages/list-packages.co
 import { EditPackageComponent } from './packages/edit-package/edit-package.component';
 import { ListLocationsComponent } from './locations/list-locations/list-locations.component';
 import { ListRechargesComponent } from './recharges/list-recharges/list-recharges.component';
+import { NewRechargeComponent } from './recharges/new-recharge/new-recharge.component';
+import { ListCardsComponent } from './cards/list-cards/list-cards.component';
+import { NewCardComponent } from './cards/new-card/new-card.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { ListRechargesComponent } from './recharges/list-recharges/list-recharge
     ListPackagesComponent,
     EditPackageComponent,
     ListLocationsComponent,
-    ListRechargesComponent
+    ListRechargesComponent,
+    NewRechargeComponent,
+    ListCardsComponent,
+    NewCardComponent
   ],
   imports: [
     BrowserModule,
