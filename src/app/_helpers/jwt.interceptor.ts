@@ -9,7 +9,8 @@ export class JwtInterceptor implements HttpInterceptor {
         let currentUser = localStorage.getItem('token_user');
         if (currentUser !== null) {
             request = request.clone({
-                setHeaders: { 
+                setHeaders: {
+                    "Content-Type": "application/json",
                     Authorization: 'bearer '+currentUser
                 }
             });

@@ -41,6 +41,7 @@ const routes: Routes = [
         path: 'shipments',
         component: ListComponent,
         pathMatch: 'full',
+        canActivate: [AuthGuard]        
       },
       {
         path: 'shipments/new',

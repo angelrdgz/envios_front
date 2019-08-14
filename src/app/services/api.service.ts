@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-//import { Observable } from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,7 +22,7 @@ export class ApiService {
     return this.http.post<Res>('http://localhost:8000/api/srenvio/quote', data, httpOptions);
   }
 
-  login(data){
+  login(data):Observable<Res>{
     return this.http.post<Res>('http://localhost:8000/api/auth/login', data);
   }
 
@@ -30,7 +30,7 @@ export class ApiService {
     return this.http.get<Res>('http://localhost:8000/api/auth/logout');
   }
 
-  register(data){
+  register(data):Observable<Res>{
     return this.http.post<Res>('http://localhost:8000/api/auth/register', data);
   }
 

@@ -11,8 +11,12 @@ export class LoginComponent implements OnInit {
 
   public user = {email:"",password:""};
   public userIndividual = {name:"", lastname:"", email:"", type_id:"1", phone:"", business:0, password:"",confirm:"", terms:true};
-  public userBusiness = {name:"", lastname:"", company:"", email:"", type_id:"1", phone:"", business:1, shipments:"2", password:"",confirm:"", terms:true};
+  public userBusiness = {name:"", lastname:"", company:"", email:"", type_id:"1", phone:"", business:1, shipments:"1", password:"",confirm:"", terms:true};
   public data:any;
+  public loginErrors:any;
+  public individualErrors:any;
+  public businessErrors:any;
+  public loginError:string = ''
 
   constructor(
     private _apiService: ApiService,
@@ -30,7 +34,27 @@ export class LoginComponent implements OnInit {
   login(){
     this._apiService.login(this.user).subscribe(
       data => { this.data = data},
-      err => console.error(err),
+      err => {
+        switch(err.status) { 
+          case 401: { 
+            this.loginError = 'Email o contraseña incorrectos'
+            break; 
+         } 
+          case 422: { 
+             this.loginErrors = err.error.errors
+             break; 
+          } 
+          case 500: { 
+             //statements; 
+             break; 
+          } 
+          default: { 
+            this.loginError = ''
+             break; 
+          } 
+       } 
+       console.log(this.loginErrors)
+      },
       () => {
         console.log(this.data)
         localStorage.setItem('user_ses', JSON.stringify(this.data.user))
@@ -41,17 +65,54 @@ export class LoginComponent implements OnInit {
   }
 
   register(type){
-    if(type == 0){
+    if(type == 1){
       this._apiService.register(this.userIndividual).subscribe(
-        data => {  console.log(data) },
-        err => console.error(err),
+        data => { },
+        err => {
+          switch(err.status) { 
+            case 401: { 
+              this.loginError = 'Email o contraseña incorrectos'
+              break; 
+           } 
+            case 422: { 
+               this.individualErrors = err.error.errors
+               break; 
+            } 
+            case 500: { 
+               //statements; 
+               break; 
+            } 
+            default: { 
+              
+            break; 
+            } 
+         }
+        },
         () => {}
       );
 
     }else{
       this._apiService.register(this.userBusiness).subscribe(
         data => { console.log(data) },
-        err => console.error(err),
+        err => {
+          switch(err.status) { 
+            case 401: { 
+              break; 
+           } 
+            case 422: { 
+               this.businessErrors = err.error.errors
+               break; 
+            } 
+            case 500: { 
+               //statements; 
+               break; 
+            } 
+            default: { 
+              
+            break; 
+            } 
+         }
+        },
         () => {}
       );
 
