@@ -1,0 +1,44 @@
+<div class="d-md-flex h-md-100 align-items-center">
+
+    <!-- First Half -->
+
+    <div class="col-md-6 p-0 bg-indigo h-md-100">
+        <div class="text-white d-md-flex align-items-center h-100 text-center justify-content-center">
+            <div class="logoarea pt-5 pb-5">
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Half -->
+
+    <div class="col-md-6 p-0 bg-white h-md-100 loginarea">
+        <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="text-center">SHIP2GO</h1>
+                </div>
+                <div class="col-sm-12">
+                        <h3 class="text-center lead"  *ngIf="active == false && error == false">Estamos verificando tu cuenta, regalanos un momento para completar la activación.</h3>
+                        <h3 class="text-center lead"  *ngIf="error == true">Lo sentimos no encontramos ninguna cuenta con este identificador.</h3>
+                    </div>
+                    <div class="col-sm-12" *ngIf="active == true">
+                            <h3 class="text-center lead">Hola <b>{{user.name}} {{user.lastname}}</b>, hemos activado tu cuenta con exito. ahora podras ingresar a tu panel de administración y disfrutar de todos los beneficios que te brindamos.</h3>
+                        </div>
+                    <div class="col-sm-6 offset-sm-3"  *ngIf="active == true">
+                        <a routerLink="/admin/dashboard" routerLinkActive="active" class="btn btn-primary btn-block">Ir a mi Dashboard</a>
+                    </div>
+                    <div class="col-sm-6 offset-sm-3"  *ngIf="error == true && active == false">
+                            <a routerLink="/" routerLinkActive="active" class="btn btn-primary btn-block">Ir al Inicio</a>
+                        </div>
+                <div class="col-sm-12">
+                    <div class="d-flex justify-content-center"  *ngIf="active == false && error == false">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

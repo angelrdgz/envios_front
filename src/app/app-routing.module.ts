@@ -4,7 +4,9 @@ import { AuthGuard } from './_guards/auth.guard';
 
 import { AppBodyComponent } from './layouts/app-body/app-body.component';
 import { SiteBodyComponent } from './layouts/site-body/site-body.component';
+
 import { LoginComponent } from './auth/login/login.component';
+import { ActiveAccountComponent } from './auth/active-account/active-account.component';
 import { HomeComponent } from './site/home/home.component';
 import { QuoteComponent } from './site/quote/quote.component';
 
@@ -105,6 +107,7 @@ const routes: Routes = [
 
   //no layout routes
   { path: 'login', component: LoginComponent },
+  { path: 'active-account/:hash', component: ActiveAccountComponent },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];

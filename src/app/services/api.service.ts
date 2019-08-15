@@ -34,6 +34,11 @@ export class ApiService {
     return this.http.post<Res>('http://localhost:8000/api/auth/register', data);
   }
 
+  
+  activeAccount(hash){
+    return this.http.get<Res>('http://localhost:8000/api/auth/active-account/'+hash);
+  }
+
   getShipments() {
     return this.http.get<Res>('http://localhost:8000/api/shipments');
   }
