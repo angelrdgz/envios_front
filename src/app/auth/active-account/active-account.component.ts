@@ -30,8 +30,8 @@ export class ActiveAccountComponent implements OnInit {
         console.log(data)
         this.user = data.user
         this.active = true
-        localStorage.setItem('user_ses', JSON.stringify(this.user))
-        localStorage.setItem('token_user', this.api_key)
+        localStorage.setItem('user_ses', JSON.stringify(data.user))
+        localStorage.setItem('token_user', data.api_key)
       },
       err => {
        console.log(err)

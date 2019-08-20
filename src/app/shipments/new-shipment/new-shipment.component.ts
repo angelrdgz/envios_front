@@ -41,18 +41,6 @@ export class NewShipmentComponent implements OnInit {
   public rates:any
   public countries:any
 
-  public quote =
-    {
-      "zip_from": "",
-      "zip_to": "",
-      "parcel": {
-        "weight": 0,
-        "height": 0,
-        "width": 0,
-        "length": 0
-      }
-    };
-
   public extraInfo = {
     origen:{
       active: false,
@@ -131,29 +119,24 @@ export class NewShipmentComponent implements OnInit {
     this._apiService.getOrigenes ().subscribe(
       data => { this.origenes = data.data},
       err => console.error(err),
-      () => console.log(this.origenes)
+      () => {
+        if(this.origenes.length == 0){
+          this.extraInfo.origen.active = true
+        }
+      }
     );
 
   }
 
   getLocationsDestination(){
-
     this._apiService.getDestinations().subscribe(
       data => { this.destinations = data.data},
       err => console.error(err),
-      () => ''
-    );
-
-  }
-
-  getQuote() {
-    this.rates = []
-    this.quote.zip_from = this.shipment.address_from.zip
-    this.quote.zip_to = this.shipment.address_to.zip
-    this._apiService.quote(this.quote).subscribe(
-      data => { this.rates = data.data },
-      err => console.error(err),
-      () => console.log(this.rates)
+      () => {
+        if(this.destinations.length == 0){
+          this.extraInfo.destination.active = true
+        }
+      }
     );
   }
 
@@ -179,10 +162,6 @@ export class NewShipmentComponent implements OnInit {
         this.shipment.parcels[0].height = data.data.height
         this.shipment.parcels[0].width = data.data.width
         this.shipment.parcels[0].length = data.data.length
-        this.quote.parcel.height =  parseInt(data.data.height)
-        this.quote.parcel.width =  parseInt(data.data.width)
-        this.quote.parcel.length =  parseInt(data.data.length)
-        this.quote.parcel.weight =  parseInt(data.data.weight)
       },
       err => console.error(err),
       () => console.log(this.package)
@@ -226,6 +205,16 @@ export class NewShipmentComponent implements OnInit {
       },
       err => console.error(err),
       () => console.log(this.package)
+    );
+  }
+
+  createShipment(){
+    this._apiService.createShipment({shipment:this.shipment, extraInfo: this.extraInfo}).subscribe(
+      data => { 
+       console.log(data)
+      },
+      err => console.error(err),
+      () => {}
     );
   }
 

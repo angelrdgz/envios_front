@@ -11,6 +11,11 @@ interface Res {
   data:any;
 }
 
+interface User {
+  api_key:any;
+  user:any;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,12 +40,16 @@ export class ApiService {
   }
 
   
-  activeAccount(hash){
-    return this.http.get<Res>('http://localhost:8000/api/auth/active-account/'+hash);
+  activeAccount(hash):Observable<User>{
+    return this.http.get<User>('http://localhost:8000/api/auth/active-account/'+hash);
   }
 
   getShipments() {
     return this.http.get<Res>('http://localhost:8000/api/shipments');
+  }
+
+  createShipment(data){
+    return this.http.post<Res>('http://localhost:8000/api/shipments', data);
   }
 
   getPackages() {
@@ -74,8 +83,6 @@ export class ApiService {
   getLocation(id){
     return this.http.get<Res>('http://localhost:8000/api/locations/'+id);
   }
-
-
 
   getCountries(){
     return this.http.get<Res>('http://localhost:8000/api/countries');
