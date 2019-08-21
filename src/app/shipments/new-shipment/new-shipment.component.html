@@ -36,10 +36,15 @@
                                     <input type="text" class="form-control" id="inputEmail4"
                                         [(ngModel)]="extraInfo.origen.nickname" placeholder="">
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputEmail4">Nombre</label>
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4">Nombre de quien envia</label>
                                     <input type="text" class="form-control" id="inputEmail4"
                                         [(ngModel)]="shipment.address_from.name" placeholder="">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Compañia</label>
+                                    <input type="text" class="form-control" id="inputEmail4"
+                                        [(ngModel)]="shipment.address_from.company" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Email</label>
@@ -123,10 +128,15 @@
                                     <input type="text" class="form-control" id="inputEmail4"
                                         [(ngModel)]="extraInfo.destination.nickname" placeholder="">
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputEmail4">Nombre</label>
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4">Nombre de quien recibe</label>
                                     <input type="text" class="form-control" id="inputEmail4"
                                         [(ngModel)]="shipment.address_to.name" placeholder="">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Compañia</label>
+                                    <input type="text" class="form-control" id="inputEmail4"
+                                        [(ngModel)]="shipment.address_to.company" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Email</label>
@@ -217,6 +227,10 @@
                                     <label for="inputPassword4">Peso</label>
                                     <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.parcels[0].weight" placeholder="">
                                 </div>
+                                <div class="form-group col-md-9">
+                                    <label for="inputPassword4">Contenido</label>
+                                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="shipment.address_to.contents" placeholder="">
+                                </div>
                                 <div class="form-group col-sm-3 offset-sm-4">
                                     <button (click)="createShipment()">Cotizar</button>
                                 </div>
@@ -232,9 +246,9 @@
                         <div class="card-body">
                             <ul class="list-group" [@listAnimation]="rates.length">
                                 <li class="list-group-item selected" (click)="selectParcel(rate.id)"
-                                    *ngFor="let rate of rates">{{rate.provider}} {{rate.service_level_name}}
+                                    *ngFor="let rate of rates">{{rate.attributes.provider}} {{rate.attributes.service_level_name}}
                                     <small class="float-right">
-                                        <b>{{rate.amount_local | currency}} {{rate.currency_local}}</b>
+                                        <b>{{rate.attributes.total_pricing | currency}} {{rate.attributes.currency_local}}</b>
                                     </small>
                                 </li>
                             </ul>

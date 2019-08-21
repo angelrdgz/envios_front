@@ -43,10 +43,12 @@ export class NewShipmentComponent implements OnInit {
 
   public extraInfo = {
     origen:{
+      id:null,
       active: false,
       nickname:""
     },
     destination:{
+      id:null,
       active: false,
       nickname:""
     }
@@ -68,12 +70,12 @@ export class NewShipmentComponent implements OnInit {
     "reference":""
     },    
     "parcels": [{
-      "weight": this.package.weight,
+      "weight": parseInt(this.package.weight),
       "distance_unit": "CM",
       "mass_unit": "KG",
-      "height": this.package.height,
-      "width": this.package.width,
-      "length": this.package.length
+      "height": parseInt(this.package.height),
+      "width": parseInt(this.package.width),
+      "length": parseInt(this.package.length)
     }],
     "address_to": {
       "province": "",
@@ -158,10 +160,11 @@ export class NewShipmentComponent implements OnInit {
   getPackage(id){
     this._apiService.getPackage(id).subscribe(
       data => { 
-        this.shipment.parcels[0].weight = data.data.weight
-        this.shipment.parcels[0].height = data.data.height
-        this.shipment.parcels[0].width = data.data.width
-        this.shipment.parcels[0].length = data.data.length
+        this.shipment.parcels[0].weight = parseInt(data.data.weight)
+        this.shipment.parcels[0].height = parseInt(data.data.height)
+        this.shipment.parcels[0].width = parseInt(data.data.width)
+        this.shipment.parcels[0].length = parseInt(data.data.length)
+        this.shipment.address_to.contents = data.data.contents
       },
       err => console.error(err),
       () => console.log(this.package)
@@ -177,14 +180,16 @@ export class NewShipmentComponent implements OnInit {
         this.shipment.address_from.zip = data.data.zipcode 
         this.shipment.address_from.country = data.data.country 
         this.shipment.address_from.address1 = data.data.address 
-        this.shipment.address_from.company = "" 
+        this.shipment.address_from.company = data.data.company
         this.shipment.address_from.address2 = data.data.address2 
         this.shipment.address_from.phone = data.data.phone 
         this.shipment.address_from.email = data.data.email 
         this.shipment.address_from.reference = data.data.reference
+        this.extraInfo.origen.id = data.data.id
+        this.extraInfo.origen.nickname = data.data.nickname
       },
       err => console.error(err),
-      () => console.log(this.package)
+      () => console.log(this.extraInfo)
     );
   }
 
@@ -197,14 +202,16 @@ export class NewShipmentComponent implements OnInit {
         this.shipment.address_to.zip = data.data.zipcode 
         this.shipment.address_to.country = data.data.country 
         this.shipment.address_to.address1 = data.data.address 
-        this.shipment.address_to.company = "" 
+        this.shipment.address_to.company = data.data.company 
         this.shipment.address_to.address2 = data.data.address2 
         this.shipment.address_to.phone = data.data.phone 
         this.shipment.address_to.email = data.data.email 
         this.shipment.address_to.reference = data.data.reference
+        this.extraInfo.destination.id = data.data.id
+        this.extraInfo.destination.nickname = data.data.nickname
       },
       err => console.error(err),
-      () => console.log(this.package)
+      () => console.log(this.extraInfo)
     );
   }
 
@@ -212,6 +219,7 @@ export class NewShipmentComponent implements OnInit {
     this._apiService.createShipment({shipment:this.shipment, extraInfo: this.extraInfo}).subscribe(
       data => { 
        console.log(data)
+       this.rates = data.rates
       },
       err => console.error(err),
       () => {}

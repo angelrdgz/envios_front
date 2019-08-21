@@ -9,7 +9,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  public user = {email:"",password:""};
+  public user:any = {email:"angel@envios.com",password:"Hola1@"};
   public userIndividual = {name:"", lastname:"", email:"", type_id:"1", phone:"", business:0, password:"",confirm:"", terms:true};
   public userBusiness = {name:"", lastname:"", company:"", email:"", type_id:"1", phone:"", business:1, shipments:"1", password:"",confirm:"", terms:true};
   public data:any;
@@ -31,7 +31,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  func(e){
+    console.log(e)
+  }
+
   login(){
+    console.log(this.user)
     this._apiService.login(this.user).subscribe(
       data => { this.data = data},
       err => {
