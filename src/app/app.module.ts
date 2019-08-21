@@ -37,6 +37,7 @@ import { ListCardsComponent } from './cards/list-cards/list-cards.component';
 import { NewCardComponent } from './cards/new-card/new-card.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { ActiveAccountComponent } from './auth/active-account/active-account.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { ActiveAccountComponent } from './auth/active-account/active-account.com
     ListCardsComponent,
     NewCardComponent,
     ForgotPasswordComponent,
-    ActiveAccountComponent
+    ActiveAccountComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

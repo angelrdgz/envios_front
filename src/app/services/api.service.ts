@@ -11,6 +11,11 @@ interface Res {
   data:any;
 }
 
+interface Shipment {
+  rates: string;
+  shipment_id:number;
+}
+
 interface User {
   api_key:any;
   user:any;
@@ -49,7 +54,11 @@ export class ApiService {
   }
 
   createShipment(data){
-    return this.http.post<Res>('http://localhost:8000/api/shipments', data);
+    return this.http.post<Shipment>('http://localhost:8000/api/shipments', data);
+  }
+
+  createLabel(data){
+    return this.http.post<Shipment>('http://localhost:8000/api/shipments/create-label', data);
   }
 
   getPackages() {

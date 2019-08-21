@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { SrenvioService } from './../../services/srenvio.service';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
+import { Shipment } from "../../models/shipment.model";
 
 @Component({
   selector: 'new-shipment',
@@ -40,6 +41,7 @@ export class NewShipmentComponent implements OnInit {
   public destinations:any;
   public rates:any
   public countries:any
+  public label:any = {rate_id: 0, label_format: "pdf", shipment_id: 0, price: 0, carrier:"" };
 
   public extraInfo = {
     origen:{
@@ -55,43 +57,7 @@ export class NewShipmentComponent implements OnInit {
   }
 
 
-  public shipment = {
-    "address_from": {
-    "province":"",
-    "city": "",
-    "name": "",
-    "zip": "",
-    "country": "MX",
-    "address1": "",
-    "company": "",
-    "address2": "",
-    "phone": "",
-    "email": "",
-    "reference":""
-    },    
-    "parcels": [{
-      "weight": parseInt(this.package.weight),
-      "distance_unit": "CM",
-      "mass_unit": "KG",
-      "height": parseInt(this.package.height),
-      "width": parseInt(this.package.width),
-      "length": parseInt(this.package.length)
-    }],
-    "address_to": {
-      "province": "",
-      "city": "",
-      "name": "",
-      "zip": "",
-      "country": "US",
-      "address1": "",
-      "company": "",
-      "address2": "",
-      "phone": "",
-      "email": "",
-      "reference":"",
-      "contents": ""
-    }
-  }
+  public shipment = new Shipment
 
   constructor(
     private _apiService: ApiService,
@@ -103,6 +69,8 @@ export class NewShipmentComponent implements OnInit {
     this.getLocationsDestination()
     this.getPackages()
     this.getCountries()
+
+    console.log(this.shipment)
   }
 
   onChange(deviceValue) {
@@ -216,14 +184,33 @@ export class NewShipmentComponent implements OnInit {
   }
 
   createShipment(){
-    this._apiService.createShipment({shipment:this.shipment, extraInfo: this.extraInfo}).subscribe(
+    this._apiService.createShipment({shipment:this.shipment}).subscribe(
       data => { 
        console.log(data)
        this.rates = data.rates
+       this.label.shipment_id = data.shipment_id
       },
       err => console.error(err),
       () => {}
     );
+  }
+
+  createLabel(){
+
+    this._apiService.createLabel({shipment:this.shipment, extraInfo: this.extraInfo, label: this.label}).subscribe(
+      data => { 
+       console.log(data)
+      },
+      err => console.error(err),
+      () => {}
+    );
+
+  }
+
+  selectParcel(id, price, carrier){
+     this.label.rate_id = id
+     this.label.price = price
+     this.label.carrier = carrier
   }
 
 }

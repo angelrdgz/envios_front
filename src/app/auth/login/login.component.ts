@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public userIndividual = {name:"", lastname:"", email:"", type_id:"1", phone:"", business:0, password:"",confirm:"", terms:true};
   public userBusiness = {name:"", lastname:"", company:"", email:"", type_id:"1", phone:"", business:1, shipments:"1", password:"",confirm:"", terms:true};
   public data:any;
+  public title = 'Hola'
   public loginErrors:any;
   public individualErrors:any;
   public businessErrors:any;
