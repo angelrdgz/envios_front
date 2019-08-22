@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./site-header.component.scss']
 })
 export class SiteHeaderComponent implements OnInit {
+  public title = "Ship2Go"
 
   constructor() { }
 

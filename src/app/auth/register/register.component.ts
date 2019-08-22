@@ -1,24 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
 
-@Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
-})
+@Component({templateUrl: 'register.component.html'})
 export class RegisterComponent implements OnInit {
+    registerForm: FormGroup;
+    loading = false;
+    submitted = false;
+    business=0;
 
-  public business:string = 'Male';
-  title = 'Hola';
-  user:any = {name:"", lastname:"", company:"", email:"", type_id:"1", phone:"", business:0, shipments:"1", password:"",confirm:"", terms:true};
+    constructor(
+        private formBuilder: FormBuilder,
+        private router: Router) { }
 
-  constructor(
-    private _apiService: ApiService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+    ngOnInit() {
+        this.registerForm = this.formBuilder.group({
+            name: ['', Validators.required],
+            lastname: ['', Validators.required],
+            password: ['', [Validators.required, Validators.minLength(6)]]
+        });
+    }
 
-  ngOnInit() {
-  }
+    // convenience getter for easy access to form fields
+    get f() { return this.registerForm.controls; }
 
+    onSubmit() {
+        this.submitted = true;
+
+        // stop here if form is invalid
+        if (this.registerForm.invalid) {
+            return;
+        }
+
+        this.loading = true;
+        console.log(this.registerForm.value)
+    }
 }

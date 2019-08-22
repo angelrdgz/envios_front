@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { ApiService } from './services/api.service';
@@ -39,6 +39,8 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
 import { ActiveAccountComponent } from './auth/active-account/active-account.component';
 import { RegisterComponent } from './auth/register/register.component';
 
+import {DataTableModule} from "angular-6-datatable";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +75,9 @@ import { RegisterComponent } from './auth/register/register.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     BrowserAnimationsModule,
+    DataTableModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

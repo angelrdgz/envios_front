@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { SrenvioService } from './../../services/srenvio.service';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
-import { Shipment } from "../../models/shipment.model";
 
 @Component({
   selector: 'new-shipment',
@@ -42,6 +41,43 @@ export class NewShipmentComponent implements OnInit {
   public rates:any
   public countries:any
   public label:any = {rate_id: 0, label_format: "pdf", shipment_id: 0, price: 0, carrier:"" };
+  public shipment:any = {
+    address_from: {
+      province: "",
+      city: "",
+      name: "",
+      zip: "",
+      country: "",
+      address1: "",
+      company: "",
+      address2: "",
+      phone: "",
+      email: ""},
+      reference: "",
+      parcels: [{
+        weight: 0,
+        distance_unit: "CM",
+        mass_unit: "KG",
+        height: 0,
+        width: 0,
+        length: 0
+      }],
+      address_to: {
+        province: "",
+        city: "",
+        name: "",
+        zip: "",
+        country: "",
+        address1: "",
+        company: "",
+        address2: "",
+        phone: "",
+        email: "",
+        references: "",
+        contents: ""
+      }
+
+  }
 
   public extraInfo = {
     origen:{
@@ -55,9 +91,6 @@ export class NewShipmentComponent implements OnInit {
       nickname:""
     }
   }
-
-
-  public shipment = new Shipment
 
   constructor(
     private _apiService: ApiService,
