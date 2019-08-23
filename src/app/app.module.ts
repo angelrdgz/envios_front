@@ -40,6 +40,7 @@ import { ActiveAccountComponent } from './auth/active-account/active-account.com
 import { RegisterComponent } from './auth/register/register.component';
 
 import {DataTableModule} from "angular-6-datatable";
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import {DataTableModule} from "angular-6-datatable";
     NewCardComponent,
     ForgotPasswordComponent,
     ActiveAccountComponent,
-    RegisterComponent
+    RegisterComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

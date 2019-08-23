@@ -1,20 +1,26 @@
+@import "../../../variables.scss";
 header{
     width: 100%;
-    height: auto;
+    
     padding: 10px 20px;
-    background: rgba(0, 0, 0, 0.6);
+    //background: rgba(0, 0, 0, 0.6);
 }
 .navbar{
-    background: transparent !important;
+    height: 100px;
 
     .navbar-brand{
         color: #000;
+        img{
+            height: 50px;
+        }
     }
 
     .navbar-nav{
         .nav-item{
+            margin: 5px;
             .nav-link{
-                color: #000;
+                color: $app-blue;
+                font-weight: bold;
             }
         }
     }

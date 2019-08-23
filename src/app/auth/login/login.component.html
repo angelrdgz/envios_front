@@ -1,169 +1,40 @@
-<div class="d-md-flex h-md-100 align-items-center">
+<div class="content">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="assets/imgs/logoship2go.png" class="logo" alt="">
+                </div>
+                <div class="col-sm-4">
 
-    <!-- First Half -->
-
-    <div class="col-md-6 p-0 bg-indigo h-md-100">
-        <div class="text-white d-md-flex align-items-center h-100 text-center justify-content-center">
-            <div class="logoarea pt-5 pb-5">
-                
+                </div>
+                <div class="col-sm-4 listContainer">
+                    <ul>
+                        <li><a  href="/register">Registro</a></li>
+                        <li><a  href="/login" class="text-red">Login</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Second Half -->
-
-    <div class="col-md-6 p-0 bg-white h-md-100 loginarea">
-        <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <h1 class="text-center">Ship2Go</h1>
-                    <div class="form-group">
-                        <input type="email" class="form-control form-control-lg" [(ngModel)]="user.email"  aria-describedby="emailHelp" placeholder="Email">
-                            <small id="emailHelp" class="form-text text-danger" *ngIf="loginErrors.email">{{loginErrors.email}}</small>
+        <div class="card-body">
+            <h5 class="card-title"><span class="text-red">¡Bienvenido</span> nuevamente!</h5>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="input-container">
+                        <i class="fas fa-envelope"></i>
+                        <input class="input-field" type="text" [(ngModel)]="user.email" placeholder="Email" name="usrnm">
+                        <small id="emailHelp" class="form-text text-danger" *ngIf="loginErrors.email">{{loginErrors.email}}</small>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control form-control-lg" [(ngModel)]="user.password" (ngModelChange)="func($event)" placeholder="Contraseña">
-                            <small id="emailHelp" class="form-text text-danger" *ngIf="loginError != ''">{{loginError}}</small>
-                            <small id="emailHelp" class="form-text text-danger" *ngIf="loginErrors.password">{{loginErrors.password}}</small>
+                    <div class="input-container">
+                        <i class="fas fa-lock-open"></i>
+                        <input class="input-field" type="password" placeholder="Contraseña" name="usrnm">
+                        <small id="emailHelp" class="form-text text-danger" *ngIf="loginError != ''">{{loginError}}</small>
+                        <small id="emailHelp" class="form-text text-danger" *ngIf="loginErrors.password">{{loginErrors.password}}</small>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block" (click)="login()">Entrar</button>
-                    <a class="btn btn-link btn-block" (click)="showSwal()">Olvide mi contraseña</a>
-                    <a href="/register" class="btn btn-link btn-block">Crear Cuenta</a>
                 </div>
-                <!--<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <h1 class="text-center">LOGO</h1>
-                    <div class="row">
-                        <div class="col-sm-8 offset-sm-2">
-                            <ul class="nav nav-horizontal nav-tabs flex-row" id="myTab2" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="individual-tab" data-toggle="tab" href="#individual"
-                                        role="tab" aria-controls="individual" aria-selected="true">Individual</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="business-tab" data-toggle="tab" href="#business" role="tab"
-                                        aria-controls="business" aria-selected="false">Empresarial</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="tab-content" id="myTabContent2">
-                        <div class="tab-pane fade show active" id="individual" role="tabpanel"
-                            aria-labelledby="individual-tab">
-                            <div class="row">
-                                <div class="col-sm-8 offset-sm-2">
-                                    <div class="row">
-                                        <div class="form-group col-sm-6">
-                                            <label for="exampleInputEmail1">Nombre</label>
-                                            <input type="text" class="form-control" [(ngModel)]="userIndividual.name" aria-describedby="emailHelp" placeholder="">
-                                            <small id="emailHelp" class="form-text text-danger" *ngIf="individualErrors.name">{{individualErrors.name}}</small>
-                                        </div>
-                                        <div class="form-group col-sm-6">
-                                            <label for="exampleInputEmail1">Apellido</label>
-                                            <input type="text" class="form-control" [(ngModel)]="userIndividual.lastname" aria-describedby="emailHelp"
-                                                placeholder="">
-                                                <small id="emailHelp" class="form-text text-danger" *ngIf="individualErrors.lastname">{{individualErrors.lastname}}</small>
-                                        </div>
-                                        <div class="form-group col-sm-12">
-                                                <label for="exampleInputEmail1">Teléfono</label>
-                                                <input type="text" class="form-control" [(ngModel)]="userIndividual.phone" aria-describedby="emailHelp"
-                                                    placeholder="">
-                                                    <small id="emailHelp" class="form-text text-danger" *ngIf="individualErrors.phone">{{individualErrors.phone}}</small>
-                                            </div>
-                                        <div class="form-group col-sm-12">
-                                            <label for="exampleInputPassword1">Email</label>
-                                            <input type="email" class="form-control" [(ngModel)]="userIndividual.email" placeholder="">
-                                            <small id="emailHelp" class="form-text text-danger" *ngIf="individualErrors.email">{{individualErrors.email}}</small>
-                                        </div>
-                                        <div class="form-group col-sm-12">
-                                            <label for="exampleInputPassword1">Contraseña</label>
-                                            <input type="password" class="form-control" [(ngModel)]="userIndividual.password" placeholder="">
-                                            <small id="emailHelp" class="form-text text-danger" *ngIf="individualErrors.password">{{individualErrors.password}}</small>
-                                        </div>
-                                        <div class="form-group col-sm-12">
-                                            <label for="exampleInputPassword1">Confirmar</label>
-                                            <input type="password" class="form-control" [(ngModel)]="userIndividual.confirm" placeholder="">
-                                            <small id="emailHelp" class="form-text text-danger" *ngIf="individualErrors.password">{{individualErrors.password}}</small>
-                                        </div>
-                                        <div class="form-group form-check col-sm-12">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" [(ngModel)]="userIndividual.terms" for="exampleCheck1">Acepto terminos y condiciones de la plataforma.</label>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-block" (click)="register(1)">Registrate</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="row">
-                                <div class="col-sm-8 offset-sm-2">
-                                    <div class="row">
-                                            <div class="form-group col-sm-6">
-                                                    <label for="exampleInputEmail1">Nombre</label>
-                                                    <input type="text" class="form-control" aria-describedby="emailHelp"
-                                                        [(ngModel)]="userBusiness.name" placeholder="">
-                                                        <small id="emailHelp" class="form-text text-danger" *ngIf="businessErrors.name">{{businessErrors.name}}</small>
-                                                </div>
-                                                <div class="form-group col-sm-6">
-                                                        <label for="exampleInputEmail1">Apellido</label>
-                                                        <input type="text" class="form-control" aria-describedby="emailHelp"
-                                                            [(ngModel)]="userBusiness.lastname" placeholder="">
-                                                            <small id="emailHelp" class="form-text text-danger" *ngIf="businessErrors.lastname">{{businessErrors.name}}</small>
-                                                    </div>
-                                                <div class="form-group col-sm-12">
-                                                    <label for="exampleInputEmail1">Nombre de tu Empresa</label>
-                                                    <input type="text" class="form-control" aria-describedby="emailHelp"
-                                                        [(ngModel)]="userBusiness.company" placeholder="">
-                                                        <small id="emailHelp" class="form-text text-danger" *ngIf="businessErrors.company">{{businessErrors.company}}</small>
-                                                </div>
-                                                <div class="form-group col-sm-12">
-                                                        <label for="exampleInputEmail1">Teléfono</label>
-                                                        <input type="text" class="form-control" [(ngModel)]="userBusiness.phone" aria-describedby="emailHelp"
-                                                            placeholder="">
-                                                            <small id="emailHelp" class="form-text text-danger" *ngIf="businessErrors.phone">{{businessErrors.phone}}</small>
-                                                    </div>
-                                                <div class="form-group col-sm-12">
-                                                    <label for="exampleInputPassword1">Email</label>
-                                                    <input type="email" class="form-control" [(ngModel)]="userBusiness.email"
-                                                        placeholder="">
-                                                        <small id="emailHelp" class="form-text text-danger" *ngIf="businessErrors.email">{{businessErrors.email}}</small>
-                                                </div>
-                                                <div class="form-group col-sm-12">
-                                                    <label for="exampleInputPassword1">Numero de Guías al Mes</label>
-                                                    <select name="" class="form-control" [(ngModel)]="userBusiness.shipments" id="">
-                                                        <option value="1">De 1 a 10 guías al mes</option>
-                                                        <option value="2">De 1 a 50 guías al mes</option>
-                                                        <option value="3">De 1 a 100 guías al mes</option>
-                                                        <option value="4">De 1 a 500 guías al mes</option>
-                                                        <option value="5">De 1 a 1000 guías al mes</option>
-                                                        <option value="6">Mas de 1000 guías al mes</option>
-                                                    </select>
-                                                    <small id="emailHelp" class="form-text text-danger" *ngIf="businessErrors.shipments">{{businessErrors.shipments}}</small>
-                                                </div>
-                                                <div class="form-group col-sm-12">
-                                                    <label for="exampleInputPassword1">Contraseña</label>
-                                                    <input type="password" class="form-control" [(ngModel)]="userBusiness.password"
-                                                        placeholder="">
-                                                        <small id="emailHelp" class="form-text text-danger" *ngIf="businessErrors.password">{{businessErrors.password}}</small>
-                                                </div>
-                                                <div class="form-group col-sm-12">
-                                                    <label for="exampleInputPassword1">Confirmar</label>
-                                                    <input type="password" class="form-control" [(ngModel)]="userBusiness.confirm"
-                                                        placeholder="">
-                                                        <small id="emailHelp" class="form-text text-danger" *ngIf="businessErrors.password">{{businessErrors.password}}</small>
-                                                </div>
-                                                <div class="form-group col-sm-12 form-check">
-                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                    <label class="form-check-label" for="exampleCheck1">Acepto terminos y condiciones de la
-                                                        plataforma.</label>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary btn-block" (click)="register(2)">Registrate</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
             </div>
+            <a href="#" class="btn btn-link text-uppercase text-white">¿Olvidaste tu contraseña?</a>
+            <a href="#" class="btn btn-login text-uppercase rounded-pill">Entrar</a>
         </div>
     </div>
 </div>

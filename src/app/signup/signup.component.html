@@ -1,0 +1,71 @@
+<div class="content">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="assets/imgs/logoship2go.png" class="logo" alt="">
+                </div>
+                <div class="col-sm-6 listContainer">
+                    <ul>
+                        <li><a href="/register">Registro</a></li>
+                        <li><a href="/login" class="text-red">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><span class="text-red">¡crea tu cuenta</span> fácil!</h5>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-check form-check-inline text-center">
+                        <input class="form-check-input" type="radio" checked [value]="0" name="business" [(ngModel)]="business" [ngModelOptions]="{standalone: true}" id="inlineRadio1">
+                        <label class="form-check-label" for="inlineRadio1">Independiente</label>
+                    </div>
+                    <div class="form-check form-check-inline text-center">
+                        <input class="form-check-input" type="radio" [value]="1" name="business" [(ngModel)]="business" [ngModelOptions]="{standalone: true}" id="inlineRadio2"
+                           >
+                        <label class="form-check-label" for="inlineRadio2">Empresarial</label>
+                    </div>
+                    <div class="input-container" *ngIf="business == 1">
+                        <i class="far fa-building"></i>
+                        <input class="input-field" type="text" placeholder="Empresa" name="usrnm">
+                    </div>
+                    <div class="input-container">
+                        <i class="far fa-user"></i>
+                        <input class="input-field" type="text" placeholder="Nombre completo" name="usrnm">
+                    </div>
+                    <div class="input-container">
+                        <i class="fas fa-mobile-alt"></i>
+                        <input class="input-field" type="text" placeholder="Teléfono" name="usrnm">
+                    </div>
+                    <div class="input-container">
+                        <i class="fas fa-envelope"></i>
+                        <input class="input-field" type="text" placeholder="Email" name="usrnm">
+                    </div>
+                    <div class="input-container">
+                        <i class="fas fa-lock-open"></i>
+                        <input class="input-field" type="password" placeholder="Contraseña" name="usrnm">
+                    </div>
+                    <div class="input-container">
+                        <i class="fas fa-check"></i>
+                        <input class="input-field" type="password" placeholder="Confirmar contraseña" name="usrnm">
+                    </div>
+                    <div class="input-container" *ngIf="business == 1">
+                        <i class="far fa-paper-plane"></i>
+                        <select name="" id="" class="input-field">
+                            <option value="" [ngStyle]="[{'color': '#2B388F'}]" disabled>Envios estimados por mes
+                            </option>
+                            <option value="" [ngStyle]="[{'color': '#2B388F'}]">De 1 a 10 envios por mes</option>
+                        </select>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Estoy de acuerdo con los <a href="">Terminos
+                                y condiciones</a> de uso de <a href="ship2go.com">ship2go.com</a></label>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn btn-login text-uppercase rounded-pill">Entrar</a>
+        </div>
+    </div>
+</div>
