@@ -67,6 +67,10 @@
       justify-content: center;
       flex-direction: column;
       color: #fff;
+
+      form{
+        min-width: 70%;
+      }
       .row {
         min-width: 400px;
       }
@@ -104,6 +108,9 @@
             font-size: 0.8em !important;
           }
         }
+      }
+      .is-invalid{
+        border:2px solid red !important;
       }
       .btn-login {
         background: $app-red;

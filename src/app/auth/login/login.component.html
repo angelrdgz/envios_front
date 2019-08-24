@@ -10,31 +10,51 @@
                 </div>
                 <div class="col-sm-4 listContainer">
                     <ul>
-                        <li><a  href="/register">Registro</a></li>
-                        <li><a  href="/login" class="text-red">Login</a></li>
+                        <li><a href="/register">Registro</a></li>
+                        <li><a href="/login" class="text-red">Login</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="card-body">
-            <h5 class="card-title"><span class="text-red">¡Bienvenido</span> nuevamente!</h5>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="input-container">
-                        <i class="fas fa-envelope"></i>
-                        <input class="input-field" type="text" [(ngModel)]="user.email" placeholder="Email">
-                        <small id="emailHelp" class="form-text text-danger" *ngIf="loginErrors.email">{{loginErrors.email}}</small>
-                    </div>
-                    <div class="input-container">
-                        <i class="fas fa-lock-open"></i>
-                        <input class="input-field" type="password" [(ngModel)]="user.password" placeholder="Contraseña" name="usrnm">
-                        <small id="emailHelp" class="form-text text-danger" *ngIf="loginError != ''">{{loginError}}</small>
-                        <small id="emailHelp" class="form-text text-danger" *ngIf="loginErrors.password">{{loginErrors.password}}</small>
+            <form #myform="ngForm" (ngSubmit)="login(myform)" class="form form-login">
+                    <h5 class="card-title text-center"><span class="text-red">¡Bienvenido</span> nuevamente!</h5>
+                <div class="input-container" [ngClass]="{ 'is-invalid': loginErrors.email !== '' }">
+                    <i class="fas fa-envelope"></i>
+                    <input name="email" id="login-email" type="email" class="form-input" placeholder="Email" required ngModel>
+                </div>
+                <div class="input-container" [ngClass]="{ 'is-invalid': loginErrors.password !== '' }">
+                    <i class="fas fa-lock-open"></i>
+                    <input name="password" id="login-password" type="password" class="form-input" placeholder="Contraseña" required ngModel>
+                </div>
+                <div class="form-field text-center">
+                        <a href="#" class="btn btn-link text-uppercase text-white">¿Olvidaste tu contraseña?</a>
+                </div>
+                <div class="form-field text-center">
+                    <input class="btn btn-login text-uppercase rounded-pill" type="submit" value="Entrar">
+                </div>
+            </form>
+            <!--<form [formGroup]="loginForm" (ngSubmit)="login()">
+                <h5 class="card-title"><span class="text-red">¡Bienvenido</span> nuevamente!</h5>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="input-container">
+                            <i class="fas fa-envelope"></i>
+                            <input class="input-field" type="text" formControlName="email" placeholder="Email">
+                            <small id="emailHelp" class="form-text text-danger" *ngIf="loginErrors.email">{{loginErrors.email}}</small>
+                        </div>
+                        <div class="input-container">
+                            <i class="fas fa-lock-open"></i>
+                            <input class="input-field" type="password" formControlName="password" placeholder="Contraseña">
+                            <small id="emailHelp" class="form-text text-danger" *ngIf="loginError != ''">{{loginError}}</small>
+                            <small id="emailHelp" class="form-text text-danger" *ngIf="loginErrors.password">{{loginErrors.password}}</small>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <a href="#" class="btn btn-link text-uppercase text-white">¿Olvidaste tu contraseña?</a>
-            <a class="btn btn-login text-uppercase rounded-pill" (click)="login()">Entrar</a>
+                <a href="#" class="btn btn-link text-uppercase text-white">¿Olvidaste tu contraseña?</a>
+                <button [disabled]="loading" class="btn btn-primary">Login</button>
+                <button class="btn btn-login text-uppercase rounded-pill">Entrar</button>
+            </form>-->
         </div>
     </div>
 </div>
