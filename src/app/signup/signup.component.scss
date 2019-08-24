@@ -116,6 +116,9 @@
           }
         }
       }
+      .is-invalid{
+        border:2px solid red !important;
+      }
       .form-check{
           padding: 10px 10px 10px 30px;
           label{

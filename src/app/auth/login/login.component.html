@@ -22,19 +22,19 @@
                 <div class="col-sm-12">
                     <div class="input-container">
                         <i class="fas fa-envelope"></i>
-                        <input class="input-field" type="text" [(ngModel)]="user.email" placeholder="Email" name="usrnm">
+                        <input class="input-field" type="text" [(ngModel)]="user.email" placeholder="Email">
                         <small id="emailHelp" class="form-text text-danger" *ngIf="loginErrors.email">{{loginErrors.email}}</small>
                     </div>
                     <div class="input-container">
                         <i class="fas fa-lock-open"></i>
-                        <input class="input-field" type="password" placeholder="Contraseña" name="usrnm">
+                        <input class="input-field" type="password" [(ngModel)]="user.password" placeholder="Contraseña" name="usrnm">
                         <small id="emailHelp" class="form-text text-danger" *ngIf="loginError != ''">{{loginError}}</small>
                         <small id="emailHelp" class="form-text text-danger" *ngIf="loginErrors.password">{{loginErrors.password}}</small>
                     </div>
                 </div>
             </div>
             <a href="#" class="btn btn-link text-uppercase text-white">¿Olvidaste tu contraseña?</a>
-            <a href="#" class="btn btn-login text-uppercase rounded-pill">Entrar</a>
+            <a class="btn btn-login text-uppercase rounded-pill" (click)="login()">Entrar</a>
         </div>
     </div>
 </div>

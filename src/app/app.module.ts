@@ -40,6 +40,8 @@ import { ActiveAccountComponent } from './auth/active-account/active-account.com
 import { RegisterComponent } from './auth/register/register.component';
 
 import {DataTableModule} from "angular-6-datatable";
+import { HighchartsChartModule } from 'highcharts-angular';
+
 import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
@@ -79,7 +81,8 @@ import { SignupComponent } from './signup/signup.component';
     FormsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     BrowserAnimationsModule,
-    DataTableModule
+    DataTableModule,
+    HighchartsChartModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

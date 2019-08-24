@@ -1,0 +1,36 @@
+.skeleton {
+    width: 100%;
+    h3, h4, p {
+      animation: loading 2.7s infinite linear;
+      background: #f6f7f8;
+      background-image: -webkit-linear-gradient(right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+      background-image: linear-gradient(right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+      background-repeat: no-repeat;
+    }
+    
+    h3 {
+      height: 22px;
+    }
+  
+    h4 {
+      height: 18px;
+    }
+  
+    p {
+      height: 18px;
+    }
+  }
+  
+  @keyframes loading {
+    0% {
+      background-position: -600px;
+    }
+
+    50%{
+        background-position: 50%; 
+    }
+  
+    100% {
+      background-position: 100%;
+    }
+  }

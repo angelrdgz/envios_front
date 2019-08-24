@@ -10,6 +10,8 @@ export class RegisterComponent implements OnInit {
     submitted = false;
     business=0;
 
+    public user = {name:'',lastname:'',email:'',password:'',phone:'',company:'',business:0, shipment:0}
+
     constructor(
         private formBuilder: FormBuilder,
         private router: Router) { }
