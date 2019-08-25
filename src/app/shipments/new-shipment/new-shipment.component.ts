@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { SrenvioService } from './../../services/srenvio.service';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'new-shipment',
@@ -40,6 +41,7 @@ export class NewShipmentComponent implements OnInit {
   public destinations:any;
   public rates:any
   public countries:any
+  public index:number = -1
   public label:any = {rate_id: 0, label_format: "pdf", shipment_id: 0, price: 0, carrier:"" };
   public shipment:any = {
     address_from: {
@@ -94,7 +96,9 @@ export class NewShipmentComponent implements OnInit {
 
   constructor(
     private _apiService: ApiService,
-    private _srEnvioService: SrenvioService
+    private _srEnvioService: SrenvioService,
+    private route: ActivatedRoute,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -233,6 +237,7 @@ export class NewShipmentComponent implements OnInit {
     this._apiService.createLabel({shipment:this.shipment, extraInfo: this.extraInfo, label: this.label}).subscribe(
       data => { 
        console.log(data)
+       this.router.navigate(['admin/shipments'])
       },
       err => console.error(err),
       () => {}
@@ -240,10 +245,11 @@ export class NewShipmentComponent implements OnInit {
 
   }
 
-  selectParcel(id, price, carrier){
+  selectParcel(id, price, carrier, i){
      this.label.rate_id = id
      this.label.price = price
      this.label.carrier = carrier
+     this.index = i
   }
 
 }

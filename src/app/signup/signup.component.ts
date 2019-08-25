@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
     business=0;
 
     public user = {name:'',email:'',password:'',password_confirm:'',phone:'',company:'',business:0, shipments:0}
-    public loginErrors:any;
+    public loginErrors:any = {name:'',email:'',password:'',password_confirm:'',phone:'',company:'',business:0, shipments:0};
 
     constructor(
         private formBuilder: FormBuilder,
