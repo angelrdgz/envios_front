@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import {Observable} from 'rxjs';
+
+const ApiEndpoint = environment.APIEndpoint;
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -29,71 +32,71 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   quote(data){
-    return this.http.post<Res>('http://localhost:8000/api/srenvio/quote', data, httpOptions);
+    return this.http.post<Res>(ApiEndpoint+'/srenvio/quote', data, httpOptions);
   }
 
   login(data):Observable<User>{
-    return this.http.post<User>('http://localhost:8000/api/auth/login', data);
+    return this.http.post<User>(ApiEndpoint+'/auth/login', data);
   }
 
   logout(){
-    return this.http.get<Res>('http://localhost:8000/api/auth/logout');
+    return this.http.get<Res>(ApiEndpoint+'/auth/logout');
   }
 
   register(data):Observable<Res>{
-    return this.http.post<Res>('http://localhost:8000/api/auth/register', data);
+    return this.http.post<Res>(ApiEndpoint+'/auth/register', data);
   }
 
   
   activeAccount(hash):Observable<User>{
-    return this.http.get<User>('http://localhost:8000/api/auth/active-account/'+hash);
+    return this.http.get<User>(ApiEndpoint+'/auth/active-account/'+hash);
   }
 
   getShipments() {
-    return this.http.get<Res>('http://localhost:8000/api/shipments');
+    return this.http.get<Res>(ApiEndpoint+'/shipments');
   }
 
   createShipment(data){
-    return this.http.post<Shipment>('http://localhost:8000/api/shipments', data);
+    return this.http.post<Shipment>(ApiEndpoint+'/shipments', data);
   }
 
   createLabel(data){
-    return this.http.post<Shipment>('http://localhost:8000/api/shipments/create-label', data);
+    return this.http.post<Shipment>(ApiEndpoint+'/shipments/create-label', data);
   }
 
   getPackages() {
-    return this.http.get<Res>('http://localhost:8000/api/packages');
+    return this.http.get<Res>(ApiEndpoint+'/packages');
   }
 
   getPackage(id) {
-    return this.http.get<Res>('http://localhost:8000/api/packages/'+id);
+    return this.http.get<Res>(ApiEndpoint+'/packages/'+id);
   }
 
   savePackage(data){
-    return this.http.post<Res>('http://localhost:8000/api/packages', data);
+    return this.http.post<Res>(ApiEndpoint+'/packages', data);
   }
 
   updatePackage(id, data){
-    return this.http.put<Res>('http://localhost:8000/api/packages/'+id, data);
+    return this.http.put<Res>(ApiEndpoint+'/packages/'+id, data);
   }
 
   deletePackage(id){
-    return this.http.delete<Res>('http://localhost:8000/api/packages/'+id);
+    return this.http.delete<Res>(ApiEndpoint+'/packages/'+id);
   }
 
   getOrigenes(){
-    return this.http.get<Res>('http://localhost:8000/api/locations/get-origenes');
+    return this.http.get<Res>(ApiEndpoint+'/locations/get-origenes');
   }
   
   getDestinations(){
-    return this.http.get<Res>('http://localhost:8000/api/locations/get-destinations');
+    return this.http.get<Res>(ApiEndpoint+'/locations/get-destinations');
   }
 
   getLocation(id){
-    return this.http.get<Res>('http://localhost:8000/api/locations/'+id);
+    return this.http.get<Res>(ApiEndpoint+'/locations/'+id);
   }
 
   getCountries(){
-    return this.http.get<Res>('http://localhost:8000/api/countries');
+    return this.http.get<Res>(ApiEndpoint+'/countries');
   }
 }
