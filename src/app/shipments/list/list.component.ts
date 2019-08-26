@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-list',
@@ -14,7 +15,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.getShipments();
-    console.log(this.shipments)
+    console.log(this.shipments)    
   }
 
   getShipments(){
@@ -23,6 +24,31 @@ export class ListComponent implements OnInit {
       err => console.error(err),
       () => console.log(this.shipments)
     );
+  }
 
+  cancelShipment(id){
+    Swal.fire({
+      title: '¿Desea cancelar?',
+      text: 'Usted no recuperara información de esta guía',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.value) {
+        this._apiService.cancelShipment(id).subscribe(
+          data => { console.log(data)},
+          err => console.error(err),
+          () => Swal.fire(
+            'Éxito',
+            'Su guía ha sido cancelada correctamente.',
+            'success'
+          )
+        );
+        
+      // For more information about handling dismissals please visit
+      // https://sweetalert2.github.io/#handling-dismissals
+      }
+    })
   }
 }

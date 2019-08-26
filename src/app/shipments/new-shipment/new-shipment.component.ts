@@ -3,6 +3,7 @@ import { ApiService } from '../../services/api.service';
 import { SrenvioService } from './../../services/srenvio.service';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'new-shipment',
@@ -239,7 +240,14 @@ export class NewShipmentComponent implements OnInit {
        console.log(data)
        this.router.navigate(['admin/shipments'])
       },
-      err => console.error(err),
+      err => {
+        console.error(err)
+        Swal.fire({
+          type:'error',
+          position: 'center',
+          title: err.error.error,
+        })
+      },
       () => {}
     );
 

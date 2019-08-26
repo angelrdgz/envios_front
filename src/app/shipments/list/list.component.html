@@ -34,7 +34,7 @@
                                 <td>{{shipment.status}}</td>
                                 <td>
                                     <a href="{{shipment.label_url}}" target="_blank" class="btn btn-icon btn-rounded btn-outline-success"><i class="fas fa-download"></i></a>
-                                    <button type="button" class="btn btn-icon btn-rounded btn-outline-danger"><i class="fas fa-trash"></i></button>
+                                    <button type="button" (click)="cancelShipment(shipment.id)" class="btn btn-icon btn-rounded btn-outline-danger"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                         </tbody>

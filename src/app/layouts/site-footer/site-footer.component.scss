@@ -1,3 +1,117 @@
-.container{
-    background: #fff;
+@import "../../../variables.scss";
+footer.footer-light {
+  .footer-top-area {
+    padding: 100px 0;
+
+    .footer-widget {
+      .footer-logo-heading {
+        img {
+          width: 120px;
+        }
+      }
+
+      .footer-widget-title {
+        text-transform: capitalize;
+        position: relative;
+        padding-bottom: 10px;
+        font-size: 20px;
+        letter-spacing: 0;
+        margin-bottom: 25px;
+        font-weight: 600;
+
+        &:before {
+          background-color: $app-blue;
+          background-image: -moz-linear-gradient(45deg, $app-blue 0%, $app-red 100%);
+          background-image: -webkit-gradient(
+            linear,
+            left top,
+            right top,
+            color-stop(0%, $app-blue),
+            color-stop(100%, $app-red)
+          );
+          background-image: -webkit-linear-gradient(45deg, $app-blue 0%, $app-red 100%);
+          background-image: -o-linear-gradient(45deg, $app-blue 0%, $app-red 100%);
+          background: -ms-linear-gradient(45deg, $app-blue 0%, $app-red 100%);
+          background: -webkit-linear-gradient(45deg, $app-blue 0%, $app-red 100%);
+          background: -o-linear-gradient(45deg, $app-blue 0%, $app-red 100%);
+          background: linear-gradient(45deg, $app-blue 0%, $app-red 100%);
+          bottom: 0;
+          content: "";
+          height: 2px;
+          left: 0;
+          position: absolute;
+          width: 50px;
+        }
+      }
+
+      .footer-widget-content {
+        font-size: 0.8em;
+        text-align: justify;
+        margin-top: 30px;
+        color: #7b7d80;
+
+        .social-bookmark {
+          padding: 0;
+          list-style: none;
+          li {
+            display: inline-block;
+            margin: 10px;
+            a {
+              font-size: 1em;
+              i {
+                font-size: 1.8em !important;
+              }
+              i.fa-facebook-f {
+                color: #3b5998;
+              }
+              i.fa-twitter {
+                color: #1da1f2;
+              }
+              i.fa-instagram {
+                color: #e1306c;
+              }
+            }
+          }
+        }
+
+        ul {
+          padding: 0;
+          list-style: none;
+        }
+        p {
+          margin-top: 0;
+          margin-bottom: 3px;
+        }
+      }
+    }
+  }
+  .footer-bottom-area {
+    background: rgba(82, 37, 248, 0.06);
+    .copy-right-info p {
+      font-family: "Poppins", sans-serif;
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin-bottom: 0;
+    }
+    .footer-menu {
+      display: flex;
+      -webkit-box-pack: end;
+      justify-content: flex-end;
+      -webkit-box-align: center;
+      align-items: center;
+      list-style: none;
+      li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+        margin: 0 5px;
+        a{
+            font-family: "Poppins", sans-serif;
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin-bottom: 0;
+      color:#7b7d80;
+        }
+      }
+    }
+  }
 }

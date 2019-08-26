@@ -6,10 +6,11 @@
             <h6 class="card-subtitle mb-2 text-muted">Por favor ingrese los datos de su tarjeta</h6>
             <div class="form-row">
                 <div class="col-sm-4">
+                        <form action="" method="post" (ngSubmit)="doPay($event)" id="pay" name="pay" >
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Email</label>
-                            <input id="email" name="email" value="test_user_19653727@testuser.com" class="form-control"
+                            <input id="email" name="email" value="" class="form-control"
                                 type="email" placeholder="your email" />
                         </div>
                         <div class="form-group col-md-12">
@@ -20,16 +21,13 @@
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Número de tarjeta</label>
                             <input type="text" id="cardNumber" data-checkout="cardNumber"
-                                placeholder="4509 9535 6623 3704" onselectstart="return false" onpaste="return false"
+                                placeholder="4075 5957 1648 3764" (keyup)="guessingPaymentMethod($event)" [(ngModel)]="cardNumber" [ngModelOptions]="{standalone: true}" onselectstart="return false" onpaste="return false"
                                 onCopy="return false" onCut="return false" class="form-control" onDrag="return false"
                                 onDrop="return false" autocomplete=off />
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEmail4">Mes de Expiración</label>
-                            <input type="text" id="cardExpirationMonth" data-checkout="cardExpirationMonth"
-                                placeholder="12" onselectstart="return false" onpaste="return false"
-                                onCopy="return false" onCut="return false" class="form-control" onDrag="return false"
-                                onDrop="return false" autocomplete=off />
+                            <input type="text" id="cardExpirationMonth" data-checkout="cardExpirationMonth" placeholder="12" onselectstart="return false" onpaste="return false" onCut="return false" class="form-control" autocomplete=off />
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEmail4">Año de Expiración</label>
@@ -45,22 +43,20 @@
                                 onCut="return false" onDrag="return false" class="form-control" onDrop="return false"
                                 autocomplete=off />
                         </div>
+                        <div class="form-group col-md-12">
+                                <label for="inputEmail4">Document number:</label>
+                                <input type="text" id="docNumber" class="form-control" data-checkout="docNumber" placeholder="12345678" />
+                                <input type="hidden" name="paymentMethodId" id="paymentMethodId"/>
+                        </div>
+                        <div class="form-group col-md-6 offset-md-3">
+                                <input type="submit" class="btn btn-primary btn-block" value="Pagar" />
+                        </div>                          
+                    
                     </div>
+                    </form>
                 </div>
-
+                <a class="btn btn-primary d-none " id="sendData" (click)="sendData()">Si se arma</a>
             </div>
-            <form action="" method="post" id="pay" name="pay">
-                <fieldset>
-                    <ul>                        
-                        <li>
-                            <label for="docNumber">Document number:</label>
-                            <input type="text" id="docNumber" data-checkout="docNumber" placeholder="12345678" />
-                        </li>
-                    </ul>
-                    <input type="hidden" name="paymentMethodId" />
-                    <input type="submit" value="Pay!" />
-                </fieldset>
-            </form>
         </div>
     </div>
 </div>

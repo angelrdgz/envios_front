@@ -64,6 +64,14 @@ export class ApiService {
     return this.http.post<Shipment>(ApiEndpoint+'/shipments/create-label', data);
   }
 
+  cancelShipment(id){
+    return this.http.delete<Shipment>(ApiEndpoint+'/shipments/'+id);
+  }
+
+  makePayment(data){
+    return this.http.post<Res>(ApiEndpoint+'/recharges', data);
+  }
+
   getPackages() {
     return this.http.get<Res>(ApiEndpoint+'/packages');
   }
