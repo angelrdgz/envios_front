@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-list-recharges',
@@ -6,10 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-recharges.component.scss']
 })
 export class ListRechargesComponent implements OnInit {
+  payments:any;
 
-  constructor() { }
+  constructor(private _apiService: ApiService) { }
 
   ngOnInit() {
+    this.getRecharges();
+  }
+
+  getRecharges(){
+
+    this._apiService.getRecharges().subscribe(
+      data => { console.log(data); this.payments = data.data },
+      err => {
+        console.log(err)
+      },
+      () => {
+
+      }
+
+    );
+
   }
 
 }

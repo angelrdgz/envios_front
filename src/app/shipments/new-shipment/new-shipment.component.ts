@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { SrenvioService } from './../../services/srenvio.service';
-import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
+import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import Swal from 'sweetalert2'
 
@@ -14,21 +14,21 @@ import Swal from 'sweetalert2'
     trigger('listAnimation', [
       transition('* => *', [
 
-        query(':enter', style({ opacity: 0 }), {optional: true}),
+        query(':enter', style({ opacity: 0 }), { optional: true }),
 
         query(':enter', stagger('300ms', [
           animate('1s ease-in', keyframes([
-            style({opacity: 0, transform: 'translateY(-75%)', offset: 0}),
-            style({opacity: .5, transform: 'translateY(35px)',  offset: 0.3}),
-            style({opacity: 1, transform: 'translateY(0)',     offset: 1.0}),
-          ]))]), {optional: true}),
-        
-          query(':leave', stagger('300ms', [
-            animate('1s ease-in', keyframes([
-              style({opacity: 1, transform: 'translateY(0)', offset: 0}),
-              style({opacity: .5, transform: 'translateY(35px)',  offset: 0.3}),
-              style({opacity: 0, transform: 'translateY(-75%)',     offset: 1.0}),
-            ]))]), {optional: true})
+            style({ opacity: 0, transform: 'translateY(-75%)', offset: 0 }),
+            style({ opacity: .5, transform: 'translateY(35px)', offset: 0.3 }),
+            style({ opacity: 1, transform: 'translateY(0)', offset: 1.0 }),
+          ]))]), { optional: true }),
+
+        query(':leave', stagger('300ms', [
+          animate('1s ease-in', keyframes([
+            style({ opacity: 1, transform: 'translateY(0)', offset: 0 }),
+            style({ opacity: .5, transform: 'translateY(35px)', offset: 0.3 }),
+            style({ opacity: 0, transform: 'translateY(-75%)', offset: 1.0 }),
+          ]))]), { optional: true })
       ])
     ])
 
@@ -36,15 +36,18 @@ import Swal from 'sweetalert2'
 })
 export class NewShipmentComponent implements OnInit {
 
-  public packages:any;
-  public package:any = {weight:0, height:0, width:0, length:0}
-  public origenes:any;
-  public destinations:any;
-  public rates:any
-  public countries:any
-  public index:number = -1
-  public label:any = {rate_id: 0, label_format: "pdf", shipment_id: 0, price: 0, carrier:"" };
-  public shipment:any = {
+  public packages: any;
+  public package: any = { weight: 0, height: 0, width: 0, length: 0 }
+  public origenes: any;
+  public destinations: any;
+  public rates: any
+  public countries: any
+  public index: number = -1
+  public label: any = { rate_id: 0, label_format: "pdf", shipment_id: 0, price: 0, carrier: "" };
+  public origenNeights: any;
+  public destinationNeights: any;
+
+  public shipment: any = {
     address_from: {
       province: "",
       city: "",
@@ -55,43 +58,44 @@ export class NewShipmentComponent implements OnInit {
       company: "",
       address2: "",
       phone: "",
-      email: ""},
-      reference: "",
-      parcels: [{
-        weight: 0,
-        distance_unit: "CM",
-        mass_unit: "KG",
-        height: 0,
-        width: 0,
-        length: 0
-      }],
-      address_to: {
-        province: "",
-        city: "",
-        name: "",
-        zip: "",
-        country: "",
-        address1: "",
-        company: "",
-        address2: "",
-        phone: "",
-        email: "",
-        references: "",
-        contents: ""
-      }
+      email: ""
+    },
+    reference: "",
+    parcels: [{
+      weight: 0,
+      distance_unit: "CM",
+      mass_unit: "KG",
+      height: 0,
+      width: 0,
+      length: 0
+    }],
+    address_to: {
+      province: "",
+      city: "",
+      name: "",
+      zip: "",
+      country: "",
+      address1: "",
+      company: "",
+      address2: "",
+      phone: "",
+      email: "",
+      references: "",
+      contents: ""
+    }
 
   }
 
   public extraInfo = {
-    origen:{
-      id:null,
+    origen: {
+      id: null,
       active: false,
-      nickname:""
+      nickname: ""
     },
-    destination:{
-      id:null,
+    destination: {
+      id: null,
       active: false,
-      nickname:""
+      nickname: ""
     }
   }
 
@@ -100,7 +104,7 @@ export class NewShipmentComponent implements OnInit {
     private _srEnvioService: SrenvioService,
     private route: ActivatedRoute,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.getLocationsOrigin()
@@ -112,23 +116,82 @@ export class NewShipmentComponent implements OnInit {
   }
 
   onChange(deviceValue) {
-    if(deviceValue != ''){
+    if (deviceValue != '') {
       this.getPackage(deviceValue)
-    }else{
+    } else {
       this.shipment.parcels[0].weight = 0
-        this.shipment.parcels[0].height = 0
-        this.shipment.parcels[0].width = 0
-        this.shipment.parcels[0].length = 0
+      this.shipment.parcels[0].height = 0
+      this.shipment.parcels[0].width = 0
+      this.shipment.parcels[0].length = 0
     }
-}
+  }
 
-  getLocationsOrigin(){
+  getNeightsFrom() {
 
-    this._apiService.getOrigenes ().subscribe(
-      data => { this.origenes = data.data},
+    if (this.shipment.address_from.zip.length >= 4) {
+      this._apiService.getNeights({ zip_code: this.shipment.address_from.zip, country_code: this.shipment.address_from.country, within: 3, unit: "Miles" }).subscribe(
+        data => {
+          this.origenNeights = data.data.search_results.sort((a, b) => a.place_name.localeCompare(b.place_name));
+          this.shipment.address_from.city = data.data.search_results[0].province
+          this.shipment.address_from.province = data.data.search_results[0].state
+        },
+        err => console.error(err),
+        () => {
+          console.log(this.origenNeights)
+        }
+      );
+    }
+
+  }
+
+  getNeightsTo() {
+
+    if (this.shipment.address_to.zip.length >= 4) {
+      this._apiService.getNeights({ zip_code: this.shipment.address_to.zip, country_code: this.shipment.address_to.country, within: 3, unit: "Miles" }).subscribe(
+        data => {
+          this.destinationNeights = data.data.search_results.sort((a, b) => a.place_name.localeCompare(b.place_name));
+          this.shipment.address_to.city = data.data.search_results[0].province
+          this.shipment.address_to.province = data.data.search_results[0].state
+        },
+        err => console.error(err),
+        () => {
+          console.log(this.destinationNeights)
+        }
+      );
+    }
+
+  }
+
+  searchNeight(val) {
+    let n = this.findObjectByKey(this.origenNeights, 'place_name', val, 1);
+  }
+
+  searchNeightTo(val) {
+    let n = this.findObjectByKey(this.destinationNeights, 'place_name', val, 2);
+  }
+
+  findObjectByKey(array, key, value, x) {
+    for (var i = 0; i < array.length; i++) {
+      if (array[i][key] === value) {
+        if (x == 1) {
+          this.shipment.address_from.city = array[i].province
+          this.shipment.address_from.province = array[i].state
+        } else {
+          this.shipment.address_to.city = array[i].province
+          this.shipment.address_to.province = array[i].state
+        }
+        break
+      }
+    }
+  }
+
+  getLocationsOrigin() {
+
+    this._apiService.getOrigenes().subscribe(
+      data => { this.origenes = data.data },
       err => console.error(err),
       () => {
-        if(this.origenes.length == 0){
+        if (this.origenes.length == 0) {
           this.extraInfo.origen.active = true
         }
       }
@@ -136,36 +199,36 @@ export class NewShipmentComponent implements OnInit {
 
   }
 
-  getLocationsDestination(){
+  getLocationsDestination() {
     this._apiService.getDestinations().subscribe(
-      data => { this.destinations = data.data},
+      data => { this.destinations = data.data },
       err => console.error(err),
       () => {
-        if(this.destinations.length == 0){
+        if (this.destinations.length == 0) {
           this.extraInfo.destination.active = true
         }
       }
     );
   }
 
-  getPackages(){
+  getPackages() {
     this._apiService.getPackages().subscribe(
-      data => { this.packages = data.data},
+      data => { this.packages = data.data },
       err => console.error(err),
       () => ''
     );
   }
-  getCountries(){
+  getCountries() {
     this._apiService.getCountries().subscribe(
-      data => { this.countries = data.data},
+      data => { this.countries = data.data },
       err => console.error(err),
       () => ''
     );
   }
 
-  getPackage(id){
+  getPackage(id) {
     this._apiService.getPackage(id).subscribe(
-      data => { 
+      data => {
         this.shipment.parcels[0].weight = parseInt(data.data.weight)
         this.shipment.parcels[0].height = parseInt(data.data.height)
         this.shipment.parcels[0].width = parseInt(data.data.width)
@@ -177,19 +240,19 @@ export class NewShipmentComponent implements OnInit {
     );
   }
 
-  getOrigen(id){
+  getOrigen(id) {
     this._apiService.getLocation(id).subscribe(
-      data => { 
-        this.shipment.address_from.province = data.data.state 
-        this.shipment.address_from.city = data.data.city 
-        this.shipment.address_from.name = data.data.nickname 
-        this.shipment.address_from.zip = data.data.zipcode 
-        this.shipment.address_from.country = data.data.country 
-        this.shipment.address_from.address1 = data.data.address 
+      data => {
+        this.shipment.address_from.province = data.data.state
+        this.shipment.address_from.city = data.data.city
+        this.shipment.address_from.name = data.data.nickname
+        this.shipment.address_from.zip = data.data.zipcode
+        this.shipment.address_from.country = data.data.country
+        this.shipment.address_from.address1 = data.data.address
         this.shipment.address_from.company = data.data.company
-        this.shipment.address_from.address2 = data.data.address2 
-        this.shipment.address_from.phone = data.data.phone 
-        this.shipment.address_from.email = data.data.email 
+        this.shipment.address_from.address2 = data.data.address2
+        this.shipment.address_from.phone = data.data.phone
+        this.shipment.address_from.email = data.data.email
         this.shipment.address_from.reference = data.data.reference
         this.extraInfo.origen.id = data.data.id
         this.extraInfo.origen.nickname = data.data.nickname
@@ -199,19 +262,19 @@ export class NewShipmentComponent implements OnInit {
     );
   }
 
-  getDestination(id){
+  getDestination(id) {
     this._apiService.getLocation(id).subscribe(
-      data => { 
-        this.shipment.address_to.province = data.data.state 
-        this.shipment.address_to.city = data.data.city 
-        this.shipment.address_to.name = data.data.nickname 
-        this.shipment.address_to.zip = data.data.zipcode 
-        this.shipment.address_to.country = data.data.country 
-        this.shipment.address_to.address1 = data.data.address 
-        this.shipment.address_to.company = data.data.company 
-        this.shipment.address_to.address2 = data.data.address2 
-        this.shipment.address_to.phone = data.data.phone 
-        this.shipment.address_to.email = data.data.email 
+      data => {
+        this.shipment.address_to.province = data.data.state
+        this.shipment.address_to.city = data.data.city
+        this.shipment.address_to.name = data.data.nickname
+        this.shipment.address_to.zip = data.data.zipcode
+        this.shipment.address_to.country = data.data.country
+        this.shipment.address_to.address1 = data.data.address
+        this.shipment.address_to.company = data.data.company
+        this.shipment.address_to.address2 = data.data.address2
+        this.shipment.address_to.phone = data.data.phone
+        this.shipment.address_to.email = data.data.email
         this.shipment.address_to.reference = data.data.reference
         this.extraInfo.destination.id = data.data.id
         this.extraInfo.destination.nickname = data.data.nickname
@@ -221,43 +284,43 @@ export class NewShipmentComponent implements OnInit {
     );
   }
 
-  createShipment(){
-    this._apiService.createShipment({shipment:this.shipment}).subscribe(
-      data => { 
-       console.log(data)
-       this.rates = data.rates
-       this.label.shipment_id = data.shipment_id
+  createShipment() {
+    this._apiService.createShipment({ shipment: this.shipment }).subscribe(
+      data => {
+        console.log(data)
+        this.rates = data.rates
+        this.label.shipment_id = data.shipment_id
       },
       err => console.error(err),
-      () => {}
+      () => { }
     );
   }
 
-  createLabel(){
+  createLabel() {
 
-    this._apiService.createLabel({shipment:this.shipment, extraInfo: this.extraInfo, label: this.label}).subscribe(
-      data => { 
-       console.log(data)
-       this.router.navigate(['admin/shipments'])
+    this._apiService.createLabel({ shipment: this.shipment, extraInfo: this.extraInfo, label: this.label }).subscribe(
+      data => {
+        console.log(data)
+        this.router.navigate(['admin/shipments'])
       },
       err => {
         console.error(err)
         Swal.fire({
-          type:'error',
+          type: 'error',
           position: 'center',
           title: err.error.error,
         })
       },
-      () => {}
+      () => { }
     );
 
   }
 
-  selectParcel(id, price, carrier, i){
-     this.label.rate_id = id
-     this.label.price = price
-     this.label.carrier = carrier
-     this.index = i
+  selectParcel(id, price, carrier, i) {
+    this.label.rate_id = id
+    this.label.price = price
+    this.label.carrier = carrier
+    this.index = i
   }
 
 }

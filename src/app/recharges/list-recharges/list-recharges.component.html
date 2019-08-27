@@ -2,11 +2,10 @@
     <h5 class="card-title">Recargas</h5>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
             <table class="table">
                 <thead>
                     <tr>
+                        <th>id</th>
                         <th scope="col">Fecha</th>
                         <th scope="col">Monto</th>
                         <th scope="col">Tajeta</th>
@@ -15,6 +14,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr *ngFor="let payment of payments">
+                        <td>{{payment.id}}</td>
+                        <td>{{payment.created_at | date:'dd/MM/y h:mm a'}}</td>
+                        <td>{{payment.total | currency}}</td>
+                        <td>{{payment.payment_method}}</td>
+                        <td>{{payment.status}}</td>
+                        <td></td>
+                    </tr>
                 </tbody>
             </table>
             <div class="row">

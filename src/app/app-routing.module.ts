@@ -11,6 +11,9 @@ import { SignupComponent } from './signup/signup.component';
 import { ActiveAccountComponent } from './auth/active-account/active-account.component';
 import { HomeComponent } from './site/home/home.component';
 import { QuoteComponent } from './site/quote/quote.component';
+import { ServicesComponent } from './site/services/services.component';
+import { TrackingComponent } from './site/tracking/tracking.component';
+import { ContactComponent } from './site/contact/contact.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListComponent } from './shipments/list/list.component';
@@ -97,6 +100,21 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'services',
+        component: ServicesComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'tracking',
+        component: TrackingComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
         pathMatch: 'full',
       },
       {

@@ -52,8 +52,16 @@ export class ApiService {
     return this.http.get<User>(ApiEndpoint+'/auth/active-account/'+hash);
   }
 
+  getDashboard(){
+    return this.http.get<Res>(ApiEndpoint+'/dashboard ');
+  }
+
   getShipments() {
     return this.http.get<Res>(ApiEndpoint+'/shipments');
+  }
+
+  getNeights(data){
+    return this.http.post<Res>(ApiEndpoint+'/ezcmd/get-locations', data);
   }
 
   createShipment(data){
@@ -66,6 +74,10 @@ export class ApiService {
 
   cancelShipment(id){
     return this.http.delete<Shipment>(ApiEndpoint+'/shipments/'+id);
+  }
+
+  getRecharges(){
+    return this.http.get<Res>(ApiEndpoint+'/recharges');
   }
 
   makePayment(data){

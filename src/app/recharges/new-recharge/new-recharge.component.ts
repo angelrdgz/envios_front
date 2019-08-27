@@ -15,7 +15,7 @@ export class NewRechargeComponent implements OnInit {
   cardNumber: string = '4075595716483764';
   bin: string = '';
   doSubmit: boolean = false;
-  public card: any = { cardNumber: '4075595716483764', email: 'angelrodriguez@ucol.mx', owner: 'Angel David Garcia Rodriguez', token: '', paymentMethod: '' }
+  public card: any = { cardNumber: '4075595716483764', email: 'angelrodriguez@ucol.mx', owner: 'Angel David Garcia Rodriguez', token: '', paymentMethod: '', }
 
 
   constructor(private _apiService: ApiService, ) {
@@ -55,7 +55,7 @@ export class NewRechargeComponent implements OnInit {
     console.log('resultado', response)
     if (status == 200) {
       //this.card.paymentMethod = response[0].id 
-      const paymentMethodElement = document.querySelector('#paymentMethodId');
+      const paymentMethodElement = (<HTMLInputElement>document.getElementById("paymentMethodId"));
       console.log(paymentMethodElement)
 
       if (paymentMethodElement) {
@@ -82,26 +82,26 @@ export class NewRechargeComponent implements OnInit {
       var $form = document.querySelector('#pay');
       Mercadopago.createToken($form, this.sdkResponseHandler); // The function "sdkResponseHandler" is defined below
       return false;
-    } else {
-      var form = document.querySelector('#pay');
-      console.log(form)
-      return false
-      this._apiService.makePayment(form).subscribe(
-        data => { console.log(data) },
-        err => {
-          console.log(err)
-        },
-        () => {
-
-        }
-
-      );
-      return false;
     }
   };
 
   public sendData() {
-    console.log('tu cola')
+
+    const dataForm = {};
+    for(let i in document.getElementsByTagName('input')) {
+     dataForm[document.getElementsByTagName('input')[i].name] = document.getElementsByTagName('input')[i].value;
+   }
+   console.log(dataForm);
+    this._apiService.makePayment(dataForm).subscribe(
+      data => { console.log(data) },
+      err => {
+        console.log(err)
+      },
+      () => {
+
+      }
+
+    );
   }
 
   public sdkResponseHandler(status, response) {

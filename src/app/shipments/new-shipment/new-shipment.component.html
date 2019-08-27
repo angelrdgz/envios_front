@@ -67,7 +67,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Código Postal</label>
                                     <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.zip" placeholder="">
+                                        [ngModelOptions]="{standalone: true}" (keyup)="getNeightsFrom()" [(ngModel)]="shipment.address_from.zip" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Calle y Número</label>
@@ -76,10 +76,12 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputAddress">Colonia</label>
-                                    <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.address2" placeholder="">
-                                    <!--<select name="" id="" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.address2"
-                                        class="form-control"></select>-->
+                                    <!--<input type="text" class="form-control" id="inputPassword4"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.address2" placeholder="">-->
+                                    <select name="" id="" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.address2"
+                                        class="form-control" #t (change)="searchNeight(t.value)">
+                                        <option *ngFor="let neight of origenNeights" value="{{neight.place_name}}">{{neight.place_name}}</option>
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Ciudad</label>
@@ -165,7 +167,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Código Postal</label>
                                     <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.zip" placeholder="">
+                                        [ngModelOptions]="{standalone: true}" (keyup)="getNeightsTo()" [(ngModel)]="shipment.address_to.zip" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Calle y Número</label>
@@ -174,10 +176,12 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputAddress">Colonia</label>
-                                    <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.address2" placeholder="">
-                                    <!--<select name="" id="" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.address2"
-                                        class="form-control"></select>-->
+                                    <!--<input type="text" class="form-control" id="inputPassword4"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.address2" placeholder="">-->
+                                    <select name="" id="" [ngModelOptions]="{standalone: true}" #t (change)="searchNeightTo(t.value)" [(ngModel)]="shipment.address_to.address2"
+                                        class="form-control">
+                                        <option *ngFor="let neight of destinationNeights" value="{{neight.place_name}}">{{neight.place_name}}</option>
+                                    </select>                                         
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Ciudad</label>

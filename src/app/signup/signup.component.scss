@@ -10,9 +10,11 @@
   flex-direction: row;
   height: 100%;
   width: 100%;
-  background: #b92b27; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #1565c0, #b92b27); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right,#1565c0,#b92b27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background:url('../../assets/imgs/fondopanel.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
   .card {
     border-radius: 30px;

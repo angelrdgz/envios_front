@@ -43,6 +43,9 @@ import {DataTableModule} from "angular-6-datatable";
 import { HighchartsChartModule } from 'highcharts-angular';
 
 import { SignupComponent } from './signup/signup.component';
+import { ServicesComponent } from './site/services/services.component';
+import { TrackingComponent } from './site/tracking/tracking.component';
+import { ContactComponent } from './site/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +75,10 @@ import { SignupComponent } from './signup/signup.component';
     ForgotPasswordComponent,
     ActiveAccountComponent,
     RegisterComponent,
-    SignupComponent
+    SignupComponent,
+    ServicesComponent,
+    TrackingComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

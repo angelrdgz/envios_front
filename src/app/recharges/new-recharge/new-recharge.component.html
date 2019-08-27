@@ -6,7 +6,7 @@
             <h6 class="card-subtitle mb-2 text-muted">Por favor ingrese los datos de su tarjeta</h6>
             <div class="form-row">
                 <div class="col-sm-4">
-                        <form action="" method="post" (ngSubmit)="doPay($event)" id="pay" name="pay" >
+                        <form method="post" (ngSubmit)="doPay($event)" id="pay" name="pay" >
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Email</label>
@@ -15,38 +15,43 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Propietario de la Tarjeta</label>
-                            <input type="text" id="cardholderName" class="form-control" data-checkout="cardholderName"
+                            <input type="text" id="cardholderName" name="owner" class="form-control" data-checkout="cardholderName"
                                 placeholder="APRO" />
                         </div>
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Número de tarjeta</label>
-                            <input type="text" id="cardNumber" data-checkout="cardNumber"
-                                placeholder="4075 5957 1648 3764" (keyup)="guessingPaymentMethod($event)" [(ngModel)]="cardNumber" [ngModelOptions]="{standalone: true}" onselectstart="return false" onpaste="return false"
+                            <input type="text" id="cardNumber" name="cardNumber" data-checkout="cardNumber"
+                                placeholder="4075 5957 1648 3764" (keyup)="guessingPaymentMethod($event)" [(ngModel)]="card.cardNumber" [ngModelOptions]="{standalone: true}" onselectstart="return false" onpaste="return false"
                                 onCopy="return false" onCut="return false" class="form-control" onDrag="return false"
                                 onDrop="return false" autocomplete=off />
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEmail4">Mes de Expiración</label>
-                            <input type="text" id="cardExpirationMonth" data-checkout="cardExpirationMonth" placeholder="12" onselectstart="return false" onpaste="return false" onCut="return false" class="form-control" autocomplete=off />
+                            <input type="text" id="cardExpirationMonth" name="month" data-checkout="cardExpirationMonth" [(ngModel)]="card.month" [ngModelOptions]="{standalone: true}" placeholder="12" onselectstart="return false" onpaste="return false" onCut="return false" class="form-control" autocomplete=off />
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEmail4">Año de Expiración</label>
-                            <input type="text" id="cardExpirationYear" data-checkout="cardExpirationYear"
+                            <input type="text" id="cardExpirationYear" name="year" [(ngModel)]="card.year" [ngModelOptions]="{standalone: true}" data-checkout="cardExpirationYear"
                                 placeholder="2015" onselectstart="return false" onpaste="return false"
                                 onCopy="return false" onCut="return false" class="form-control" onDrag="return false"
                                 onDrop="return false" autocomplete=off />
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEmail4">Código de Seguridad</label>
-                            <input type="text" id="securityCode" data-checkout="securityCode" placeholder="123"
+                            <input type="text" id="securityCode" name="cvv" [(ngModel)]="card.cvv" [ngModelOptions]="{standalone: true}" data-checkout="securityCode" placeholder="123"
                                 onselectstart="return false" onpaste="return false" onCopy="return false"
                                 onCut="return false" onDrag="return false" class="form-control" onDrop="return false"
                                 autocomplete=off />
                         </div>
                         <div class="form-group col-md-12">
+                            <label for="inputEmail4">Monto</label>
+                            <input type="text" id="total" name="total" class="form-control" />
+                            <input type="hidden" name="paymentMethodId" [(ngModel)]="card.paymentMethod" [ngModelOptions]="{standalone: true}" id="paymentMethodId"/>
+                    </div>
+                        <div class="form-group col-md-12">
                                 <label for="inputEmail4">Document number:</label>
-                                <input type="text" id="docNumber" class="form-control" data-checkout="docNumber" placeholder="12345678" />
-                                <input type="hidden" name="paymentMethodId" id="paymentMethodId"/>
+                                <input type="text" id="docNumber" name="documentValue" [(ngModel)]="card.document" [ngModelOptions]="{standalone: true}" class="form-control" data-checkout="docNumber" placeholder="12345678" />
+                                <input type="hidden" name="paymentMethodId" [(ngModel)]="card.paymentMethod" [ngModelOptions]="{standalone: true}" id="paymentMethodId"/>
                         </div>
                         <div class="form-group col-md-6 offset-md-3">
                                 <input type="submit" class="btn btn-primary btn-block" value="Pagar" />
