@@ -6,7 +6,8 @@ import { AppBodyComponent } from './layouts/app-body/app-body.component';
 import { SiteBodyComponent } from './layouts/site-body/site-body.component';
 
 import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { RestorePasswordComponent } from './auth/restore-password/restore-password.component';
 import { SignupComponent } from './signup/signup.component';
 import { ActiveAccountComponent } from './auth/active-account/active-account.component';
 import { HomeComponent } from './site/home/home.component';
@@ -129,6 +130,8 @@ const routes: Routes = [
   //no layout routes
   { path: 'login', component: LoginComponent },
   { path: 'register', component: SignupComponent },
+  { path: 'restore-password/:hash', component: RestorePasswordComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'active-account/:hash', component: ActiveAccountComponent },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

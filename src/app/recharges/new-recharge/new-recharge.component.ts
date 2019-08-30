@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 
 declare var Mercadopago: any;
-import Mercadopago from 'https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js';
 const doSubmit = false;
 
 @Component({

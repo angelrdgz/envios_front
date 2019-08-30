@@ -46,6 +46,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ServicesComponent } from './site/services/services.component';
 import { TrackingComponent } from './site/tracking/tracking.component';
 import { ContactComponent } from './site/contact/contact.component';
+import { RestorePasswordComponent } from './auth/restore-password/restore-password.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { ContactComponent } from './site/contact/contact.component';
     SignupComponent,
     ServicesComponent,
     TrackingComponent,
-    ContactComponent
+    ContactComponent,
+    RestorePasswordComponent
   ],
   imports: [
     BrowserModule,
