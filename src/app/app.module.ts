@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -47,6 +48,9 @@ import { ServicesComponent } from './site/services/services.component';
 import { TrackingComponent } from './site/tracking/tracking.component';
 import { ContactComponent } from './site/contact/contact.component';
 import { RestorePasswordComponent } from './auth/restore-password/restore-password.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ProfileComponent } from './profile/profile.component';
+import { InvoicesComponent } from './invoices/invoices.component';
 
 @NgModule({
   declarations: [
@@ -80,13 +84,17 @@ import { RestorePasswordComponent } from './auth/restore-password/restore-passwo
     ServicesComponent,
     TrackingComponent,
     ContactComponent,
-    RestorePasswordComponent
+    RestorePasswordComponent,
+    SettingsComponent,
+    ProfileComponent,
+    InvoicesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgSelectModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     BrowserAnimationsModule,
     DataTableModule,

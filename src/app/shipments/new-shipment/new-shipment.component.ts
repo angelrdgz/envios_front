@@ -53,7 +53,7 @@ export class NewShipmentComponent implements OnInit {
       city: "",
       name: "",
       zip: "",
-      country: "",
+      country: "MX",
       address1: "",
       company: "",
       address2: "",
@@ -74,7 +74,7 @@ export class NewShipmentComponent implements OnInit {
       city: "",
       name: "",
       zip: "",
-      country: "",
+      country: "MX",
       address1: "",
       company: "",
       address2: "",
@@ -162,12 +162,12 @@ export class NewShipmentComponent implements OnInit {
 
   }
 
-  searchNeight(val) {
-    let n = this.findObjectByKey(this.origenNeights, 'place_name', val, 1);
+  searchNeight() {
+    let n = this.findObjectByKey(this.origenNeights, 'place_name', this.shipment.address_from.address2, 1);
   }
 
   searchNeightTo(val) {
-    let n = this.findObjectByKey(this.destinationNeights, 'place_name', val, 2);
+    let n = this.findObjectByKey(this.destinationNeights, 'place_name', this.shipment.address_to.address2, 2);
   }
 
   findObjectByKey(array, key, value, x) {
@@ -180,6 +180,7 @@ export class NewShipmentComponent implements OnInit {
           this.shipment.address_to.city = array[i].province
           this.shipment.address_to.province = array[i].state
         }
+        console.log(this.shipment.address_from)
         break
       }
     }

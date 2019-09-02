@@ -51,6 +51,10 @@ export class ApiService {
     return this.http.post<Res>(ApiEndpoint+'/auth/forgot-password', data);
   }
   
+  newPassword(data):Observable<Res>{
+    return this.http.post<Res>(ApiEndpoint+'/auth/restore-password', data);
+  }
+  
   activeAccount(hash):Observable<User>{
     return this.http.get<User>(ApiEndpoint+'/auth/active-account/'+hash);
   }

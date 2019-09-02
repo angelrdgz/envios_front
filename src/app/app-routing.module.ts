@@ -31,6 +31,10 @@ import { NewCardComponent } from './cards/new-card/new-card.component';
 
 import { ListLocationsComponent } from './locations/list-locations/list-locations.component';
 
+import { SettingsComponent } from './settings/settings.component';
+import { ProfileComponent } from './profile/profile.component';
+import { InvoicesComponent } from './invoices/invoices.component';
+
 
 
 const routes: Routes = [
@@ -78,6 +82,11 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
+        path: 'invoices',
+        component: InvoicesComponent,
+        pathMatch: 'full',
+      },
+      {
         path: 'recharges/new',
         component: NewRechargeComponent,
         pathMatch: 'full',
@@ -90,6 +99,16 @@ const routes: Routes = [
       {
         path: 'locations',
         component: ListLocationsComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
         pathMatch: 'full',
       },
     ]

@@ -78,10 +78,11 @@
                                     <label for="inputAddress">Colonia</label>
                                     <!--<input type="text" class="form-control" id="inputPassword4"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.address2" placeholder="">-->
-                                    <select name="" id="" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.address2"
+                                        <ng-select [items]="origenNeights"  (change)="searchNeight()" [closeOnSelect]="true" [ngModelOptions]="{standalone: true}" bindValue="place_name" bindLabel="place_name" placeholder="Selecciona una colonia" [(ngModel)]="shipment.address_from.address2"></ng-select>
+                                    <!--<select name="" id="" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.address2"
                                         class="form-control" #t (change)="searchNeight(t.value)">
                                         <option *ngFor="let neight of origenNeights" value="{{neight.place_name}}">{{neight.place_name}}</option>
-                                    </select>
+                                    </select>-->
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Ciudad</label>
@@ -178,10 +179,11 @@
                                     <label for="inputAddress">Colonia</label>
                                     <!--<input type="text" class="form-control" id="inputPassword4"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.address2" placeholder="">-->
-                                    <select name="" id="" [ngModelOptions]="{standalone: true}" #t (change)="searchNeightTo(t.value)" [(ngModel)]="shipment.address_to.address2"
+                                        <ng-select [items]="destinationNeights" #t (change)="searchNeightTo(t.value)" [loading]="peopleLoading" [ngModelOptions]="{standalone: true}" bindValue="place_name" bindLabel="place_name" placeholder="Selecciona una colonia" [(ngModel)]="shipment.address_to.address2"></ng-select>
+                                    <!--<select name="" id="" [ngModelOptions]="{standalone: true}" #t (change)="searchNeightTo(t.value)" [(ngModel)]="shipment.address_to.address2"
                                         class="form-control">
                                         <option *ngFor="let neight of destinationNeights" value="{{neight.place_name}}">{{neight.place_name}}</option>
-                                    </select>                                         
+                                    </select> -->                                        
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Ciudad</label>
@@ -257,7 +259,7 @@
                             Paqueterias
                         </div>
                         <div class="card-body">
-                            <ul class="list-group" [@listAnimation]="rates.length">
+                            <ul class="list-group" *ngIf="rates" [@listAnimation]="rates.length">
                                 <li class="list-group-item" [ngClass]="{selected: index == i}" (click)="selectParcel(rate.id, rate.attributes.total_pricing, rate.attributes.provider, i)"
                                     *ngFor="let rate of rates; let i = index">{{rate.attributes.provider}} {{rate.attributes.service_level_name}}
                                     <small class="float-right">

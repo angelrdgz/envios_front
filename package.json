@@ -24,6 +24,7 @@
     "@angular/router": "~8.1.2",
     "@auth0/angular-jwt": "^3.0.0",
     "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
+    "@ng-select/ng-select": "^3.0.7",
     "angular-6-datatable": "^0.8.0",
     "bootstrap": "^4.3.1",
     "express": "^4.17.1",
