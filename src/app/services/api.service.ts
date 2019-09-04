@@ -91,6 +91,10 @@ export class ApiService {
     return this.http.post<Res>(ApiEndpoint+'/recharges', data);
   }
 
+  getInvoices(){
+    return this.http.get<Res>(ApiEndpoint+'/invoices');
+  }
+
   getPackages() {
     return this.http.get<Res>(ApiEndpoint+'/packages');
   }
