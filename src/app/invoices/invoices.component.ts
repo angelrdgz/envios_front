@@ -31,4 +31,8 @@ export class InvoicesComponent implements OnInit {
 
   }
 
+  cancelInvoice(id){
+    console.log(id)
+  }
+
 }
