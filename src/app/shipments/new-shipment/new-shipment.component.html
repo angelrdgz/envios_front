@@ -179,7 +179,7 @@
                                     <label for="inputAddress">Colonia</label>
                                     <!--<input type="text" class="form-control" id="inputPassword4"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.address2" placeholder="">-->
-                                        <ng-select [items]="destinationNeights" #t (change)="searchNeightTo(t.value)" [loading]="peopleLoading" [ngModelOptions]="{standalone: true}" bindValue="place_name" bindLabel="place_name" placeholder="Selecciona una colonia" [(ngModel)]="shipment.address_to.address2"></ng-select>
+                                        <ng-select [items]="destinationNeights" #t (change)="searchNeightTo(t.value)" [ngModelOptions]="{standalone: true}" bindValue="place_name" bindLabel="place_name" placeholder="Selecciona una colonia" [(ngModel)]="shipment.address_to.address2"></ng-select>
                                     <!--<select name="" id="" [ngModelOptions]="{standalone: true}" #t (change)="searchNeightTo(t.value)" [(ngModel)]="shipment.address_to.address2"
                                         class="form-control">
                                         <option *ngFor="let neight of destinationNeights" value="{{neight.place_name}}">{{neight.place_name}}</option>
