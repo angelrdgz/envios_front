@@ -166,7 +166,7 @@ export class NewShipmentComponent implements OnInit {
     let n = this.findObjectByKey(this.origenNeights, 'place_name', this.shipment.address_from.address2, 1);
   }
 
-  searchNeightTo(val) {
+  searchNeightTo() {
     let n = this.findObjectByKey(this.destinationNeights, 'place_name', this.shipment.address_to.address2, 2);
   }
 
