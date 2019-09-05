@@ -116,11 +116,11 @@ export class ApiService {
   }
 
   getOrigenes(){
-    return this.http.get<Res>(ApiEndpoint+'/locations/get-origenes');
+    return this.http.get<Res>(ApiEndpoint+'/locations/origenes');
   }
   
   getDestinations(){
-    return this.http.get<Res>(ApiEndpoint+'/locations/get-destinations');
+    return this.http.get<Res>(ApiEndpoint+'/locations/destinations');
   }
 
   getLocation(id){

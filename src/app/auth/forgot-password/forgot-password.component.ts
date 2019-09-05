@@ -15,6 +15,7 @@ export class ForgotPasswordComponent implements OnInit {
   loginError:string;
   loginErrors:any = {email:''};
   data:any;
+  public loading:boolean = false;
 
   constructor(
     private _apiService: ApiService,
@@ -36,7 +37,8 @@ export class ForgotPasswordComponent implements OnInit {
   sendRequest(form) {
 
     console.log(form.value)
-    this.loginErrors = {email:'', password:''};
+    this.loginErrors = {email:''};
+    this.loading = true;
 
     this._apiService.forgotPassword(form.value).subscribe(
       data => { console.log(data) },
@@ -61,9 +63,11 @@ export class ForgotPasswordComponent implements OnInit {
           } 
        } 
         console.log(err)
+        this.loading = false;
       },
       () => {
         //console.log(this.data)
+        this.loading = false;
       }
     );
   }

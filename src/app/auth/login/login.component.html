@@ -31,7 +31,10 @@
                         <a href="#" class="btn btn-link text-uppercase text-white" href="/forgot-password">¿Olvidaste tu contraseña?</a>
                 </div>
                 <div class="form-field text-center">
-                    <input class="btn btn-login text-uppercase rounded-pill" type="submit" value="Entrar">
+                    <button class="btn btn-login text-uppercase rounded-pill" [disabled]="loading" type="submit">
+                        Entrar
+                        <i class="fas fa-circle-notch fa-spin" *ngIf="loading"></i>
+                    </button>                    
                 </div>
             </form>
             <!--<form [formGroup]="loginForm" (ngSubmit)="login()">

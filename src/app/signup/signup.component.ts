@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
 
   registerForm: FormGroup;
-    loading = false;
     submitted = false;
     business=0;
+    public loading:boolean = false;
 
-    public user = {name:'',email:'',password:'',password_confirm:'',phone:'',company:'',business:0, shipments:0}
+    public user = {name:'',email:'',password:'',password_confirm:'',phone:'',company:'',business:0, shipments:0, terms: true}
     public loginErrors:any = {name:'',email:'',password:'',password_confirm:'',phone:'',company:'',business:0, shipments:0};
 
     constructor(
@@ -31,6 +33,16 @@ export class SignupComponent implements OnInit {
             lastname: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
+
+        Swal.fire({
+          type: 'success',
+          position: 'center',
+          title: 'Te hemos enviado un correo de confirmación a tu email',
+          customClass: {
+            confirmButton: 'btn-success',
+            closeButton: 'btn-success',
+          }          
+        })
     }
 
     onSubmit(){
@@ -39,6 +51,7 @@ export class SignupComponent implements OnInit {
 
     register(){
       console.log(this.user)
+      this.loading = true;
     this._apiService.register(this.user).subscribe(
       data => { this.router.navigate(['admin/shipments']) },
       err => {
@@ -57,8 +70,10 @@ export class SignupComponent implements OnInit {
           } 
        }
        console.log(err)
+       this.loading = false;
       },
       () => {
+        this.loading = false;
         
       }
     );

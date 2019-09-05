@@ -1,52 +1,53 @@
-
-    <div class="card-body">
-            <h5 class="card-title">Guías</h5>
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <a routerLink="/admin/shipments/new" routerLinkActive="active" class="btn btn-primary btn-block">Generar Guía</a>
-                    </div>
-                    <div class="col-sm-8"></div>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control">
-                    </div>
+<div class="card-body">
+    <h5 class="card-title">Guías</h5>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-2">
+                    <a routerLink="/admin/shipments/new" routerLinkActive="active"
+                        class="btn btn-primary btn-block">Generar Guía</a>
                 </div>
-                <table class="table" [mfData]="shipments" #mf="mfDataTable" [mfRowsOnPage]="10">
-                        <thead>
-                          <tr>
-                            <th>Fecha</th>
-                            <th scope="col">Origen</th>
-                            <th scope="col">Destino</th>
-                            <th scope="col">Paqueteria</th>
-                            <th scope="col">Costo</th>
-                            <th scope="col">Status</th>
-                            <th style="min-width:150px;"></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let shipment of mf.data">
-                                <td>{{shipment.created_at | date:'medium' }}</td>
-                                <td>{{shipment.origen.address+', '+shipment.origen.city+', '+shipment.origen.state}}</td>
-                                <td>{{shipment.destination.address+', '+shipment.destination.city+', '+shipment.destination.state}}</td>
-                                <td>{{shipment.carrier}}</td>
-                                <td>{{shipment.price | currency}}</td>
-                                <td>{{shipment.status}}</td>
-                                <td>
-                                    <a href="{{shipment.label_url}}" target="_blank" class="btn btn-icon btn-rounded btn-outline-success"><i class="fas fa-download"></i></a>
-                                    <button type="button" (click)="cancelShipment(shipment.id)" class="btn btn-icon btn-rounded btn-outline-danger"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="4">
-                                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
-                                </td>
-                            </tr>
-                            </tfoot>
-                      </table>
+                <div class="col-sm-8"></div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control">
+                </div>
             </div>
+            <table class="table" [mfData]="shipments" #mf="mfDataTable" [mfRowsOnPage]="10">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th scope="col">Origen</th>
+                        <th scope="col">Destino</th>
+                        <th scope="col">Paqueteria</th>
+                        <th scope="col">Costo</th>
+                        <th style="min-width:150px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let shipment of mf.data">
+                        <td>{{shipment.created_at | date:'medium' }}</td>
+                        <td>{{shipment.origen.address+', '+shipment.origen.city+', '+shipment.origen.state}}</td>
+                        <td>{{shipment.destination.address+', '+shipment.destination.city+', '+shipment.destination.state}}
+                        </td>
+                        <td>{{shipment.carrier}}</td>
+                        <td>{{shipment.price | currency}}</td>
+                        <td>
+                            <a href="{{shipment.label_url}}" target="_blank"
+                                class="btn btn-icon btn-rounded btn-outline-success"><i class="fas fa-download"></i></a>
+                            <button type="button" (click)="cancelShipment(shipment.id)"
+                                class="btn btn-icon btn-rounded btn-outline-danger"><i
+                                    class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
-
     </div>
+</div>

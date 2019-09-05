@@ -27,7 +27,7 @@
                                     <label for="inputEmail4">Domicilios de Origen</label>
                                     <select name="" id="" (change)="getOrigen($event.target.value)"
                                         class="form-control">
-                                        <option value="">Selecciones un origen</option>
+                                        <option value="">Nueva dirección de origen</option>
                                         <option value="{{origen.id}}" *ngFor="let origen of origenes">
                                             {{origen.nickname}}</option>
                                     </select>
@@ -128,7 +128,7 @@
                                     <label for="inputEmail4">Domicilios de Destino</label>
                                     <select name="" id="" (change)="getDestination($event.target.value)"
                                         class="form-control">
-                                        <option value="">Selecciones un destino</option>
+                                        <option value="">Nueva dirección destino</option>
                                         <option value="{{destination.id}}" *ngFor="let destination of destinations">
                                             {{destination.nickname}}</option>
                                     </select>
@@ -179,7 +179,7 @@
                                     <label for="inputAddress">Colonia</label>
                                     <!--<input type="text" class="form-control" id="inputPassword4"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.address2" placeholder="">-->
-                                        <ng-select [items]="destinationNeights" (change)="searchNeightTo()" [ngModelOptions]="{standalone: true}" bindValue="place_name" bindLabel="place_name" placeholder="Selecciona una colonia" [(ngModel)]="shipment.address_to.address2"></ng-select>
+                                        <ng-select [items]="destinationNeights"  (change)="searchNeightTo()" [ngModelOptions]="{standalone: true}" bindValue="place_name" bindLabel="place_name" placeholder="Selecciona una colonia" [(ngModel)]="shipment.address_to.address2"></ng-select>
                                     <!--<select name="" id="" [ngModelOptions]="{standalone: true}" #t (change)="searchNeightTo(t.value)" [(ngModel)]="shipment.address_to.address2"
                                         class="form-control">
                                         <option *ngFor="let neight of destinationNeights" value="{{neight.place_name}}">{{neight.place_name}}</option>
@@ -246,8 +246,11 @@
                                     <label for="inputPassword4">Contenido</label>
                                     <input type="text" class="form-control" id="inputPassword4" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.contents" placeholder="">
                                 </div>
-                                <div class="form-group col-sm-3 offset-sm-4">
-                                    <button (click)="createShipment()">Cotizar</button>
+                                <div class="form-group col-sm-4 offset-sm-4">
+                                    <button (click)="createShipment()" class="btn btn-primary btn-block" [disabled]="loadingQoute">
+                                        Cotizar
+                                        <i class="fas fa-circle-notch fa-spin" *ngIf="loadingQoute"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -267,7 +270,10 @@
                                     </small>
                                 </li>
                             </ul>
-                            <button class="btn btn-success" *ngIf="rates" (click)="createLabel()">Generar Guía</button>
+                            <button class="btn btn-success" *ngIf="rates && 1" [disabled]="loadingShipment" (click)="createLabel()">
+                                Generar Guía
+                                <i class="fas fa-circle-notch fa-spin" *ngIf="loadingShipment"></i>
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -42,6 +42,7 @@ import { RegisterComponent } from './auth/register/register.component';
 
 import {DataTableModule} from "angular-6-datatable";
 import { HighchartsChartModule } from 'highcharts-angular';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { SignupComponent } from './signup/signup.component';
 import { ServicesComponent } from './site/services/services.component';
@@ -98,7 +99,8 @@ import { InvoicesComponent } from './invoices/invoices.component';
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     BrowserAnimationsModule,
     DataTableModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

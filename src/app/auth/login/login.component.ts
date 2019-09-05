@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   loginError:string;
   loginErrors:any = {email:'', password:''};
   data:any;
+  public loading: boolean = false;
+
 
   constructor(
     private _apiService: ApiService,
@@ -41,8 +43,9 @@ export class LoginComponent implements OnInit {
 
   login(form) {
 
-    console.log(form.value)
     this.loginErrors = {email:'', password:''};
+
+    this.loading = true;
 
     this._apiService.login(form.value).subscribe(
       data => { this.data = data },
@@ -65,11 +68,15 @@ export class LoginComponent implements OnInit {
             this.loginError = ''
              break; 
           } 
+
+         
        } 
+       this.loading = false;
         console.log(err)
       },
       () => {
         //console.log(this.data)
+        this.loading = false;
         localStorage.setItem('user_ses', JSON.stringify(this.data.user))
         localStorage.setItem('token_user', this.data.api_key)
         this.router.navigate(['admin/dashboard'])

@@ -89,15 +89,18 @@ export class NewShipmentComponent implements OnInit {
   public extraInfo = {
     origen: {
       id: null,
-      active: false,
+      active: true,
       nickname: ""
     },
     destination: {
       id: null,
-      active: false,
+      active: true,
       nickname: ""
     }
   }
+
+  public loadingQoute:boolean = false
+  public loadingShipment:boolean = false
 
   constructor(
     private _apiService: ApiService,
@@ -123,6 +126,7 @@ export class NewShipmentComponent implements OnInit {
       this.shipment.parcels[0].height = 0
       this.shipment.parcels[0].width = 0
       this.shipment.parcels[0].length = 0
+      this.shipment.address_to.contents = ''
     }
   }
 
@@ -242,62 +246,112 @@ export class NewShipmentComponent implements OnInit {
   }
 
   getOrigen(id) {
-    this._apiService.getLocation(id).subscribe(
-      data => {
-        this.shipment.address_from.province = data.data.state
-        this.shipment.address_from.city = data.data.city
-        this.shipment.address_from.name = data.data.nickname
-        this.shipment.address_from.zip = data.data.zipcode
-        this.shipment.address_from.country = data.data.country
-        this.shipment.address_from.address1 = data.data.address
-        this.shipment.address_from.company = data.data.company
-        this.shipment.address_from.address2 = data.data.address2
-        this.shipment.address_from.phone = data.data.phone
-        this.shipment.address_from.email = data.data.email
-        this.shipment.address_from.reference = data.data.reference
-        this.extraInfo.origen.id = data.data.id
-        this.extraInfo.origen.nickname = data.data.nickname
-      },
-      err => console.error(err),
-      () => console.log(this.extraInfo)
-    );
+    if(id == ''){
+      this.shipment.address_from.province = ''
+      this.shipment.address_from.city = ''
+      this.shipment.address_from.name = ''
+      this.shipment.address_from.zip = ''
+      this.shipment.address_from.country = ''
+      this.shipment.address_from.address1 = ''
+      this.shipment.address_from.company = ''
+      this.shipment.address_from.address2 = ''
+      this.shipment.address_from.phone = ''
+      this.shipment.address_from.email = ''
+      this.shipment.address_from.reference = ''
+      this.extraInfo.origen.id = null
+      this.extraInfo.origen.active = true
+      this.extraInfo.origen.nickname = ''
+
+    }else{
+      this._apiService.getLocation(id).subscribe(
+        data => {
+          this.shipment.address_from.province = data.data.state
+          this.shipment.address_from.city = data.data.city
+          this.shipment.address_from.name = data.data.nickname
+          this.shipment.address_from.zip = data.data.zipcode
+          this.shipment.address_from.country = data.data.country
+          this.shipment.address_from.address1 = data.data.address
+          this.shipment.address_from.company = data.data.company
+          this.shipment.address_from.address2 = data.data.address2
+          this.shipment.address_from.phone = data.data.phone
+          this.shipment.address_from.email = data.data.email
+          this.shipment.address_from.reference = data.data.reference
+          this.extraInfo.origen.id = data.data.id
+          this.extraInfo.origen.active = false
+          this.extraInfo.origen.nickname = data.data.nickname
+        },
+        err => console.error(err),
+        () => console.log(this.extraInfo)
+      );
+
+    }
   }
 
   getDestination(id) {
-    this._apiService.getLocation(id).subscribe(
-      data => {
-        this.shipment.address_to.province = data.data.state
-        this.shipment.address_to.city = data.data.city
-        this.shipment.address_to.name = data.data.nickname
-        this.shipment.address_to.zip = data.data.zipcode
-        this.shipment.address_to.country = data.data.country
-        this.shipment.address_to.address1 = data.data.address
-        this.shipment.address_to.company = data.data.company
-        this.shipment.address_to.address2 = data.data.address2
-        this.shipment.address_to.phone = data.data.phone
-        this.shipment.address_to.email = data.data.email
-        this.shipment.address_to.reference = data.data.reference
-        this.extraInfo.destination.id = data.data.id
-        this.extraInfo.destination.nickname = data.data.nickname
-      },
-      err => console.error(err),
-      () => console.log(this.extraInfo)
-    );
+    if(id == ''){
+
+
+          this.shipment.address_to.province = ''
+          this.shipment.address_to.city = ''
+          this.shipment.address_to.name = ''
+          this.shipment.address_to.zip = ''
+          this.shipment.address_to.country = ''
+          this.shipment.address_to.address1 = ''
+          this.shipment.address_to.company = ''
+          this.shipment.address_to.address2 = ''
+          this.shipment.address_to.phone = ''
+          this.shipment.address_to.email = ''
+          this.shipment.address_to.reference = ''
+          this.extraInfo.destination.id = null
+          this.extraInfo.destination.active = true
+          this.extraInfo.destination.nickname = ''
+
+    }else{
+
+      this._apiService.getLocation(id).subscribe(
+        data => {
+          this.shipment.address_to.province = data.data.state
+          this.shipment.address_to.city = data.data.city
+          this.shipment.address_to.name = data.data.nickname
+          this.shipment.address_to.zip = data.data.zipcode
+          this.shipment.address_to.country = data.data.country
+          this.shipment.address_to.address1 = data.data.address
+          this.shipment.address_to.company = data.data.company
+          this.shipment.address_to.address2 = data.data.address2
+          this.shipment.address_to.phone = data.data.phone
+          this.shipment.address_to.email = data.data.email
+          this.shipment.address_to.reference = data.data.reference
+          this.extraInfo.destination.id = data.data.id
+          this.extraInfo.destination.active = false
+          this.extraInfo.destination.nickname = data.data.nickname
+        },
+        err => console.error(err),
+        () => console.log(this.extraInfo)
+      );
+
+    }
+    
   }
 
   createShipment() {
+    this.loadingQoute = true;
     this._apiService.createShipment({ shipment: this.shipment }).subscribe(
       data => {
         console.log(data)
         this.rates = data.rates
         this.label.shipment_id = data.shipment_id
       },
-      err => console.error(err),
-      () => { }
+      err => {
+        console.error(err)
+        this.loadingQoute = false;
+      },
+      () => { this.loadingQoute = false; }
     );
   }
 
   createLabel() {
+
+    this.loadingShipment = true;
 
     this._apiService.createLabel({ shipment: this.shipment, extraInfo: this.extraInfo, label: this.label }).subscribe(
       data => {
@@ -311,8 +365,12 @@ export class NewShipmentComponent implements OnInit {
           position: 'center',
           title: err.error.error,
         })
+
+        this.loadingShipment = false;
       },
-      () => { }
+      () => {
+        this.loadingShipment = false;
+      }
     );
 
   }

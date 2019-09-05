@@ -14,6 +14,7 @@ export class RestorePasswordComponent implements OnInit {
   public active:boolean = false;
   public error:boolean = false;
   data:any;
+  public loading:boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class RestorePasswordComponent implements OnInit {
 
   sendNewPassword(form){
     console.log(form.value)
+    this.loading = true;
     this._apiService.newPassword(form.value).subscribe(
       data => { this.data = data },
       err => {
@@ -49,8 +51,10 @@ export class RestorePasswordComponent implements OnInit {
           } 
        } 
         console.log(err)
+        this.loading = false;
       },
       () => {
+        this.loading = false;
         localStorage.setItem('user_ses', JSON.stringify(this.data.user))
         localStorage.setItem('token_user', this.data.api_key)
         this.router.navigate(['admin/dashboard'])

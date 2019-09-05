@@ -31,29 +31,29 @@
                             <i class="far fa-building"></i>
                             <input class="input-field" type="text" [(ngModel)]="user.company" placeholder="Empresa">
                         </div>
-                        <div class="input-container" [ngClass]="{'is-invalid': loginErrors.email!=''}">
+                        <div class="input-container" [ngClass]="{'is-invalid': loginErrors.name!=''}">
                             <i class="far fa-user"></i>
-                            <input class="input-field" type="text" [(ngModel)]="user.name" placeholder="Nombre completo">
+                            <input class="input-field" type="text" [(ngModel)]="user.name" placeholder="Nombre completo" placement="right" ngbTooltip="{{loginErrors.name}}" tooltipClass="error-tooltip">
                         </div>
                         <div class="input-container" [ngClass]="{'is-invalid': loginErrors.phone !=''}">
                             <i class="fas fa-mobile-alt"></i>
                             <input class="input-field" type="text" [(ngModel)]="user.phone" placeholder="Teléfono"
-                                name="usrnm">
+                                name="usrnm" placement="right" ngbTooltip="{{loginErrors.phone}}" tooltipClass="error-tooltip">
                         </div>
                         <div class="input-container" [ngClass]="{'is-invalid': loginErrors.email!=''}">
                             <i class="fas fa-envelope"></i>
                             <input class="input-field" type="text" [(ngModel)]="user.email" placeholder="Email"
-                                name="usrnm">
+                                name="usrnm" placement="right" ngbTooltip="{{loginErrors.email}}" tooltipClass="error-tooltip">
                         </div>
                         <div class="input-container" [ngClass]="{'is-invalid': loginErrors.password!=''}">
                             <i class="fas fa-lock-open"></i>
                             <input class="input-field" type="password" [(ngModel)]="user.password"
-                                placeholder="Contraseña" name="usrnm">
+                                placeholder="Contraseña" name="usrnm" placement="right" ngbTooltip="{{loginErrors.password}}" tooltipClass="error-tooltip">
                         </div>
-                        <div class="input-container">
+                        <div class="input-container" [ngClass]="{'is-invalid': loginErrors.password!=''}">
                             <i class="fas fa-check"></i>
                             <input class="input-field" type="password" [(ngModel)]="user.password_confirm"
-                                placeholder="Confirmar contraseña" name="usrnm">
+                                placeholder="Confirmar contraseña" name="usrnm" placement="right" ngbTooltip="{{loginErrors.password}}" tooltipClass="error-tooltip">
                         </div>
                         <div class="input-container" *ngIf="user.business == 1">
                             <i class="far fa-paper-plane"></i>
@@ -68,7 +68,7 @@
                             </select>
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" [(ngModel)]="user.password_confirm"
+                            <input type="checkbox" class="form-check-input" [(ngModel)]="user.terms"
                                 id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Estoy de acuerdo con los <a
                                     href="">Terminos
@@ -76,7 +76,10 @@
                         </div>
                 </div>
             </div>
-            <a class="btn btn-login text-uppercase rounded-pill" (click)="register()">Entrar</a>
+            <button class="btn btn-login text-uppercase rounded-pill" [disabled]="loading" (click)="register()" type="submit">
+                    Enviar
+                    <i class="fas fa-circle-notch fa-spin" *ngIf="loading"></i>
+            </button> 
         </div>
     </div>
 </div>
