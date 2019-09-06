@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { ToastService } from '../../services/toast.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
     private _apiService: ApiService,
     private router: Router,
     private formBuilder: FormBuilder,
+    public toastService: ToastService
   ) {
   }
 
@@ -50,10 +53,15 @@ export class LoginComponent implements OnInit {
     this._apiService.login(form.value).subscribe(
       data => { this.data = data },
       err => {
+        console.log(err.status)
       
-        switch(err.status) { 
+        switch(err.status) {
+          case 0: { 
+           this.showSwal('error', 'Internet conection error')
+            break; 
+         }
           case 401: { 
-            this.loginError = 'Email o contraseña incorrectos'
+            this.showSwal('error', 'Email o contraseña incorrectos')
             break; 
          } 
           case 422: { 
@@ -84,11 +92,35 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  showSuccess() {
+    console.log('se mostro')
+    try {
+      this.toastService.show('I am a success toast', { classname: 'bg-success text-light', delay: 10000, position: 'bottom' });
+    }
+    catch(err) {
+      console.log(err)
+    }
+    
+  }
+
   public saveEmail(email: string): void {
     // ... save user email
   }
 
-  showSwal() {
+  showSwal(type, message) {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'bottom',
+      showConfirmButton: false,
+      timer: 5000,
+      background: '#000'
+    })
+    
+    Toast.fire({
+      type: type,
+      title: message,
+      
+    })
   }
 
 }

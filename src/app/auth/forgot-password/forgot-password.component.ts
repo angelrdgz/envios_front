@@ -3,6 +3,7 @@ import { ApiService } from '../../services/api.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-forgot-password',
@@ -68,8 +69,25 @@ export class ForgotPasswordComponent implements OnInit {
       () => {
         //console.log(this.data)
         this.loading = false;
+        this.showSwal('success', 'Te hemos enviado un correo a tu cuenta');
       }
     );
+  }
+
+  showSwal(type, message) {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'bottom',
+      showConfirmButton: false,
+      timer: 5000,
+      background: '#000'
+    })
+    
+    Toast.fire({
+      type: type,
+      title: message,
+      
+    })
   }
 
 }
