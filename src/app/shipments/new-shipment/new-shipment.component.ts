@@ -5,6 +5,8 @@ import { trigger, style, transition, animate, keyframes, query, stagger } from '
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import Swal from 'sweetalert2'
 
+declare var $: any;
+
 @Component({
   selector: 'new-shipment',
   templateUrl: './new-shipment.component.html',
@@ -115,7 +117,39 @@ export class NewShipmentComponent implements OnInit {
     this.getPackages()
     this.getCountries()
 
-    console.log(this.shipment)
+    $(document).ready(function () {
+      //Initialize tooltips
+      $('.nav-tabs > li a[title]').tooltip();
+      
+      //Wizard
+      $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {  
+          var $target = $(e.target);      
+          if ($target.parent().hasClass('disabled')) {
+              return false;
+          }
+      });
+  
+      $(".next-step").click(function (e) {
+  
+          var $active = $('.nav-tabs li > a.active');
+          $active.parent().next().find('a').removeClass('disabled');
+          nextTab($active);
+  
+      });
+      $(".prev-step").click(function (e) {
+  
+          var $active = $('.nav-tabs li>a.active');
+          prevTab($active);
+  
+      });
+  });
+  
+  function nextTab(elem) {
+      $(elem).parent().next().find('a[data-toggle="tab"]').click();
+  }
+  function prevTab(elem) {
+      $(elem).parent().prev().find('a[data-toggle="tab"]').click();
+  }
   }
 
   onChange(deviceValue) {

@@ -8,37 +8,73 @@
             <!-- Horizontal Steppers -->
             <div class="row">
                 <div class="col-md-12">
-
-                    <!-- Stepers Wrapper -->
-                    <ul class="stepper stepper-horizontal">
-
-                        <!-- First Step -->
-                        <li class="completed">
-                            <a href="#!">
-                                <span class="circle">1</span>
-                                <span class="label">First step</span>
-                            </a>
-                        </li>
-
-                        <!-- Second Step -->
-                        <li class="active">
-                            <a href="#!">
-                                <span class="circle">2</span>
-                                <span class="label">Second step</span>
-                            </a>
-                        </li>
-
-                        <!-- Third Step -->
-                        <li class="warning">
-                            <a href="#!">
-                                <span class="circle"></span>
-                                <span class="label">Third step</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                    <!-- /.Stepers Wrapper -->
-
+                    <section>
+                        <ul class="nav nav-tabs" role="tablist">
+            
+                            <li role="presentation" class="nav-item">
+                                <a href="#step1" class="nav-link active" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                                        1
+                                    </a>
+                            </li>
+            
+                            <li role="presentation" class="nav-item">
+                                <a href="#step2" class="nav-link disabled" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                                        2
+                                    </a>
+                            </li>            
+                            <li role="presentation" class="nav-item">
+                                <a href="#complete" class="nav-link disabled" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                                        4
+                                    </a>
+                            </li>
+                        </ul>
+            
+                        <form role="form">
+                            <div class="tab-content">
+                                <div class="tab-pane active" role="tabpanel" id="step1">
+                                    <h3>Step 1</h3>
+                                    <p>This is step 1</p>
+                                    <ul class="list-inline pull-xs-right">
+                                        <li class="list-inline-item">
+                                            <button type="button" class="btn btn-primary next-step">Save and continue</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="step2">
+                                    <h3>Step 2</h3>
+                                    <p>This is step 2</p>
+                                    <ul class="pull-xs-right">
+                                        <li class="list-inline-item">
+                                            <button type="button" class="btn btn-default prev-step">Previous</button>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <button type="button" class="btn btn-primary next-step">Save and continue</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="step3">
+                                    <h3>Step 3</h3>
+                                    <p>This is step 3</p>
+                                    <ul class="list-inline pull-xs-right">
+                                        <li class="list-inline-item">
+                                            <button type="button" class="btn btn-default prev-step">Previous</button>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <button type="button" class="btn btn-default next-step">Skip</button>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="complete">
+                                    <h3>Complete</h3>
+                                    <p>You have successfully completed all steps.</p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </section>
                 </div>
             </div>
             <!-- /.Horizontal Steppers -->
