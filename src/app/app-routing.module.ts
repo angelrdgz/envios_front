@@ -19,6 +19,7 @@ import { ContactComponent } from './site/contact/contact.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListComponent } from './shipments/list/list.component';
 import { NewShipmentComponent } from './shipments/new-shipment/new-shipment.component';
+import { DetailShipmentComponent } from './shipments/detail-shipment/detail-shipment.component';
 
 import { ListPackagesComponent } from './packages/list-packages/list-packages.component';
 import { NewPackageComponent } from './packages/new-package/new-package.component';
@@ -60,6 +61,12 @@ const routes: Routes = [
         component: NewShipmentComponent,
         pathMatch: 'full',
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'shipments/:id',
+        component: DetailShipmentComponent,
+        pathMatch: 'full',
+        canActivate: [AuthGuard]        
       },
       {
         path: 'packages',

@@ -1,14 +1,24 @@
-$app-admin-gray: #3f4d67;
+@import "../../../variables.scss";
 aside {
   width: 250px;
   position: fixed;
   height: 100%;
-  background: $app-admin-gray;
+  background: #fff;//$app-admin-gray;
+  box-shadow: 10px 0 5px -5px #888;
+  z-index: 100;
 
   .head-menu {
     width: 100%;
     height: 100px;
     padding: 10px;
+
+    .b-brand{
+      img{
+        max-width: 120px;
+        display: block;
+        margin: 20px auto;
+      }
+    }
 
     .header-logo {
       position: relative;
@@ -68,18 +78,17 @@ aside {
       font-family: "Open Sans", sans-serif;
       position: relative;
       a {
-        color: #a9b7d0;
+        color: $app-blue;
         text-decoration: none;
         text-align: left;
-        padding: 7px 15px;
+        padding: 15px;
         margin: 5px 0 0;
         display: block;
         border-radius: 0;
         position: relative;
+        font-size: 1.2em;
         i {
           margin-right: 15px;
-        }
-        span {
         }
       }
       ul{
@@ -87,7 +96,9 @@ aside {
       }
       &:hover {
         a {
-          color: #1dc4e9;
+          color: $app-red;
+          box-shadow: 0px 0 5px 2px #888;
+          //box-shadow: 0px 5px 5px #888, 0px -5px 5px #888;
         }
       }
     }
@@ -109,10 +120,8 @@ aside {
       }
     }
     li.active {
-      border-left: 3px solid #1dc4e9;
-      background: #333f54;
       a {
-        color: #fff;
+        color: $app-red;
       }
       ul {
         display: block;

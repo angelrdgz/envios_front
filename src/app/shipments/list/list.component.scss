@@ -1,0 +1,17 @@
+@import "../../../variables.scss";
+.card {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  .card-body {
+    padding: 0;
+    background: transparent;
+    border: 0;
+
+    h5 {
+      color: $app-blue !important;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
+}

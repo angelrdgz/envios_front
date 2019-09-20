@@ -1,10 +1,26 @@
-.navbar{
-    .navbar-brand, .nav-link{
-        color: #000;
+@import "../../../variables.scss";
+.card{
+    background: transparent;
+    border: 0;
+    filter:drop-shadow(2px 2px 5px rgba(0,0,0,.5));
+
+    .navbar{
+        position: relative;
+        z-index: 2;
+        min-width: 0;
+        word-wrap: break-word;
+        background-clip: border-box;
+        background: #fff;
+        border-radius: 2rem;
+        color: $app-blue;
+    
+        .navbar-brand, .nav-link{
+            color: $app-blue;
+        }
     }
-}
-.navbar-nav{
-    .nav-item{
-        color: #000;
+    .navbar-nav{
+        .nav-item{
+            color: $app-blue;
+        }
     }
 }

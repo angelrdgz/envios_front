@@ -27,6 +27,48 @@ html{
         height: 100%; 
         font-family: 'Arial Rounded MT Bold' !important;
 
+        .table {
+            thead {
+              border: 0;
+              tr {
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                border: 0;
+                th {
+                  background: $app-blue;
+                  color: #fff;
+                  border: 0;
+                  text-align: center;
+      
+                  &:first-child {
+                    border-top-left-radius: 40px;
+                  }
+                  &:last-child {
+                    border-top-right-radius: 40px;
+                  }
+                }
+              }
+            }
+            tbody {
+              tr {
+                td {
+                  background: rgba(255, 255, 255, 0.6);
+                  color: $app-blue;
+                }
+                &:last-child {
+                  td {
+                    &:first-child {
+                      border-bottom-left-radius: 40px;
+                    }
+                    &:last-child {
+                      border-bottom-right-radius: 40px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
         .btn {
             padding: 10px 20px;
             border-radius: .25rem;
@@ -35,6 +77,11 @@ html{
             margin-right: 10px;
             -webkit-transition: all .3s ease-in-out;
             transition: all .3s ease-in-out;
+        }
+
+        .btn-app{
+            background: $app-blue;
+            color: #fff;
         }
 
         .btn-rounded {

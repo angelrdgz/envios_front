@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { ToastService } from '../../services/toast.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -12,6 +12,8 @@ import Swal from 'sweetalert2'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  toasts: any[] = [];
 
   loginForm: FormGroup;
   loginError:string;
@@ -40,9 +42,7 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
-
   }
-
 
   login(form) {
 
@@ -90,21 +90,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['admin/dashboard'])
       }
     );
-  }
-
-  showSuccess() {
-    console.log('se mostro')
-    try {
-      this.toastService.show('I am a success toast', { classname: 'bg-success text-light', delay: 10000, position: 'bottom' });
-    }
-    catch(err) {
-      console.log(err)
-    }
-    
-  }
-
-  public saveEmail(email: string): void {
-    // ... save user email
   }
 
   showSwal(type, message) {

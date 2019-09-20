@@ -5,6 +5,43 @@
             <h5 class="card-title">Nueva Guía</h5>
             <h6 class="card-subtitle mb-2 text-muted">Favor de llenar la información de origen y destino, junto con la
                 información del envío.</h6>
+            <!-- Horizontal Steppers -->
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- Stepers Wrapper -->
+                    <ul class="stepper stepper-horizontal">
+
+                        <!-- First Step -->
+                        <li class="completed">
+                            <a href="#!">
+                                <span class="circle">1</span>
+                                <span class="label">First step</span>
+                            </a>
+                        </li>
+
+                        <!-- Second Step -->
+                        <li class="active">
+                            <a href="#!">
+                                <span class="circle">2</span>
+                                <span class="label">Second step</span>
+                            </a>
+                        </li>
+
+                        <!-- Third Step -->
+                        <li class="warning">
+                            <a href="#!">
+                                <span class="circle"></span>
+                                <span class="label">Third step</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <!-- /.Stepers Wrapper -->
+
+                </div>
+            </div>
+            <!-- /.Horizontal Steppers -->
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card">
@@ -12,9 +49,9 @@
                             Información de Origen
                         </div>
                         <div class="card-body">
-                                <form #f="ngForm">
-                            <div class="form-row">
-                                <!--<div class="form-group col-sm-12">
+                            <form #f="ngForm">
+                                <div class="form-row">
+                                    <!--<div class="form-group col-sm-12">
                                     <div>
                                         <span class="float-left">¿Desea generar un nuevo domicilio de origen?</span>
                                         <label class="switch float-right">
@@ -23,88 +60,104 @@
                                         </label>
                                     </div>
                                 </div>-->
-                                <div class="form-group col-md-12">
-                                    <label for="inputEmail4">Domicilios de Origen</label>
-                                    <select name="" id="" (change)="getOrigen($event.target.value)"
-                                        class="form-control">
-                                        <option value="">Nueva dirección de origen</option>
-                                        <option value="{{origen.id}}" *ngFor="let origen of origenes">
-                                            {{origen.nickname}}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-12" *ngIf="extraInfo.origen.active">
-                                    <label for="inputEmail4">Identificador de Domicilio</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="extraInfo.origen.nickname" placeholder="">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputEmail4">Nombre de quien envia</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.name" placeholder="">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputEmail4">Compañia</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.company" placeholder="">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Teléfono</label>
-                                    <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.phone" placeholder="">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Email</label>
-                                    <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.email" placeholder="">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputPassword4">País</label>
-                                    <select name="" id="" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.country" class="form-control">
-                                        <option value="{{country.code}}"  *ngFor="let country of countries">
-                                            {{country.name}}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Código Postal</label>
-                                    <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" (keyup)="getNeightsFrom()" [(ngModel)]="shipment.address_from.zip" placeholder="">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputEmail4">Calle y Número</label>
-                                    <input type="text" class="form-control" id="inputEmail4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.address1" placeholder="Av. Empresarios #200">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputAddress">Colonia</label>
-                                    <!--<input type="text" class="form-control" id="inputPassword4"
+                                    <div class="form-group col-md-12">
+                                        <label for="inputEmail4">Domicilios de Origen</label>
+                                        <select name="" id="" (change)="getOrigen($event.target.value)"
+                                            class="form-control">
+                                            <option value="">Nueva dirección de origen</option>
+                                            <option value="{{origen.id}}" *ngFor="let origen of origenes">
+                                                {{origen.nickname}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-12" *ngIf="extraInfo.origen.active">
+                                        <label for="inputEmail4">Identificador de Domicilio</label>
+                                        <input type="text" class="form-control" id="inputEmail4"
+                                            [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="extraInfo.origen.nickname" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Nombre de quien envia</label>
+                                        <input type="text" class="form-control" id="inputEmail4"
+                                            [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="shipment.address_from.name" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Compañia</label>
+                                        <input type="text" class="form-control" id="inputEmail4"
+                                            [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="shipment.address_from.company" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Teléfono</label>
+                                        <input type="text" class="form-control" id="inputPassword4"
+                                            [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="shipment.address_from.phone" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Email</label>
+                                        <input type="text" class="form-control" id="inputPassword4"
+                                            [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="shipment.address_from.email" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">País</label>
+                                        <select name="" id="" [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="shipment.address_from.country" class="form-control">
+                                            <option value="{{country.code}}" *ngFor="let country of countries">
+                                                {{country.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Código Postal</label>
+                                        <input type="text" class="form-control" id="inputPassword4"
+                                            [ngModelOptions]="{standalone: true}" (keyup)="getNeightsFrom()"
+                                            [(ngModel)]="shipment.address_from.zip" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Calle y Número</label>
+                                        <input type="text" class="form-control" id="inputEmail4"
+                                            [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="shipment.address_from.address1"
+                                            placeholder="Av. Empresarios #200">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputAddress">Colonia</label>
+                                        <!--<input type="text" class="form-control" id="inputPassword4"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.address2" placeholder="">-->
-                                        <ng-select [items]="origenNeights" (change)="searchNeight()" [closeOnSelect]="true" [ngModelOptions]="{standalone: true}" bindValue="place_name" bindLabel="place_name" placeholder="Selecciona una colonia" [(ngModel)]="shipment.address_from.address2"></ng-select>
-                                    <!--<select name="" id="" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.address2"
+                                        <ng-select [items]="origenNeights" (change)="searchNeight()"
+                                            [closeOnSelect]="true" [ngModelOptions]="{standalone: true}"
+                                            bindValue="place_name" bindLabel="place_name"
+                                            placeholder="Selecciona una colonia"
+                                            [(ngModel)]="shipment.address_from.address2"></ng-select>
+                                        <!--<select name="" id="" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.address2"
                                         class="form-control" #t (change)="searchNeight(t.value)">
                                         <option *ngFor="let neight of origenNeights" value="{{neight.place_name}}">{{neight.place_name}}</option>
                                     </select>-->
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Ciudad</label>
-                                    <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.city" placeholder="">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputAddress">Estado</label>
-                                    <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.province" placeholder="">
-                                    <!--<select name="" id="" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.province"
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Ciudad</label>
+                                        <input type="text" class="form-control" id="inputPassword4"
+                                            [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="shipment.address_from.city" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputAddress">Estado</label>
+                                        <input type="text" class="form-control" id="inputPassword4"
+                                            [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="shipment.address_from.province" placeholder="">
+                                        <!--<select name="" id="" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.province"
                                         class="form-control">
 
                                     </select>-->
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="inputPassword4">Referencia</label>
+                                        <input type="text" class="form-control" id="inputPassword4"
+                                            [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="shipment.address_from.reference" placeholder="">
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-12">
-                                    <label for="inputPassword4">Referencia</label>
-                                    <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_from.reference" placeholder="">
-                                </div>
-                            </div>
-                        </form>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -136,64 +189,77 @@
                                 <div class="form-group col-md-12" *ngIf="extraInfo.destination.active">
                                     <label for="inputEmail4">Identificador de Domicilio</label>
                                     <input type="text" class="form-control" id="inputEmail4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="extraInfo.destination.nickname" placeholder="">
+                                        [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="extraInfo.destination.nickname" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Nombre de quien recibe</label>
                                     <input type="text" class="form-control" id="inputEmail4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.name" placeholder="">
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.name"
+                                        placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Compañia</label>
                                     <input type="text" class="form-control" id="inputEmail4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.company" placeholder="">
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.company"
+                                        placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Teléfono</label>
                                     <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.phone" placeholder="">
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.phone"
+                                        placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Email</label>
                                     <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.email" placeholder="">
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.email"
+                                        placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
-                                        <label for="inputPassword4">País</label>
-                                        <select name="" id="" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.country" class="form-control">
-                                            <option value="{{country.code}}" *ngFor="let country of countries">
-                                                {{country.name}}</option>
-                                        </select>
-                                    </div>                                
+                                    <label for="inputPassword4">País</label>
+                                    <select name="" id="" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="shipment.address_to.country" class="form-control">
+                                        <option value="{{country.code}}" *ngFor="let country of countries">
+                                            {{country.name}}</option>
+                                    </select>
+                                </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Código Postal</label>
                                     <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" (keyup)="getNeightsTo()" [(ngModel)]="shipment.address_to.zip" placeholder="">
+                                        [ngModelOptions]="{standalone: true}" (keyup)="getNeightsTo()"
+                                        [(ngModel)]="shipment.address_to.zip" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Calle y Número</label>
                                     <input type="text" class="form-control" id="inputEmail4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.address1" placeholder="Av. Empresarios #200">
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.address1"
+                                        placeholder="Av. Empresarios #200">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputAddress">Colonia</label>
                                     <!--<input type="text" class="form-control" id="inputPassword4"
                                         [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.address2" placeholder="">-->
-                                        <ng-select [items]="destinationNeights"  (change)="searchNeightTo()" [ngModelOptions]="{standalone: true}" bindValue="place_name" bindLabel="place_name" placeholder="Selecciona una colonia" [(ngModel)]="shipment.address_to.address2"></ng-select>
+                                    <ng-select [items]="destinationNeights" (change)="searchNeightTo()"
+                                        [ngModelOptions]="{standalone: true}" bindValue="place_name"
+                                        bindLabel="place_name" placeholder="Selecciona una colonia"
+                                        [(ngModel)]="shipment.address_to.address2"></ng-select>
                                     <!--<select name="" id="" [ngModelOptions]="{standalone: true}" #t (change)="searchNeightTo(t.value)" [(ngModel)]="shipment.address_to.address2"
                                         class="form-control">
                                         <option *ngFor="let neight of destinationNeights" value="{{neight.place_name}}">{{neight.place_name}}</option>
-                                    </select> -->                                        
+                                    </select> -->
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Ciudad</label>
                                     <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.city" placeholder="">
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.city"
+                                        placeholder="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputAddress">Estado</label>
                                     <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.province" placeholder="">
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.province"
+                                        placeholder="">
                                     <!--<select name="" id="" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.province"
                                         class="form-control">
 
@@ -202,7 +268,8 @@
                                 <div class="form-group col-md-12">
                                     <label for="inputPassword4">Referencia</label>
                                     <input type="text" class="form-control" id="inputPassword4"
-                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.reference" placeholder="">
+                                        [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="shipment.address_to.reference" placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -228,26 +295,37 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputEmail4">Alto</label>
-                                    <input type="number" class="form-control" id="inputEmail4" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.parcels[0].height" placeholder="">
+                                    <input type="number" class="form-control" id="inputEmail4"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.parcels[0].height"
+                                        placeholder="">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputPassword4">Ancho</label>
-                                    <input type="number" class="form-control" id="inputPassword4" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.parcels[0].width" placeholder="">
+                                    <input type="number" class="form-control" id="inputPassword4"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.parcels[0].width"
+                                        placeholder="">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputEmail4">Largo</label>
-                                    <input type="number" class="form-control" id="inputEmail4" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.parcels[0].length" placeholder="">
+                                    <input type="number" class="form-control" id="inputEmail4"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.parcels[0].length"
+                                        placeholder="">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Peso</label>
-                                    <input type="number" class="form-control" id="inputPassword4" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.parcels[0].weight" placeholder="">
+                                    <input type="number" class="form-control" id="inputPassword4"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.parcels[0].weight"
+                                        placeholder="">
                                 </div>
                                 <div class="form-group col-md-9">
                                     <label for="inputPassword4">Contenido</label>
-                                    <input type="text" class="form-control" id="inputPassword4" [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.contents" placeholder="">
+                                    <input type="text" class="form-control" id="inputPassword4"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="shipment.address_to.contents"
+                                        placeholder="">
                                 </div>
                                 <div class="form-group col-sm-4 offset-sm-4">
-                                    <button (click)="createShipment()" class="btn btn-primary btn-block" [disabled]="loadingQoute">
+                                    <button (click)="createShipment()" class="btn btn-primary btn-block"
+                                        [disabled]="loadingQoute">
                                         Cotizar
                                         <i class="fas fa-circle-notch fa-spin" *ngIf="loadingQoute"></i>
                                     </button>
@@ -263,14 +341,18 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-group" *ngIf="rates" [@listAnimation]="rates.length">
-                                <li class="list-group-item" [ngClass]="{selected: index == i}" (click)="selectParcel(rate.id, rate.attributes.total_pricing, rate.attributes.provider, i)"
-                                    *ngFor="let rate of rates; let i = index">{{rate.attributes.provider}} {{rate.attributes.service_level_name}}
+                                <li class="list-group-item" [ngClass]="{selected: index == i}"
+                                    (click)="selectParcel(rate.id, rate.attributes.total_pricing, rate.attributes.provider, i)"
+                                    *ngFor="let rate of rates; let i = index">{{rate.attributes.provider}}
+                                    {{rate.attributes.service_level_name}}
                                     <small class="float-right">
-                                        <b>{{rate.attributes.total_pricing | currency}} {{rate.attributes.currency_local}}</b>
+                                        <b>{{rate.attributes.total_pricing | currency}}
+                                            {{rate.attributes.currency_local}}</b>
                                     </small>
                                 </li>
                             </ul>
-                            <button class="btn btn-success" *ngIf="rates && 1" [disabled]="loadingShipment" (click)="createLabel()">
+                            <button class="btn btn-success" *ngIf="rates && 1" [disabled]="loadingShipment"
+                                (click)="createLabel()">
                                 Generar Guía
                                 <i class="fas fa-circle-notch fa-spin" *ngIf="loadingShipment"></i>
                             </button>

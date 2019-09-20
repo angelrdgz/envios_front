@@ -54,6 +54,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { ProfileComponent } from './profile/profile.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { ToastsContainer } from './toast-container/toast-container.component';
+import { DetailShipmentComponent } from './shipments/detail-shipment/detail-shipment.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { ToastsContainer } from './toast-container/toast-container.component';
     ProfileComponent,
     InvoicesComponent,
     ToastsContainer,
+    DetailShipmentComponent,
   ],
   imports: [
     BrowserModule,

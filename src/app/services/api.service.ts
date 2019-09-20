@@ -83,6 +83,10 @@ export class ApiService {
     return this.http.delete<Shipment>(ApiEndpoint+'/shipments/'+id);
   }
 
+  getShipment(id){
+    return this.http.get<Res>(ApiEndpoint+'/shipments/'+id);
+  }
+
   getRecharges(){
     return this.http.get<Res>(ApiEndpoint+'/recharges');
   }
