@@ -52,7 +52,7 @@
                         </div>
                         <div class="input-container" [ngClass]="{'is-invalid': loginErrors.password!=''}">
                             <i class="fas fa-check"></i>
-                            <input class="input-field" type="password" [(ngModel)]="user.password_confirm"
+                            <input class="input-field" type="password" [(ngModel)]="user.password_confirmation"
                                 placeholder="Confirmar contraseña" name="usrnm" placement="right" ngbTooltip="{{loginErrors.password}}" tooltipClass="error-tooltip">
                         </div>
                         <div class="input-container" *ngIf="user.business == 1">

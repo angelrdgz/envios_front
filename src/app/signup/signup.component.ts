@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
     business=0;
     public loading:boolean = false;
 
-    public user = {name:'',email:'',password:'',password_confirm:'',phone:'',company:'',business:0, shipments:0, terms: true}
+    public user = {name:'',email:'',password:'',password_confirmation:'',phone:'',company:'',business:0, shipments:0, terms: true}
     public loginErrors:any = {name:'',email:'',password:'',password_confirm:'',phone:'',company:'',business:0, shipments:0};
 
     constructor(
@@ -33,16 +33,6 @@ export class SignupComponent implements OnInit {
             lastname: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
-
-        Swal.fire({
-          type: 'success',
-          position: 'center',
-          title: 'Te hemos enviado un correo de confirmación a tu email',
-          customClass: {
-            confirmButton: 'btn-success',
-            closeButton: 'btn-success',
-          }          
-        })
     }
 
     onSubmit(){

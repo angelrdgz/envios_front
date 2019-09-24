@@ -40,14 +40,17 @@
                                     class="fas fa-trash"></i></button>
                         </td>
                     </tr>
+                    <tr *ngIf="shipments.length == 0">
+                        <td colspan="6" class="text-center">No se encontraron guías</td>
+                    </tr>
                 </tbody>
-                <tfoot>
+                <!--<tfoot>
                     <tr>
                         <td colspan="4">
                             <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
                         </td>
                     </tr>
-                </tfoot>
+                </tfoot>-->
             </table>
         </div>
     </div>

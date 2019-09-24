@@ -34,11 +34,13 @@ html{
                 border-top-left-radius: 20px;
                 border-top-right-radius: 20px;
                 border: 0;
+                border-bottom:0 !important;
                 th {
                   background: $app-blue;
                   color: #fff;
                   border: 0;
                   text-align: center;
+                  border-bottom:0 !important;
       
                   &:first-child {
                     border-top-left-radius: 40px;
@@ -51,9 +53,11 @@ html{
             }
             tbody {
               tr {
+                border-bottom:0 !important;
                 td {
                   background: rgba(255, 255, 255, 0.6);
                   color: $app-blue;
+                  border-bottom:0 !important;
                 }
                 &:last-child {
                   td {
