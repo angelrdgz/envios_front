@@ -7,6 +7,14 @@
       padding: 0;
       background: transparent;
       border: 0;
+
+      .table{
+        tr{
+          th,td{
+            text-align: center;
+          }
+        }
+      }
   
       h5 {
         color: $app-blue !important;

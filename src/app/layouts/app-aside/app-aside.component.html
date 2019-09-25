@@ -18,19 +18,19 @@
         <!--<li class="divider">
             <span>Menu</span>
         </li>-->
-        <li class="active">
-            <a routerLink="/admin/dashboard" routerLinkActive="active">
+        <li routerLinkActive="active">
+            <a routerLink="/admin/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <i class="fas fa-chart-line"></i>
                 <span>Dashboard</span>
             </a>
         </li>
-        <li class="hasmenu">
+        <li class="hasmenu" routerLinkActive="active">
             <a routerLink="/admin/shipments" routerLinkActive="active">
                 <i class="fas fa-shipping-fast"></i>
-                <span>Guías</span>
+                <span>Envíos</span>
             </a>
         </li>
-        <li>
+        <li routerLinkActive="active">
             <a routerLink="/admin/packages" routerLinkActive="active">
                 <i class="fas fa-boxes"></i>
                 <span>Empaques</span>
@@ -45,13 +45,13 @@
        <!-- <li class="divider">
             <span>finance</span>
         </li>-->
-        <li>
+        <li routerLinkActive="active">
             <a routerLink="/admin/recharges" routerLinkActive="active">
                 <i class="fas fa-coins"></i>
                 <span>Recargas</span>
             </a>
         </li>
-        <li>
+        <li routerLinkActive="active">
             <a routerLink="/admin/invoices" routerLinkActive="active">
                 <i class="far fa-file-alt"></i>
                 <span>Facturas</span>
@@ -75,22 +75,22 @@
        <!--<li class="divider">
             <span>Support</span>
         </li>-->
-        <li>
+        <li routerLinkActive="active">
             <a routerLink="/admin/profile" routerLinkActive="active">
                 <i class="fas fa-id-card"></i>
                 <span>Perfil</span>
             </a>
         </li>
-        <li>
+        <li routerLinkActive="active">
             <a routerLink="/admin/settings" routerLinkActive="active">
                 <i class="fas fa-user-cog"></i>
                 <span>Configuraciones</span>
             </a>
         </li>
-        <li>
+        <li routerLinkActive="active">
                 <a (click)="signOut()">
                     <i class="fas fa-shipping-fast"></i>
-                    <span>Salir</span>
+                    <span>Cerrar Sesión</span>
                 </a>
             </li>
         <li>

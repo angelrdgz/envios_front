@@ -83,6 +83,14 @@ html{
             transition: all .3s ease-in-out;
         }
 
+        .btn-app-red{
+          background: $app-red;
+          color: #fff;
+          &:hover{
+            color: #fff;
+          }
+      }
+
         .btn-app{
             background: $app-blue;
             color: #fff;

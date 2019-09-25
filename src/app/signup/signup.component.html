@@ -2,10 +2,10 @@
     <div class="card">
         <div class="card-header">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-5">
                     <img src="assets/imgs/logoship2go.png" class="logo" alt="">
                 </div>
-                <div class="col-sm-6 listContainer">
+                <div class="col-sm-7 listContainer">
                     <ul>
                         <li><a href="/register">Registro</a></li>
                         <li><a href="/login" class="text-red">Iniciar Sesión</a></li>
@@ -26,6 +26,10 @@
                             <input class="form-check-input" type="radio" [value]="1" name="business"
                                 [(ngModel)]="user.business" [ngModelOptions]="{standalone: true}" id="inlineRadio2">
                             <label class="form-check-label" for="inlineRadio2">Empresarial</label>
+                        </div>
+                        <div>
+                            <h6 *ngIf="user.business == 0">Si vas a realizar un solo envio</h6>
+                            <h6 *ngIf="user.business == 1">Si cuentas realizas envios frecuentes</h6>
                         </div>
                         <div class="input-container" *ngIf="user.business == 1">
                             <i class="far fa-building"></i>

@@ -87,6 +87,11 @@
       .row {
         min-width: 400px;
       }
+      h6{
+        text-align: center;
+        font-size: 1em;
+        margin: 10px 0;
+      }
       .input-container {
         background: #fff;
         border-radius: 30px;
@@ -103,6 +108,7 @@
           height: 40px;
           border: 0;
           width: calc(100% - 25px);
+          color: $app-blue;
 
           &::-webkit-input-placeholder {
             color: $app-blue;

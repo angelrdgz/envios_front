@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppHeaderComponent implements OnInit {
 
+  public userHeader:any;
+
   constructor() { }
 
   ngOnInit() {
+    this.userHeader = JSON.parse(localStorage.getItem('user_ses'));
+    console.log(this.userHeader)
   }
 
 }

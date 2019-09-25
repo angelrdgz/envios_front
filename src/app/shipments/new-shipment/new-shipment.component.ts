@@ -153,6 +153,7 @@ export class NewShipmentComponent implements OnInit {
   }
 
   onChange(deviceValue) {
+    console.log('Paquete', deviceValue)
     if (deviceValue != '') {
       this.getPackage(deviceValue)
     } else {
@@ -254,7 +255,7 @@ export class NewShipmentComponent implements OnInit {
     this._apiService.getPackages().subscribe(
       data => { this.packages = data.data },
       err => console.error(err),
-      () => ''
+      () => console.log(this.packages)
     );
   }
   getCountries() {

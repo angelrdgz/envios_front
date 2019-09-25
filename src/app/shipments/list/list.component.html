@@ -1,7 +1,7 @@
 <div class="card-body">
     <div class="row">
         <div class="col-sm-9">
-            <h5 class="card-title align-self-center">Guías</h5>
+            <h5 class="card-title align-self-center">Envíos</h5>
         </div>
         <div class="col-sm-3">
                 <a routerLink="/admin/shipments/new" routerLinkActive="active"
@@ -13,6 +13,7 @@
             <table class="table" [mfData]="shipments" #mf="mfDataTable" [mfRowsOnPage]="10">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Fecha</th>
                         <th scope="col">Origen</th>
                         <th scope="col">Destino</th>
@@ -23,6 +24,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let shipment of mf.data">
+                        <td>{{shipment.id}}</td>
                         <td>{{shipment.created_at | date:'medium' }}</td>
                         <td>{{shipment.origen.address+', '+shipment.origen.city+', '+shipment.origen.state}}</td>
                         <td>{{shipment.destination.address+', '+shipment.destination.city+', '+shipment.destination.state}}
@@ -41,7 +43,7 @@
                         </td>
                     </tr>
                     <tr *ngIf="shipments.length == 0">
-                        <td colspan="6" class="text-center">No se encontraron guías</td>
+                        <td colspan="7" class="text-center">No se encontraron guías</td>
                     </tr>
                 </tbody>
                 <!--<tfoot>

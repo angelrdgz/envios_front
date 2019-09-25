@@ -1,3 +1,5 @@
+@import "../../../variables.scss";
+
 .list-group{
     border-radius: 0;
 
@@ -24,6 +26,79 @@
     position:relative;
     margin-top: -8px;
 }
+
+.tab-content{
+    margin-top: 20px;
+}
+
+.card-blue{
+  background: $app-blue !important;
+  .card-body{
+    background: $app-blue !important;
+
+    .row-white{
+      background: #fff;
+      border-radius: 30px;
+      .btn-app{
+        margin-top: 5px;
+      }
+      input{
+        margin-top: 5px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.card-transparent {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    .card-body {
+      background: transparent;
+      border: 0;
+
+      .card{
+        background: rgba(255,255,255,0.6);
+        .card-header{
+            background: transparent;
+            color: $app-blue;
+            border-bottom: 0;
+        }
+          .card-body{
+            input, select, {
+                background: #fff;
+                height: 40px;
+                border: 0;
+                border-radius: 30px;
+        
+                &::-webkit-input-placeholder {
+                  color: $app-blue;
+                  font-size: 0.8em !important;
+                }
+                &:-moz-placeholder {
+                  color: $app-blue;
+                  font-size: 0.8em !important;
+                }
+                &::-moz-placeholder {
+                  color: $app-blue;
+                  font-size: 0.8em !important;
+                }
+                &:-ms-input-placeholder {
+                  color: $app-blue;
+                  font-size: 0.8em !important;
+                }
+              }
+          }
+      }
+  
+      h5 {
+        color: $app-blue !important;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    }
+  }
 
 .slider {
     position:absolute;
@@ -58,8 +133,20 @@ input:checked + .slider {
 }
 
 section{
-    background: red;
-    .nav-tabs{
-        background: #000;
+    .steps{
+        background: $app-gray;
+        width: 300px !important;
+        padding: 10px;
+        margin: 0 auto;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        .nav-item{
+            a{
+                border-radius: 50%;
+            }
+        }
     }
 }
