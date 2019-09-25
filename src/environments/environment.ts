@@ -1,20 +1,8 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 export const environment = {
   production: false,
   APIEndpoint: 'https://ship2go-api.herokuapp.com/api',
   srEnvioEndpoint: 'https://api-demo.srenvio.com/v1',
   srEnvioToken: 'Token token=HCjec5n0TQ2l68riyOMkPH8LkMb3bGRGVafEL5zBZlgt',
-
+  enviaEndpoint:'https://api-test.envia.com',
+  enviaToken:'0787bff628a46f4dab24024b4f52989a2e531ae043d5d57277e8ceb9d33d526b'
 };
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
