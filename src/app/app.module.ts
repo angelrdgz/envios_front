@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { ApiService } from './services/api.service';
+import { EnviaService } from './services/envia.service';
 import { ToastService } from './services/toast.service';
 
 import { AppComponent } from './app.component';
@@ -55,6 +56,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { ToastsContainer } from './toast-container/toast-container.component';
 import { DetailShipmentComponent } from './shipments/detail-shipment/detail-shipment.component';
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { PrivacyPoliticsComponent } from './privacy-politics/privacy-politics.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +97,8 @@ import { DetailShipmentComponent } from './shipments/detail-shipment/detail-ship
     InvoicesComponent,
     ToastsContainer,
     DetailShipmentComponent,
+    TermsAndConditionsComponent,
+    PrivacyPoliticsComponent,
   ],
   imports: [
     BrowserModule,
@@ -111,6 +116,7 @@ import { DetailShipmentComponent } from './shipments/detail-shipment/detail-ship
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     ApiService,
+    EnviaService,
     ToastService
   ],
   bootstrap: [AppComponent]

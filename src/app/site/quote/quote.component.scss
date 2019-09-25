@@ -1,18 +1,81 @@
-#about{
-    margin-top: 56px;
-    height: calc(100% - 200px);
+@import "../../../variables.scss";
+#about {
+  height: auto;
+  background: #b92b27; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1565c0, #b92b27); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #1565c0,
+    #b92b27
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  position: relative;
+
+  .row-white{
+    background: #fff;
+    border-radius: 30px;
+  }
+
+  .quote-logo{
+      width: 90px;
+      display: block;
+      margin: 20px auto;
+  }
+  .btn-app{
+    margin-top: 5px;
+  }
+
+  .list-group{
+      width: 100%;
+
+    .box-quote{
+        background: #fff;
+        border-radius: 30px;
+        height: auto;
+        width: 100%;
+        .carrier-logo{
+          width: 80%;
+          display: block;
+          margin: 10px auto;
+        }
+    }
+  }
+
+  input {
+    height: 50px;
+    border: 0;
+    border-radius: 25px;
+    color: $app-blue;
+    text-align: center;
+
+    &::-webkit-input-placeholder {
+      color: $app-blue;
+      font-size: 0.8em !important;
+    }
+    &:-moz-placeholder {
+      color: $app-blue;
+      font-size: 0.8em !important;
+    }
+    &::-moz-placeholder {
+      color: $app-blue;
+      font-size: 0.8em !important;
+    }
+    &:-ms-input-placeholder {
+      color: $app-blue;
+      font-size: 0.8em !important;
+    }
+  }
 }
 section {
-    padding: 150px 0;
-  }
-  .list-group-item {
-    margin: 5px 0;
+  padding: 150px 0;
+}
+/*.list-group-item {
+  margin: 5px 0;
 }
 .list-group-item:first-child {
-    border-top-right-radius: 0em;
-    border-top-left-radius: 0rem;
+  border-top-right-radius: 0em;
+  border-top-left-radius: 0rem;
 }
 .list-group-item:last-child {
-    border-bottom-right-radius: 0em;
-    border-bottom-left-radius: 0rem;
-}
+  border-bottom-right-radius: 0em;
+  border-bottom-left-radius: 0rem;
+}*/

@@ -3,57 +3,82 @@
         <div class="row">
             <div class="col-lg-10 mx-auto">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
+                        <h3 class="text-center">Cotizador</h3>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="exampleInputEmail1">Origen</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            [(ngModel)]="quote.origin.postalCode" placeholder="Código Postal">
+                    </div>
+                    <div class="form-group col-sm-4 text-center">
+                        <img src="assets/imgs/avionescotizador.png" class="quote-logo" alt="">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="exampleInputPassword1">Destino</label>
+                        <input type="text" class="form-control" [(ngModel)]="quote.destination.postalCode"
+                            id="exampleInputPassword1" placeholder="Código Postal">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm text-center">
+                        <span>Alto</span>
+                    </div>
+                    <div class="col-sm text-center">
+                        <span>Ancho</span>
+                    </div>
+                    <div class="col-sm text-center">
+                        <span>Fondo</span>
+                    </div>
+                    <div class="col-sm text-center">
+                        <span>Peso</span>
+                    </div>
+                    <div class="col-sm text-center">
+                    </div>
+                </div>
+                <div class="row row-white">
+                    <div class="col-sm">
+                        <input type="text" class="form-control" id="exampleInputEmail1"
+                            [(ngModel)]="quote.package.dimensions.height" aria-describedby="emailHelp" placeholder="">
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" class="form-control" id="exampleInputEmail1"
+                            [(ngModel)]="quote.package.dimensions.width" aria-describedby="emailHelp" placeholder="">
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" class="form-control" id="exampleInputEmail1"
+                            [(ngModel)]="quote.package.dimensions.length" aria-describedby="emailHelp" placeholder="">
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" class="form-control" id="exampleInputEmail1"
+                            [(ngModel)]="quote.package.weight" aria-describedby="emailHelp" placeholder="">
+                    </div>
+                    <div class="col-sm">
+                        <button type="submit" class="btn btn-block btn-rounded btn-app" (click)="getQuote()">Cotizar
+                            <i class="fas fa-circle-notch fa-spin" *ngIf="loading"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <small class="text-white">Peso volumetrico: {{volumetric}}</small>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="list-group" [@listAnimation]="rates.length">
+                    <div class="box-quote list-group-item" *ngFor="let rate of rates">
                         <div class="row">
-                            <div class="col-sm-12">
-                                <h3 class="text-center">Cotizador</h3>
+                            <div class="col-sm-2">
+                                <img src="assets/imgs/carriers/{{rate.carrier+'.png'}}" class="carrier-logo" alt="">
                             </div>
-                            <div class="form-group col-sm-5">
-                                <label for="exampleInputEmail1">Origen</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" [(ngModel)]="quote.zip_from" placeholder="Código Postal">
+                            <div class="col-sm-4">
+                                <h4 class="text-center">{{rate.deliveryEstimate}}</h4>
                             </div>
-                            <div class="form-group col-sm-2 text-center">
-                                <label for=""></label>
-                                <i class="fas fa-long-arrow-alt-right" style="font-size: 2.3em; margin-top: 0.7em;"></i>
-                            </div>
-                            <div class="form-group col-sm-5">
-                                <label for="exampleInputPassword1">Destino</label>
-                                <input type="text" class="form-control" [(ngModel)]="quote.zip_to" id="exampleInputPassword1"
-                                    placeholder="Código Postal">
-                            </div>
-                            <div class="form-group col-sm-3">
-                                <label for="exampleInputEmail1">Alto</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"  [(ngModel)]="quote.parcel.height" aria-describedby="emailHelp" placeholder="">
-                            </div>
-                            <div class="form-group col-sm-3">
-                                <label for="exampleInputPassword1">Ancho</label>
-                                <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="quote.parcel.width" placeholder="">
-                            </div>
-                            <div class="form-group col-sm-3">
-                                <label for="exampleInputPassword1">Fondo</label>
-                                <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="quote.parcel.length" placeholder="">
-                            </div>
-                            <div class="form-group col-sm-3">
-                                    <label for="exampleInputPassword1">Peso</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="quote.parcel.weight" placeholder="">
-                                </div>
-                            <div class="col-sm-12">
-                                    <small class="text-muted">Peso volumetrico: {{volumetric}}</small>
-                            </div>
-                            <div class="col-sm-6 offset-sm-3">
-                                <button type="submit" class="btn btn-block btn-outline-primary" (click)="getQuote()">Cotizar</button>
+                            <div class="col-sm-4">
+                                <h4 class="text-center">{{rate.totalPrice | currency}} {{rate.currency}}</h4>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <ul class="list-group" [@listAnimation]="rates.length">
-                            <li class="list-group-item" *ngFor="let rate of rates">{{rate.provider}} {{rate.service_level_name}} 
-                                <small class="float-right">
-                                    <b>{{rate.amount_local | currency}} {{rate.currency_local}}</b>
-                                </small>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>

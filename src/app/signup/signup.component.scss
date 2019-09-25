@@ -10,6 +10,13 @@
   border-right-color: $app-red !important;
 }
 
+.swal2-popup {
+ background: $app-blue;
+ #swal2-content{
+   color: #fff !important;
+ }
+}
+
 .content {
   display: flex;
   align-items: flex-start;
