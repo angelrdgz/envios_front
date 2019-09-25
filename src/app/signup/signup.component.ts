@@ -33,17 +33,25 @@ export class SignupComponent implements OnInit {
             lastname: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
+
     }
 
     onSubmit(){
-
+      
     }
 
     register(){
       console.log(this.user)
       this.loading = true;
     this._apiService.register(this.user).subscribe(
-      data => { this.router.navigate(['admin/shipments']) },
+      data => { 
+        Swal.fire({
+          title: 'Registro Exitoso',
+          text: 'Hemos enviado un correo de confirmación a tu cuenta',
+          type: 'success',
+        })
+        //this.router.navigate(['admin/shipments']) 
+      },
       err => {
         switch(err.status) { 
           case 401: { 

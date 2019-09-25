@@ -35,6 +35,8 @@ import { ListLocationsComponent } from './locations/list-locations/list-location
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileComponent } from './profile/profile.component';
 import { InvoicesComponent } from './invoices/invoices.component';
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { PrivacyPoliticsComponent } from './privacy-politics/privacy-politics.component';
 
 
 
@@ -147,6 +149,16 @@ const routes: Routes = [
       {
         path: 'quote',
         component: QuoteComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'terms-and-conditions',
+        component: TermsAndConditionsComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'privacy-politics',
+        component: PrivacyPoliticsComponent,
         pathMatch: 'full',
       },
 
