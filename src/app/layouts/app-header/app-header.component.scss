@@ -1,12 +1,14 @@
 @import "../../../variables.scss";
 .card{
+    position: relative;
+    z-index: 20;
     background: transparent;
     border: 0;
     filter:drop-shadow(2px 2px 5px rgba(0,0,0,.5));
 
     .navbar{
         position: relative;
-        z-index: 2;
+        z-index: 20000;
         min-width: 0;
         word-wrap: break-word;
         background-clip: border-box;

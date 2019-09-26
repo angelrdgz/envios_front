@@ -9,7 +9,7 @@ import Swal from 'sweetalert2'
 })
 export class ListComponent implements OnInit {
 
-  public shipments;
+  public shipments:any = [];
 
   constructor(private _apiService: ApiService) { }
 

@@ -14,7 +14,7 @@ export class NewRechargeComponent implements OnInit {
   cardNumber: string = '4075595716483764';
   bin: string = '';
   doSubmit: boolean = false;
-  public card: any = { cardNumber: '4075595716483764', email: 'angelrodriguez@ucol.mx', owner: 'Angel David Garcia Rodriguez', token: '', paymentMethod: '', }
+  public card: any = { cardNumber: '', email: '', owner: '', token: '', paymentMethod: '', }
 
 
   constructor(private _apiService: ApiService, ) {
@@ -27,6 +27,24 @@ export class NewRechargeComponent implements OnInit {
   }, this.setPaymentMethodInfo);*/
   }
 
+  cc_format(value) {
+    var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
+    var matches = v.match(/\d{4,16}/g);
+    var match = matches && matches[0] || ''
+    var parts = []
+    var len = match.length
+
+    for (let i=0; i<len; i+=4) {
+        parts.push(match.substring(i, i+4))
+    }
+
+    if (parts.length) {
+        return parts.join(' ')
+    } else {
+        return value
+    }
+}
+
   getBin() {
     return this.cardNumber.substring(0, 6);
   }
@@ -34,6 +52,21 @@ export class NewRechargeComponent implements OnInit {
   guessingPaymentMethod(event) {
     this.bin = this.getBin();
     if (event.type == "keyup") {
+      var v = this.cardNumber.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
+      var matches = v.match(/\d{4,16}/g);
+      var match = matches && matches[0] || ''
+      var parts = []
+      var len=match.length
+
+      for (var i=0;  i < len; i+=4) {
+          parts.push(match.substring(i, i+4))
+      }
+
+      if (parts.length) {
+        this.cardNumber = parts.join(' ')
+      } else {
+        this.cardNumber = this.cardNumber
+      }
       if (this.bin.length >= 6) {
         Mercadopago.getPaymentMethod({
           "bin": this.bin

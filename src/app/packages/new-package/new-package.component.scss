@@ -1,0 +1,62 @@
+@import "../../../variables.scss";
+.card-blue{
+    background: $app-blue !important;
+    border-radius:30px !important;
+    
+    .card-body{
+      background: $app-blue !important;  
+      border-radius:30px !important;
+
+      .selectWrapper{
+        border-radius:30px;
+        display:inline-block;
+        overflow:hidden;
+        background:#cccccc;
+        border:1px solid #cccccc;
+        width: 100%;
+
+        select{
+            border:0px;
+            outline:none;
+            margin:0;
+          }
+      }
+
+      input, select{
+        margin-top: 5px;
+        border: 0;
+        height: 50px;
+        border-radius: 30px !important;
+        text-align: center;
+
+        .option{
+            color: $app-blue;
+        }
+
+        &::-webkit-input-placeholder {
+            color: $app-blue;
+            font-size: 0.8em !important;
+          }
+          &:-moz-placeholder {
+            color: $app-blue;
+            font-size: 0.8em !important;
+          }
+          &::-moz-placeholder {
+            color: $app-blue;
+            font-size: 0.8em !important;
+          }
+          &:-ms-input-placeholder {
+            color: $app-blue;
+            font-size: 0.8em !important;
+          }
+      }
+
+      .row{
+        background: #fff;
+        border-radius: 30px;
+        .btn-app{
+          margin-top: 5px;
+        }
+      }
+    }
+  }

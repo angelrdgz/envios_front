@@ -59,6 +59,7 @@ import { DetailShipmentComponent } from './shipments/detail-shipment/detail-ship
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { PrivacyPoliticsComponent } from './privacy-politics/privacy-politics.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

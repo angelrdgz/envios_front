@@ -8,12 +8,12 @@ import { ApiService } from '../services/api.service';
 })
 export class InvoicesComponent implements OnInit {
 
-  invoices:any;
+  public invoices:any = [];
 
   constructor(private _apiService: ApiService) { }
 
   ngOnInit() {
-    this.getInvoices();
+    //this.getInvoices();
   }
 
   getInvoices(){
