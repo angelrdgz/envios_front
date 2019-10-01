@@ -50,6 +50,9 @@ export class NewShipmentComponent implements OnInit {
   public origenNeights: any;
   public destinationNeights: any;
 
+  public loading:boolean = false
+  public volumetric:number = 0
+
   public quote:any;
 
   public qoute:any = {
@@ -425,6 +428,10 @@ export class NewShipmentComponent implements OnInit {
       }
     );
 
+  }
+
+  getQuote(){
+    console.log('Hola')
   }
 
   selectParcel(id, price, carrier, i) {
