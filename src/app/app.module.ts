@@ -23,7 +23,6 @@ import { SiteBodyComponent } from './layouts/site-body/site-body.component';
 import { SiteFooterComponent } from './layouts/site-footer/site-footer.component';
 import { AppHeaderComponent } from './layouts/app-header/app-header.component';
 import { AppBodyComponent } from './layouts/app-body/app-body.component';
-import { AppFooterComponent } from './layouts/app-footer/app-footer.component';
 
 import { HomeComponent } from './site/home/home.component';
 import { QuoteComponent } from './site/quote/quote.component';
