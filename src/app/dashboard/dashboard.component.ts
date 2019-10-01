@@ -115,10 +115,102 @@ export class DashboardComponent implements OnInit {
    };
 
    users: Array<any> = [];
+   myDoughnutChart:any = []
+   myDoughnutChart2:any = []
+   myDoughnutChart3:any = []
 
    constructor() { }
 
    ngOnInit() {
+      this.myDoughnutChart = new Chart('DoughnutChart', {
+         type: 'doughnut',
+         data: {
+            datasets: [{
+                data: [35, 10],
+                backgroundColor:[ '#EC1C24', '#ccc'],
+            }],       
+        
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: [
+                'Entregadas',
+                'Faltantes',
+            ]
+        },
+        options: {
+         responsive: true,
+         maintainAspectRatio: false,
+         legend: {
+            display: false
+         },
+         scales: {
+             yAxes: [{
+                 ticks: {
+                     beginAtZero:true
+                 }
+             }]
+         }
+     }
+     });
+
+     this.myDoughnutChart = new Chart('DoughnutChart2', {
+      type: 'doughnut',
+      data: {
+         datasets: [{
+             data: [10, 20],
+             backgroundColor: ['#2B388F', '#ccc'],
+         }],
+     
+         // These labels appear in the legend and in the tooltips when hovering different arcs
+         labels: [
+             'Canceladas',
+             'Total',
+         ]
+     },
+     options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      legend: {
+         display: false
+      },
+      scales: {
+          yAxes: [{
+              ticks: {
+                  beginAtZero:true
+              }
+          }]
+      }
+  }
+  });
+
+  this.myDoughnutChart = new Chart('DoughnutChart3', {
+   type: 'doughnut',
+   data: {
+      datasets: [{
+          data: [30,15],
+          backgroundColor:['#4D4D4D', '#CCC']
+      }],
+  
+      // These labels appear in the legend and in the tooltips when hovering different arcs
+      labels: [
+          'En Proceso',
+          'Total'
+      ]
+  },
+  options: {
+   responsive: true,
+   maintainAspectRatio: false,
+   legend: {
+      display: false
+   },
+   scales: {
+       yAxes: [{
+           ticks: {
+               beginAtZero:true
+           }
+       }]
+   }
+}
+});
    }
 
    public generateFake(count: number): Array<number> {

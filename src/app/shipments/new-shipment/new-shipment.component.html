@@ -98,9 +98,7 @@
                                                                     [ngModelOptions]="{standalone: true}"
                                                                     [(ngModel)]="shipment.address_from.country"
                                                                     class="form-control">
-                                                                    <option value="{{country.code}}"
-                                                                        *ngFor="let country of countries">
-                                                                        {{country.name}}</option>
+                                                                    <option value="country.code" *ngFor="let country of countries">{{country.name}}</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group col-md-6">
@@ -307,8 +305,7 @@
                                                                     <label for="inputEmail4">Mis paquetes</label>
                                                                     <select name="" (change)="onChange($event.target.value)" id="" class="form-control">
                                                                         <option value="">Seleccione un Paquete</option>
-                                                                        <option *ngFor="let package of packages; let i = index" [ngValue]="package" >{{packages.name}}
-                                                                        </option>
+                                                                        <option *ngFor="let package of packages" value="{{package.id}}">{{package.name}}</option>
                                                                     </select>
                                                                 </div>
                                                     </div>
@@ -316,25 +313,29 @@
                                                         <div class="col-sm">
                                                             <input type="text" class="form-control"
                                                                 id="exampleInputEmail1"
-                                                                [(ngModel)]="quote.package.dimensions.height"
+                                                                [(ngModel)]="quote"
+                                                                [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Alto (cm)">
                                                         </div>
                                                         <div class="col-sm">
                                                             <input type="text" class="form-control"
                                                                 id="exampleInputEmail1"
-                                                                [(ngModel)]="quote.package.dimensions.width"
+                                                                [(ngModel)]="quote"
+                                                                [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Ancho (cm)">
                                                         </div>
                                                         <div class="col-sm">
                                                             <input type="text" class="form-control"
                                                                 id="exampleInputEmail1"
-                                                                [(ngModel)]="quote.package.dimensions.length"
+                                                                [(ngModel)]="quote"
+                                                                [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Largo (cm)">
                                                         </div>
                                                         <div class="col-sm">
                                                             <input type="text" class="form-control"
                                                                 id="exampleInputEmail1"
-                                                                [(ngModel)]="quote.package.weight"
+                                                                [(ngModel)]="quote"
+                                                                [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Peso (kg)">
                                                         </div>
                                                         <div class="col-sm">

@@ -38,16 +38,28 @@ declare var $: any;
 })
 export class NewShipmentComponent implements OnInit {
 
-  public packages: any;
-  public package: any = { weight: 0, height: 0, width: 0, length: 0 }
+  public packages:any;
+  public pack: any;
+  public packagex: any = { weight: 0, height: 0, width: 0, length: 0 }
   public origenes: any;
   public destinations: any;
   public rates: any
-  public countries: any
+  public countries:any
   public index: number = -1
   public label: any = { rate_id: 0, label_format: "pdf", shipment_id: 0, price: 0, carrier: "" };
   public origenNeights: any;
   public destinationNeights: any;
+
+  public qoute:any = {
+    package:{
+      dimensions:{
+        height:0,
+        width:0,
+        length:0
+      },
+      weight:0,
+    }
+  }
 
   public shipment: any = {
     address_from: {
@@ -260,7 +272,10 @@ export class NewShipmentComponent implements OnInit {
   }
   getCountries() {
     this._apiService.getCountries().subscribe(
-      data => { this.countries = data.data },
+      data => { 
+        console.log(data)
+        this.countries = data.data
+      },
       err => console.error(err),
       () => ''
     );
@@ -276,7 +291,7 @@ export class NewShipmentComponent implements OnInit {
         this.shipment.address_to.contents = data.data.contents
       },
       err => console.error(err),
-      () => console.log(this.package)
+      () => console.log(this.packagex)
     );
   }
 

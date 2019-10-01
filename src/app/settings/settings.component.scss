@@ -1,6 +1,6 @@
 @import "../../variables.scss";
 #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
-    color: $app-blue;
+    color: #fff;
     background-color: transparent;
     border-color: transparent transparent $app-blue;
     border-bottom: 2px solid !important;
@@ -21,4 +21,76 @@
     border-top-right-radius: .25rem;
     color: #eee;
     font-size: 20px;
+}
+.card-blue {
+  background: $app-blue !important;
+  border-radius: 30px !important;
+
+  .card-body {
+    background: $app-blue !important;
+    border-radius: 30px !important;
+
+    .card-icon {
+      width: 90%;
+      display: block;
+      margin: 20px auto;
+      -webkit-filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);
+      filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);
+    }
+
+    .selectWrapper {
+      border-radius: 30px;
+      display: inline-block;
+      overflow: hidden;
+      background: #cccccc;
+      border: 1px solid #cccccc;
+      width: 100%;
+
+      select {
+        border: 0px;
+        outline: none;
+        margin: 0;
+      }
+    }
+
+    div[class*="col-"] {
+      margin: 10px auto;
+    }
+
+    input,
+    select {
+      margin-top: 5px;
+      border: 0;
+      height: 50px;
+      border-radius: 30px !important;
+
+      .option {
+        color: $app-blue;
+      }
+
+      &::-webkit-input-placeholder {
+        color: $app-blue;
+        font-size: 0.8em !important;
+      }
+      &:-moz-placeholder {
+        color: $app-blue;
+        font-size: 0.8em !important;
+      }
+      &::-moz-placeholder {
+        color: $app-blue;
+        font-size: 0.8em !important;
+      }
+      &:-ms-input-placeholder {
+        color: $app-blue;
+        font-size: 0.8em !important;
+      }
+    }
+
+    .row {
+      border-radius: 30px;
+      .btn-app {
+        margin-top: 5px;
+      }
+    }
+  }
 }

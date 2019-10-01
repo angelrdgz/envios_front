@@ -1,7 +1,18 @@
 <div class="card-body">
-    <h5 class="card-title">Facturas</h5>
     <div class="card">
         <div class="card-body">
+            <div class="row">
+                <div class="col-sm-9">
+                    <h5 class="card-title title align-self-center">Facturas</h5>
+                </div>
+                <div class="col-sm-3">
+                    <div class="selectWrapper">
+                        <select name="" (change)="getInvoices($event.target.value)" [ngModel]="currentMonth" id="" class="form-control">
+                            <option *ngFor="let month of months" value="{{month.id}}">{{month.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
             <table class="table">
                 <thead>
                     <tr>
@@ -17,9 +28,15 @@
                         <td>{{invoice.created_at | date:'dd/MM/y h:mm a'}}</td>
                         <td>{{invoice.status}}</td>
                         <td>
-                            <a href="{{invoice.token}}" target="_blank" class="btn btn-icon btn-rounded btn-outline-success" placement="top" ngbTooltip="Descarga PDF"><i class="far fa-file-pdf"></i></a>
-                            <a href="{{invoice.token}}" target="_blank" class="btn btn-icon btn-rounded btn-outline-success" placement="top" ngbTooltip="Descarga XML"><i class="far fa-file-excel"></i></a>
-                            <button type="button" (click)="cancelInvoice(invoice.id)" class="btn btn-icon btn-rounded btn-outline-danger" placement="top" ngbTooltip="Cancelar"><i class="fas fa-trash"></i></button>
+                            <button (click)="downloadInvoice(invoice.id, 'pdf')"
+                                class="btn btn-icon btn-rounded btn-success" placement="top"
+                                ngbTooltip="Descarga PDF"><i class="far fa-file-pdf"></i></button>
+                            <button (click)="downloadInvoice(invoice.id, 'xml')"
+                                class="btn btn-icon btn-rounded btn-success" placement="top"
+                                ngbTooltip="Descarga XML"><i class="far fa-file-excel"></i></button>
+                            <button type="button" (click)="cancelInvoice(invoice.id)"
+                                class="btn btn-icon btn-rounded btn-danger" placement="top" ngbTooltip="Cancelar"><i
+                                    class="fas fa-times"></i></button>
                         </td>
                     </tr>
                     <tr *ngIf="invoices.length == 0" class="text-center">

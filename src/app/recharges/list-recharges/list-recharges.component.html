@@ -30,7 +30,11 @@
                         <td>{{payment.total | currency}}</td>
                         <td>{{payment.payment_method}}</td>
                         <td>{{payment.status}}</td>
-                        <td></td>
+                        <td>
+                                <button *ngIf="payment.status !== 'invoiced'" (click)="createInvoice(payment.id)" placement="top" ngbTooltip="Generar Factura" class="btn btn-icon btn-rounded btn-info">
+                                    <i class="fas fa-file-code"></i>
+                                </button>
+                        </td>
                     </tr>
                     <tr *ngIf="payments.length == 0">
                         <td colspan="6">No hay recargas generadas</td>

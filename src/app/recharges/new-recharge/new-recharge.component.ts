@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 
 declare var Mercadopago: any;
 const doSubmit = false;
+
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-new-recharge',
@@ -14,10 +17,14 @@ export class NewRechargeComponent implements OnInit {
   cardNumber: string = '4075595716483764';
   bin: string = '';
   doSubmit: boolean = false;
-  public card: any = { cardNumber: '', email: '', owner: '', token: '', paymentMethod: '', }
+  public card: any = { cardNumber: '4075595716483764', email: '', owner: '', token: '', paymentMethod: '', }
 
 
-  constructor(private _apiService: ApiService, ) {
+  constructor(
+    private _apiService: ApiService,
+    private router: Router,
+    private route: ActivatedRoute
+    ) {
     Mercadopago.setPublishableKey("TEST-b235f191-7f76-4a6c-90f6-809fed3623d3");
   }
 
@@ -125,7 +132,15 @@ export class NewRechargeComponent implements OnInit {
    }
    console.log(dataForm);
     this._apiService.makePayment(dataForm).subscribe(
-      data => { console.log(data) },
+      data => { console.log(data)
+        Swal.fire({
+          title: 'Raecarga Exitoso',
+          text: 'Hemos completado tu recarga correctamente',
+          type: 'success',
+        }).then((result) => {
+          this.router.navigate(['admin/recharges'])
+        })
+      },
       err => {
         console.log(err)
       },

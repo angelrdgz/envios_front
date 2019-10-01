@@ -14,6 +14,12 @@ interface Res {
   data:any;
 }
 
+interface Invoice{
+  status: string;
+  data:any;
+  message:any;
+}
+
 interface Shipment {
   rates: string;
   shipment_id:number;
@@ -59,6 +65,14 @@ export class ApiService {
     return this.http.get<User>(ApiEndpoint+'/auth/active-account/'+hash);
   }
 
+  businessInfo(data):Observable<Res>{
+    return this.http.post<Res>(ApiEndpoint+'/auth/business-info', data);
+  }
+
+  getBusinessInfo():Observable<Res>{
+    return this.http.get<Res>(ApiEndpoint+'/auth/business-info');
+  }
+
   getDashboard(){
     return this.http.get<Res>(ApiEndpoint+'/dashboard ');
   }
@@ -95,8 +109,20 @@ export class ApiService {
     return this.http.post<Res>(ApiEndpoint+'/recharges', data);
   }
 
-  getInvoices(){
-    return this.http.get<Res>(ApiEndpoint+'/invoices');
+  createInvoice(id){
+    return this.http.post<Res>(ApiEndpoint+'/recharges/'+id+'/invoice', {});
+  }
+
+  getInvoices(month){
+    return this.http.get<Res>(ApiEndpoint+'/invoices?month='+month);
+  }
+
+  downloadInvoice(id, type){
+    return this.http.get<Res>(ApiEndpoint+'/invoices/'+id+'?type='+type);
+  }
+
+  cancelInvoice(id){
+    return this.http.delete<Invoice>(ApiEndpoint+'/invoices/'+id);
   }
 
   getPackages() {

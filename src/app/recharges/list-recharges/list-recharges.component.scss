@@ -1,4 +1,10 @@
 @import "../../../variables.scss";
+.swal2-popup {
+  background: $app-blue !important;
+  #swal2-content{
+    color: #fff !important;
+  }
+ }
 .card {
     padding: 0;
     background: transparent;

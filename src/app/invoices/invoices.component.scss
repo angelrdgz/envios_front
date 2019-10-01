@@ -8,6 +8,30 @@
       background: transparent;
       border: 0;
 
+      .selectWrapper{
+        border-radius:30px;
+        display:inline-block;
+        overflow:hidden;
+        background:#cccccc;
+        border:1px solid #cccccc;
+        width: 100%;
+        color: $app-blue;
+
+        select{
+            border:0px;
+            outline:none;
+            margin:0;
+            color: $app-blue;
+            font-weight: lighter !important;
+            text-align: center;
+
+            option{
+              font-weight: lighter !important;
+              text-align: center;
+            }
+          }
+      }
+
       .table{
         tr{
           th,td{

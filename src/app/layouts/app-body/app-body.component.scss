@@ -4,4 +4,14 @@ app-body{
     height: 100%;
     position: relative;
     z-index: 2;
+
+    .loader{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1000;
+        background: $app-blue;
+        top: 0;
+        left: 0;
+    }
 }

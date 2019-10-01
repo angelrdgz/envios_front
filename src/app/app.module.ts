@@ -15,6 +15,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { LoaderInterceptor } from './_helpers/loader.interceptor';
+import { LoaderService } from './services/loader.service';
 
 import { SiteHeaderComponent } from './layouts/site-header/site-header.component';
 import { SiteBodyComponent } from './layouts/site-body/site-body.component';
@@ -58,6 +60,7 @@ import { ToastsContainer } from './toast-container/toast-container.component';
 import { DetailShipmentComponent } from './shipments/detail-shipment/detail-shipment.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { PrivacyPoliticsComponent } from './privacy-politics/privacy-politics.component';
+import { AppLoaderComponent } from './layouts/app-loader/app-loader.component';
 
 
 @NgModule({
@@ -69,7 +72,7 @@ import { PrivacyPoliticsComponent } from './privacy-politics/privacy-politics.co
     SiteFooterComponent,
     AppHeaderComponent,
     AppBodyComponent,
-    AppFooterComponent,
+    AppLoaderComponent,
     HomeComponent,
     QuoteComponent,
     ListComponent,
@@ -100,6 +103,7 @@ import { PrivacyPoliticsComponent } from './privacy-politics/privacy-politics.co
     DetailShipmentComponent,
     TermsAndConditionsComponent,
     PrivacyPoliticsComponent,
+    AppLoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,9 +120,11 @@ import { PrivacyPoliticsComponent } from './privacy-politics/privacy-politics.co
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     ApiService,
     EnviaService,
-    ToastService
+    ToastService,
+    LoaderService
   ],
   bootstrap: [AppComponent]
 })
