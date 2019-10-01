@@ -50,6 +50,8 @@ export class NewShipmentComponent implements OnInit {
   public origenNeights: any;
   public destinationNeights: any;
 
+  public quote:any;
+
   public qoute:any = {
     package:{
       dimensions:{
