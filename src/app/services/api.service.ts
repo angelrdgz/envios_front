@@ -160,4 +160,12 @@ export class ApiService {
   getCountries(){
     return this.http.get<Res>(ApiEndpoint+'/countries');
   }
+
+  getStates(code){
+    return this.http.get<Res>(ApiEndpoint+'/states?country_code='+code);
+  }
+
+  getCarriers(code){
+    return this.http.get<Res>(ApiEndpoint+'/carriers?country_code='+code);
+  }
 }
