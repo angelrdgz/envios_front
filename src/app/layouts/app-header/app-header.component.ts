@@ -8,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class AppHeaderComponent implements OnInit {
 
   public userHeader:any;
+  public balance:number = 0
 
   constructor() { }
 
   ngOnInit() {
     this.userHeader = JSON.parse(localStorage.getItem('user_ses'));
-    console.log(this.userHeader)
+    this.balance = this.userHeader.business == 0 ? this.userHeader.balance:this.userHeader.company.balance
   }
 
 }

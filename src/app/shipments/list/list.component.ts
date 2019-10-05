@@ -37,13 +37,25 @@ export class ListComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this._apiService.cancelShipment(id).subscribe(
-          data => { console.log(data)},
+          data => { 
+            console.log(data)
+            if(data.data.meta == 'error'){
+              Swal.fire(
+                'Error',
+                data.data.error.message,
+                'error'
+              )
+            }else{
+              Swal.fire(
+                'Éxito',
+                'Su guía ha sido cancelada correctamente.',
+                'success'
+              )
+
+            }
+          },
           err => console.error(err),
-          () => Swal.fire(
-            'Éxito',
-            'Su guía ha sido cancelada correctamente.',
-            'success'
-          )
+          () => ""
         );
         
       // For more information about handling dismissals please visit

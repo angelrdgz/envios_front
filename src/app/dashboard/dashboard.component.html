@@ -1,37 +1,46 @@
 <div class="card-body">
-    <h5 class="card-title">Dashboard</h5>
     <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-9">
+            <h5 class="card-title title align-self-center">Dashboard</h5>
+        </div>
+        <div class="col-sm-3">
+            <div class="selectWrapper">
+                <select name="" (change)="getDashboard($event.target.value)" [ngModel]="currentMonth" id=""
+                    class="form-control">
+                    <option *ngFor="let month of months" value="{{month.id}}">{{month.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
             <div class="row">
-                <div class="col-sm">
-                        <canvas style="width:100%;" id="DoughnutChart"></canvas>
+                <div class="col-sm-12 text-blue">
+                    Estatus de Guías
                 </div>
                 <div class="col-sm">
-                        <canvas id="DoughnutChart2"></canvas>
-                </div>
-                <div class="col-sm">
-                        <canvas id="DoughnutChart3"></canvas>
+                    <canvas id="DoughnutChart"></canvas>
                 </div>
             </div>
         </div>
         <div class="col-sm-5">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12 text-blue">
                     Monitoreo Interno
                 </div>
                 <div class="col-sm">
                     <img class="monitor-icon" src="assets/imgs/icono_entregados.png" alt="">
-                    <h5 class="text-center">476</h5>
+                    <h5 class="text-center">{{data.totalDeliveied}}</h5>
                     <h6 class="text-center">Entregados</h6>
                 </div>
                 <div class="col-sm">
                     <img class="monitor-icon" src="assets/imgs/icono_recargas.png" alt="">
-                    <h5 class="text-center">1240</h5>
+                    <h5 class="text-center">{{data.totalRecharges}}</h5>
                     <h6 class="text-center">Recargas</h6>
                 </div>
                 <div class="col-sm">
-                    <img class="monitor-icon" src="assets/imgs/icono_facturacion.png" alt="">
-                    <h5 class="text-center">476</h5>
+                    <img class="monitor-icon" src="assets/imgs/invoice.png" alt="">
+                    <h5 class="text-center">{{data.totalInvoices}}</h5>
                     <h6 class="text-center">Facturas</h6>
                 </div>
             </div>
@@ -42,15 +51,15 @@
         <div class="col-sm-7">
             <div class="card">
                 <div class="card-body">
-                        <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
+                    <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
                         style="width: 100%; height: 400px; display: block;">
-                    </highcharts-chart>                    
+                    </highcharts-chart>
                 </div>
             </div>
         </div>
         <div class="col-sm-5">
             <div class="card">
-                <div class="card-body">                    
+                <div class="card-body">
                     <highcharts-chart [Highcharts]="Highcharts" [options]="pieChartOptions"
                         style="width: 100%; height: 400px; display: block;">
                     </highcharts-chart>

@@ -120,12 +120,12 @@
                                                                     placeholder="Av. Empresarios #200">
                                                             </div>
                                                             <div class="form-group col-md-3">
-                                                                    <label for="inputEmail4">Número</label>
-                                                                    <input type="text" class="form-control" id="inputEmail4"
-                                                                        [ngModelOptions]="{standalone: true}"
-                                                                        [(ngModel)]="shipment.origin.number"
-                                                                        placeholder="123">
-                                                                </div>
+                                                                <label for="inputEmail4">Número</label>
+                                                                <input type="text" class="form-control" id="inputEmail4"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    [(ngModel)]="shipment.origin.number"
+                                                                    placeholder="123">
+                                                            </div>
                                                             <div class="form-group col-md-6">
                                                                 <label for="inputAddress">Colonia</label>
                                                                 <div class="selectWrapper">
@@ -163,7 +163,7 @@
                                                                 <input type="text" class="form-control"
                                                                     id="inputPassword4"
                                                                     [ngModelOptions]="{standalone: true}"
-                                                                    [(ngModel)]="shipment.origin.reference"
+                                                                    [(ngModel)]="extraInfo.origen.reference"
                                                                     placeholder="">
                                                             </div>
                                                         </div>
@@ -280,21 +280,21 @@
                                                         <div class="form-group col-md-6">
                                                             <label for="inputAddress">Estado</label>
                                                             <div class="selectWrapper">
-                                                                    <select name="" id=""
-                                                                        [ngModelOptions]="{standalone: true}"
-                                                                        [(ngModel)]="shipment.destination.state"
-                                                                        class="form-control">
-                                                                        <option value="{{state.code_2_digits}}"
-                                                                            *ngFor="let state of statesDestination">
-                                                                            {{state.name}}</option>
-                                                                    </select>
-                                                                </div>
+                                                                <select name="" id=""
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    [(ngModel)]="shipment.destination.state"
+                                                                    class="form-control">
+                                                                    <option value="{{state.code_2_digits}}"
+                                                                        *ngFor="let state of statesDestination">
+                                                                        {{state.name}}</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label for="inputPassword4">Referencia</label>
                                                             <input type="text" class="form-control" id="inputPassword4"
                                                                 [ngModelOptions]="{standalone: true}"
-                                                                [(ngModel)]="shipment.destination.reference"
+                                                                [(ngModel)]="extraInfo.destination.reference"
                                                                 placeholder="">
                                                         </div>
                                                     </div>
@@ -329,14 +329,16 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-3">
-                                                                <input type="text" class="form-control"
-                                                                id="exampleInputEmail1" [(ngModel)]="shipment.package.content"
+                                                            <input type="text" class="form-control"
+                                                                id="exampleInputEmail1"
+                                                                [(ngModel)]="shipment.package.content"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Contendio">
                                                         </div>
                                                         <div class="form-group col-md-3">
-                                                                <input type="text" class="form-control"
-                                                                id="exampleInputEmail1" [(ngModel)]="shipment.package.insurance"
+                                                            <input type="text" class="form-control"
+                                                                id="exampleInputEmail1"
+                                                                [(ngModel)]="shipment.package.insurance"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Seguro">
                                                         </div>
@@ -344,25 +346,29 @@
                                                     <div class="row">
                                                         <div class="col-sm">
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputEmail1" [(ngModel)]="shipment.package.dimensions.height"
+                                                                id="exampleInputEmail1"
+                                                                [(ngModel)]="shipment.package.dimensions.height"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Alto (cm)">
                                                         </div>
                                                         <div class="col-sm">
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputEmail1" [(ngModel)]="shipment.package.dimensions.width"
+                                                                id="exampleInputEmail1"
+                                                                [(ngModel)]="shipment.package.dimensions.width"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Ancho (cm)">
                                                         </div>
                                                         <div class="col-sm">
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputEmail1" [(ngModel)]="shipment.package.dimensions.length"
+                                                                id="exampleInputEmail1"
+                                                                [(ngModel)]="shipment.package.dimensions.length"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Largo (cm)">
                                                         </div>
                                                         <div class="col-sm">
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputEmail1" [(ngModel)]="shipment.package.weight"
+                                                                id="exampleInputEmail1"
+                                                                [(ngModel)]="shipment.package.weight"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Peso (kg)">
                                                         </div>
@@ -381,38 +387,45 @@
                                                                 {{volumetric}}</small>
                                                         </div>
                                                     </div>
-                                                    <div class="row" *ngIf="rates">
+                                                    <div class="row divider" *ngIf="rates">
                                                         <div class="col-sm-12">
-                                                            <div class="card">
-                                                                <div class="card-header">
-                                                                    Paqueterias
-                                                                </div>
-                                                                <div class="card-body">
-                                                                    <ul class="list-group"
-                                                                        [@listAnimation]="rates.length">
-                                                                        <li class="list-group-item"
-                                                                            [ngClass]="{selected: index == i}"
-                                                                            (click)="selectParcel(rate.id, rate.attributes.total_pricing, rate.attributes.provider, i)"
-                                                                            *ngFor="let rate of rates; let i = index">
-                                                                            {{rate.attributes.provider}}
-                                                                            {{rate.attributes.service_level_name}}
-                                                                            <small class="float-right">
-                                                                                <b>{{rate.attributes.total_pricing | currency}}
-                                                                                    {{rate.attributes.currency_local}}</b>
-                                                                            </small>
-                                                                        </li>
-                                                                    </ul>
-                                                                    <button class="btn btn-success" *ngIf="rates && 1"
-                                                                        [disabled]="loadingShipment"
-                                                                        (click)="createLabel()">
-                                                                        Generar Guía
-                                                                        <i class="fas fa-circle-notch fa-spin"
-                                                                            *ngIf="loadingShipment"></i>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
+                                                                <hr>
+                                                                <h5 class="text-center text-white">Selecciona una paquetería</h5>
                                                         </div>
                                                     </div>
+                                                    <div class="row" *ngIf="rates">
+                                                        <div class="col-sm-12">
+                                                                <div class="list-group"  [@listAnimation]="rates.length">
+                                                                        <div class="box-quote list-group-item" (click)="selectParcel(r.carrier, r.service, r.totalPrice, i)" *ngFor="let r of rates; let i = index;">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-3">
+                                                                                    <img src="assets/imgs/carriers/{{r.carrier+'.png'}}" class="carrier-logo" alt="">
+                                                                                </div>
+                                                                                <div class="col-sm-3">
+                                                                                    <h6 class="text-center">{{r.carrier+' '+r.service}}</h6>
+                                                                                </div>
+                                                                                <div class="col-sm-3">
+                                                                                    <h6 class="text-center">{{r.deliveryEstimate}}</h6>
+                                                                                </div>
+                                                                                <div class="col-sm-3">
+                                                                                    <h6 class="text-center">{{r.totalPrice | currency}} {{r.currency}}</h6>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-4 offser-sm-4">
+                                                                <button class="btn btn-app-red btn-block btn-rounded" *ngIf="this.shipment.shipment.carrier != ''"
+                                                                [disabled]="loadingShipment" (click)="createLabel()">
+                                                                Generar Guía
+                                                                <i class="fas fa-circle-notch fa-spin"
+                                                                    *ngIf="loadingShipment"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>                                                   
+                                                       
 
                                                 </div>
                                             </div>

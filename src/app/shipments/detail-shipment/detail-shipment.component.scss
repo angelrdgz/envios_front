@@ -1,3 +1,73 @@
+@import "../../../variables.scss";
+.card-transparent {
+    background: rgba(255,255,255,0.6);
+  border-radius: 30px !important;
+
+  .card-body {
+    background: rgba(255,255,255,0.6);
+    border-radius: 30px !important;
+
+    .card-icon {
+      width: 90%;
+      display: block;
+      margin: 20px auto;
+      -webkit-filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);
+      filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);
+    }
+
+    .selectWrapper {
+      border-radius: 30px;
+      display: inline-block;
+      overflow: hidden;
+      background: #cccccc;
+      border: 1px solid #cccccc;
+      width: 100%;
+
+      select {
+        border: 0px;
+        outline: none;
+        margin: 0;
+      }
+    }
+
+    input,
+    select {
+      margin-top: 5px;
+      border: 0;
+      height: 50px;
+      border-radius: 30px !important;
+
+      .option {
+        color: $app-blue;
+      }
+
+      &::-webkit-input-placeholder {
+        color: $app-blue;
+        font-size: 0.8em !important;
+      }
+      &:-moz-placeholder {
+        color: $app-blue;
+        font-size: 0.8em !important;
+      }
+      &::-moz-placeholder {
+        color: $app-blue;
+        font-size: 0.8em !important;
+      }
+      &:-ms-input-placeholder {
+        color: $app-blue;
+        font-size: 0.8em !important;
+      }
+    }
+
+    .row {
+      border-radius: 30px;
+      .btn-app {
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
 .design-process-section .text-align-center {
     line-height: 25px;
     margin-bottom: 12px;
@@ -32,7 +102,7 @@
     z-index: 0;
 }
 .process-model li::after {
-    background: #e5e5e5 none repeat scroll 0 0;
+    background: $app-blue none repeat scroll 0 0;
     bottom: 0;
     content: "";
     display: block;
@@ -45,7 +115,7 @@
     z-index: -1;
 }
 .process-model li.visited::after {
-    background: #57b87b;
+    background: $app-red;
 }
 .process-model li:last-child::after {
     width: 0;
@@ -69,7 +139,7 @@
 }
 .process-model li.active,
 .process-model li.visited {
-    color: #57b87b;
+    color: $app-blue;
 }
 .process-model li.active a,
 .process-model li.active a:hover,
@@ -77,7 +147,7 @@
 .process-model li.visited a,
 .process-model li.visited a:hover,
 .process-model li.visited a:focus {
-    color: #57b87b;
+    color: $app-blue;
 }
 .process-model li.active p,
 .process-model li.visited p {
@@ -97,7 +167,7 @@
 }
 .process-model li.active i, .process-model li.visited i  {
     background: #fff;
-    border-color: #57b87b;
+    border-color: $app-blue;
 }
 .process-model li p {
     font-size: 14px;
@@ -114,6 +184,25 @@
     border-color: #e5e5e5; 
 }
 
+.accordion {
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid $app-blue;
+    color: $app-blue;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+  }
+  
+  .panel {
+    padding: 10px 18px;
+    display: none;
+    overflow: hidden;
+  }
 
 
 @media screen and (max-width: 560px) {

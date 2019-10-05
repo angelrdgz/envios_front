@@ -1,36 +1,65 @@
 <div class="card-body">
     <h5 class="card-title">Guías</h5>
-    <div class="card">
+    <div class="card card-transparent">
         <div class="card-body">
             <section class="design-process-section" id="process-tab">
-                    <div class="container">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <ul class="nav nav-tabs process-model more-icon-preocess" role="tablist">
-                                        <li role="presentation" class="active"><a href="#discover" aria-controls="discover"
-                                                role="tab" data-toggle="tab">
-                                                <i class="far fa-file-alt"></i>
-                                                <p>Generada</p>
-                                            </a></li>
-                                        <li role="presentation"><a href="#strategy" aria-controls="strategy" role="tab"
-                                                data-toggle="tab">
-                                                <i class="fas fa-truck-loading"></i>
-                                                <p>Recolectada</p>
-                                            </a></li>
-                                        <li role="presentation"><a href="#optimization" aria-controls="optimization" role="tab"
-                                                data-toggle="tab">
-                                                <i class="fas fa-shipping-fast"></i>
-                                                <p>En Camino</p>
-                                            </a></li>
-                                        <li role="presentation"><a href="#content" aria-controls="content" role="tab"
-                                                data-toggle="tab">
-                                                <i class="fas fa-clipboard-check"></i>
-                                                <p>Entregada</p>
-                                            </a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <ul class="nav nav-tabs process-model more-icon-preocess" role="tablist">
+                                <li role="presentation" class="active"><a href="#discover" aria-controls="discover"
+                                        role="tab" data-toggle="tab">
+                                        <i class="far fa-file-alt"></i>
+                                        <p>Generada</p>
+                                    </a></li>
+                                <li role="presentation" class="active"><a href="#strategy" aria-controls="strategy"
+                                        role="tab" data-toggle="tab">
+                                        <i class="fas fa-truck-loading"></i>
+                                        <p>Recolectada</p>
+                                    </a></li>
+                                <li role="presentation" class="active"><a href="#optimization"
+                                        aria-controls="optimization" role="tab" data-toggle="tab">
+                                        <i class="fas fa-shipping-fast"></i>
+                                        <p>En Camino</p>
+                                    </a></li>
+                                <li role="presentation"><a href="#content" aria-controls="content" role="tab"
+                                        data-toggle="tab">
+                                        <i class="fas fa-clipboard-check"></i>
+                                        <p>Entregada</p>
+                                    </a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3"></div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="accordion">Historial</button>
+                            <div class="panel">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Evento</th>
+                                            <th>Ubicación</th>
+                                            <th>Fecha</th>
+                                        </tr>
+                                        <tr *ngFor="let event of shipment.eventHistory">
+                                            <td>{{event.description}}</td>
+                                            <td>{{event.location}}</td>
+                                            <td>{{event.date}}</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <button class="accordion">Detalles de Envío</button>
+                            <div class="panel">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     </div>

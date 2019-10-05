@@ -24,5 +24,15 @@
         .nav-item{
             color: $app-blue;
         }
+        .nav-item.balance{
+            background: $app-blue;
+            border-radius: 30px;
+            a{
+                color: #fff;
+                b{
+                    color: #fff;
+                }
+            }
+        }
     }
 }

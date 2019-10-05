@@ -1,8 +1,4 @@
 @import "../../variables.scss";
-#DoughnutChart{
-    width:250px !important;
-    height:150px !important;
-}
 .card {
     filter:drop-shadow(5px 5px 10px black);
   .icon-big {
@@ -13,10 +9,34 @@
     font-size: 0.8em;
   }
 }
+.selectWrapper{
+  border-radius:30px;
+  display:inline-block;
+  overflow:hidden;
+  background:#cccccc;
+  border:1px solid #cccccc;
+  width: 100%;
+  color: $app-blue;
+
+  select{
+      border:0px;
+      outline:none;
+      margin:0;
+      color: $app-blue;
+      font-weight: lighter !important;
+      text-align: center;
+
+      option{
+        font-weight: lighter !important;
+        text-align: center;
+      }
+    }
+}
+
 .monitor-icon{
-  width: 50%;
+  height: 100px;
   display: block;
-  margin: 10px auto;
+  margin: 60px auto 10px;
 }
 .card-app {
   background: $app-blue;

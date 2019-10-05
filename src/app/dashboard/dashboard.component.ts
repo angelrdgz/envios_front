@@ -2,6 +2,12 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Chart } from 'chart.js';
 
+import { ApiService } from '../services/api.service';
+
+import { first } from 'rxjs/operators';
+import Swal from 'sweetalert2'
+
+
 
 
 @Component({
@@ -12,7 +18,12 @@ import { Chart } from 'chart.js';
 
 export class DashboardComponent implements OnInit {
 
-   @ViewChild('revenueLineChart', {static: false}) chart: ElementRef;   
+   @ViewChild('revenueLineChart', { static: false }) chart: ElementRef;
+
+   public data: any = [];
+   public months: any = [];
+   public currentMonth: string = "01";
+   public monthNames: any = ["", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
 
    Highcharts: typeof Highcharts = Highcharts;
 
@@ -115,102 +126,57 @@ export class DashboardComponent implements OnInit {
    };
 
    users: Array<any> = [];
-   myDoughnutChart:any = []
-   myDoughnutChart2:any = []
-   myDoughnutChart3:any = []
+   myDoughnutChart: any = []
+   myDoughnutChart2: any = []
+   myDoughnutChart3: any = []
 
-   constructor() { }
+   constructor(private _apiService: ApiService) { }
 
    ngOnInit() {
+      var d = new Date();
+      var n = d.getMonth()
+      this.currentMonth = ("0" + (d.getMonth() + 1)).slice(-2);
+      for (let index = 0; index <= n; index++) {
+         this.months.push({id: ("0" + (index + 1)).slice(-2), name:this.monthNames[(index+1)]+" "+d.getFullYear()})      
+       }
+      this.getDashboard(n + 1);
+   }
+
+   getDashboard(month) {
+      this._apiService.getDashboard(parseInt(month)).subscribe(
+         data => { this.data = data.data },
+         err => {
+            console.log(err)
+         },
+         () => {
+            this.drawStatusChart(this.data)
+         }
+      );
+   }
+
+   drawStatusChart(data) {
+
       this.myDoughnutChart = new Chart('DoughnutChart', {
          type: 'doughnut',
          data: {
             datasets: [{
-                data: [35, 10],
-                backgroundColor:[ '#EC1C24', '#ccc'],
-            }],       
-        
+               data: [this.data.totalDeliveied, this.data.totalCancelled, this.data.totalProcess],
+               backgroundColor: ['#2B388F', '#EC1C24', '#ffffff'],
+            }],
+
             // These labels appear in the legend and in the tooltips when hovering different arcs
             labels: [
-                'Entregadas',
-                'Faltantes',
+               'Entregadas',
+               'Canceladas',
+               'En Proceso'
             ]
-        },
-        options: {
-         responsive: true,
-         maintainAspectRatio: false,
-         legend: {
-            display: false
          },
-         scales: {
-             yAxes: [{
-                 ticks: {
-                     beginAtZero:true
-                 }
-             }]
+         options: {
+            responsive: true,
+
          }
-     }
-     });
+      });
 
-     this.myDoughnutChart = new Chart('DoughnutChart2', {
-      type: 'doughnut',
-      data: {
-         datasets: [{
-             data: [10, 20],
-             backgroundColor: ['#2B388F', '#ccc'],
-         }],
-     
-         // These labels appear in the legend and in the tooltips when hovering different arcs
-         labels: [
-             'Canceladas',
-             'Total',
-         ]
-     },
-     options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      legend: {
-         display: false
-      },
-      scales: {
-          yAxes: [{
-              ticks: {
-                  beginAtZero:true
-              }
-          }]
-      }
-  }
-  });
-
-  this.myDoughnutChart = new Chart('DoughnutChart3', {
-   type: 'doughnut',
-   data: {
-      datasets: [{
-          data: [30,15],
-          backgroundColor:['#4D4D4D', '#CCC']
-      }],
-  
-      // These labels appear in the legend and in the tooltips when hovering different arcs
-      labels: [
-          'En Proceso',
-          'Total'
-      ]
-  },
-  options: {
-   responsive: true,
-   maintainAspectRatio: false,
-   legend: {
-      display: false
-   },
-   scales: {
-       yAxes: [{
-           ticks: {
-               beginAtZero:true
-           }
-       }]
-   }
-}
-});
    }
 
    public generateFake(count: number): Array<number> {

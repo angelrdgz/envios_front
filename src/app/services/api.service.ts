@@ -38,7 +38,7 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   quote(data){
-    return this.http.post<Res>(ApiEndpoint+'/srenvio/quote', data, httpOptions);
+    return this.http.post<Res>(ApiEndpoint+'/rates', data, httpOptions);
   }
 
   login(data):Observable<User>{
@@ -65,16 +65,20 @@ export class ApiService {
     return this.http.get<User>(ApiEndpoint+'/auth/active-account/'+hash);
   }
 
+  updateProfile(data):Observable<Res>{
+    return this.http.put<Res>(ApiEndpoint+'/profile', data);
+  }
+
+  getDashboard(month){
+    return this.http.get<Res>(ApiEndpoint+'/dashboard?month='+month);
+  }  
+
   businessInfo(data):Observable<Res>{
     return this.http.post<Res>(ApiEndpoint+'/auth/business-info', data);
   }
 
   getBusinessInfo():Observable<Res>{
     return this.http.get<Res>(ApiEndpoint+'/auth/business-info');
-  }
-
-  getDashboard(){
-    return this.http.get<Res>(ApiEndpoint+'/dashboard ');
   }
 
   getShipments() {
@@ -94,11 +98,15 @@ export class ApiService {
   }
 
   cancelShipment(id){
-    return this.http.delete<Shipment>(ApiEndpoint+'/shipments/'+id);
+    return this.http.delete<Res>(ApiEndpoint+'/shipments/'+id);
   }
 
   getShipment(id){
     return this.http.get<Res>(ApiEndpoint+'/shipments/'+id);
+  }
+
+  shipmentTracking(id){
+    return this.http.get<Res>(ApiEndpoint+'/tracking/'+id);
   }
 
   getRecharges(){

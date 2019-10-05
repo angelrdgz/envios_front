@@ -57,7 +57,13 @@ export class SignupComponent implements OnInit {
           case 401: { 
          } 
           case 422: { 
-             this.loginErrors = err.error.errors
+             for (const key in this.loginErrors) {
+               for (const error in err.error.errors) {
+                 if (err.error.errors[error].includes(key)) {
+                    this.loginErrors[key] = err.error.errors[error]
+                 }
+               }
+             }
              break; 
           } 
           case 500: { 
@@ -67,7 +73,6 @@ export class SignupComponent implements OnInit {
           default: { 
           } 
        }
-       console.log(err)
        this.loading = false;
       },
       () => {

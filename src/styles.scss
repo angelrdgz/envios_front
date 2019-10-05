@@ -29,8 +29,12 @@ html{
      }
 
      .text-white{
-       color: #fff;
+       color: #fff !important;
      }
+
+     .text-blue{
+      color: $app-blue !important;
+    }
     
 
     body{

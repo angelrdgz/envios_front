@@ -16,9 +16,9 @@ export class LoginComponent implements OnInit {
   toasts: any[] = [];
 
   loginForm: FormGroup;
-  loginError:string;
-  loginErrors:any = {email:'', password:''};
-  data:any;
+  loginError: string;
+  loginErrors: any = { email: '', password: '' };
+  data: any;
   public loading: boolean = false;
 
 
@@ -46,40 +46,39 @@ export class LoginComponent implements OnInit {
 
   login(form) {
 
-    this.loginErrors = {email:'', password:''};
+    this.loginErrors = { email: '', password: '' };
 
     this.loading = true;
 
     this._apiService.login(form.value).subscribe(
       data => { this.data = data },
       err => {
-        console.log(err.status)
-      
-        switch(err.status) {
-          case 0: { 
-           this.showSwal('error', 'Internet conection error')
-            break; 
-         }
-          case 401: { 
-            this.showSwal('error', 'Email o contraseña incorrectos')
-            break; 
-         } 
-          case 422: { 
-             this.loginErrors = err.error.errors
-             break; 
-          } 
-          case 500: { 
-             //statements; 
-             break; 
-          } 
-          default: { 
-            this.loginError = ''
-             break; 
-          } 
 
-         
-       } 
-       this.loading = false;
+        switch (err.status) {
+          case 0: {
+            this.showSwal('error', 'Internet conection error')
+            break;
+          }
+          case 401: {
+            this.showSwal('error', 'Email o contraseña incorrectos')
+            break;
+          }
+          case 422: {
+            this.loginErrors = err.error.errors
+            break;
+          }
+          case 500: {
+            this.showSwal('info', err.error.message);
+            break;
+          }
+          default: {
+            this.loginError = ''
+            break;
+          }
+
+
+        }
+        this.loading = false;
         console.log(err)
       },
       () => {
@@ -100,11 +99,10 @@ export class LoginComponent implements OnInit {
       timer: 5000,
       background: '#000'
     })
-    
+
     Toast.fire({
       type: type,
       title: message,
-      
     })
   }
 

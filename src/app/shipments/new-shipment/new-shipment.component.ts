@@ -38,107 +38,107 @@ declare var $: any;
 })
 export class NewShipmentComponent implements OnInit {
 
-  public packages:any;
-  public carriers:any;
+  public packages: any;
+  public carriers: any;
   public pack: any;
   public packagex: any = { weight: 0, height: 0, width: 0, length: 0 }
   public origenes: any;
   public destinations: any;
   public rates: any
-  public countries:any
-  public statesOrigin:any
-  public statesDestination:any
+  public countries: any
+  public statesOrigin: any
+  public statesDestination: any
   public index: number = -1
   public label: any = { rate_id: 0, label_format: "pdf", shipment_id: 0, price: 0, carrier: "" };
   public origenNeights: any;
   public destinationNeights: any;
 
-  public loading:boolean = false
-  public volumetric:number = 0
+  public loading: boolean = false
+  public volumetric: number = 0
 
-  public quote:any;
+  public rate: any = {
+    origin: {
+    },
+    destination: {
+    },
+    package: {},
+    shipment: {}
+  }
 
-  public qoute:any = {
-    package:{
-      dimensions:{
-        height:0,
-        width:0,
-        length:0
+  public shipment: any = {
+    origin: {
+      name: "",
+      company: "",
+      email: "",
+      phone: "1231231231",
+      street: "Av empresarios",
+      number: "255",
+      district: "",
+      city: "",
+      state: "",
+      country: "MX",
+      postalCode: "45116"
+    },
+    destination: {
+      name: "Roz",
+      company: "Roz",
+      email: "roz@roz.com",
+      phone: "8181818181",
+      street: "Calle mia",
+      number: "666",
+      district: "",
+      city: "",
+      state: "",
+      country: "MX",
+      postalCode: ""
+    },
+    package: {
+      content: "",
+      amount: 1,
+      type: "box",
+      dimensions: {
+        length: null,
+        width: null,
+        height: null
       },
-      weight:0,
+      weight: null,
+      lengthUnit: "CM",
+      weightUnit: "KG",
+      insurance: 0,
+      declaredValue: 0
+    },
+    shipment: {
+      carrier: "",
+      service: ""
+    },
+    settings: {
+      currency: "MXN",
+      labelFormat: "PDF",
+      cashOnDelivery: 100.00,
+      comments: "comentarios de el envío"
     }
   }
 
-  public shipment:any = {
-    origin: {
-        name: "",
-        company: "",
-        email: "",
-        phone: "",
-        street: "",
-        number: "",
-        district: "",
-        city: "",
-        state: "",
-        country: "MX",
-        postalCode: ""
-    },
-    destination: {
-        name: "",
-        company: "",
-        email: "",
-        phone: "",
-        street: "",
-        number: "",
-        district: "",
-        city: "",
-        state: "",
-        country: "",
-        postalCode: ""
-    },
-    package: {
-        content: "",
-        amount: 1,
-        type: "box",
-        dimensions: {
-            length: null,
-            width: null,
-            height: null
-        },
-        weight: null,
-        lengthUnit: "CM",
-        weightUnit: "KG",
-        insurance: null,
-        declaredValue: null
-    },
-    shipment: {
-        carrier: "",
-        service: ""
-    },
-    settings: {
-        currency: "MXN",
-        labelFormat: "PDF",
-        cashOnDelivery: 100.00,
-        comments: "comentarios de el envío"
-    }
-}
+  public price:number = 0;
 
   public extraInfo = {
     origen: {
       id: null,
       active: true,
-      nickname: ""
+      nickname: "",
+      reference:""
     },
     destination: {
       id: null,
       active: true,
-      nickname: ""
+      nickname: "",
+      reference:""
     }
   }
 
-  public loadingQoute:boolean = false
-  public loadingShipment:boolean = false
-  public user:any
+  public loadingQoute: boolean = false
+  public loadingShipment: boolean = false
+  public user: any
 
   constructor(
     private _apiService: ApiService,
@@ -151,7 +151,7 @@ export class NewShipmentComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user_ses'));
     this.shipment.origin.name = this.user.name;
     this.shipment.origin.email = this.user.email;
-    this.shipment.origin.company = this.user.business == 1 ? this.user.company.name:"-";
+    this.shipment.origin.company = this.user.business == 1 ? this.user.company.name : "-";
     this.getLocationsOrigin()
     this.getLocationsDestination()
     this.getPackages()
@@ -162,36 +162,36 @@ export class NewShipmentComponent implements OnInit {
     $(document).ready(function () {
       //Initialize tooltips
       $('.nav-tabs > li a[title]').tooltip();
-      
+
       //Wizard
-      $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {  
-          var $target = $(e.target);      
-          if ($target.parent().hasClass('disabled')) {
-              return false;
-          }
+      $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+        var $target = $(e.target);
+        if ($target.parent().hasClass('disabled')) {
+          return false;
+        }
       });
-  
+
       $(".next-step").click(function (e) {
-  
-          var $active = $('.nav-tabs li > a.active');
-          $active.parent().next().find('a').removeClass('disabled');
-          nextTab($active);
-  
+
+        var $active = $('.nav-tabs li > a.active');
+        $active.parent().next().find('a').removeClass('disabled');
+        nextTab($active);
+
       });
       $(".prev-step").click(function (e) {
-  
-          var $active = $('.nav-tabs li>a.active');
-          prevTab($active);
-  
+
+        var $active = $('.nav-tabs li>a.active');
+        prevTab($active);
+
       });
-  });
-  
-  function nextTab(elem) {
+    });
+
+    function nextTab(elem) {
       $(elem).parent().next().find('a[data-toggle="tab"]').click();
-  }
-  function prevTab(elem) {
+    }
+    function prevTab(elem) {
       $(elem).parent().prev().find('a[data-toggle="tab"]').click();
-  }
+    }
   }
 
   onChange(deviceValue) {
@@ -231,9 +231,10 @@ export class NewShipmentComponent implements OnInit {
     if (this.shipment.destination.postalCode.length >= 5) {
       this._apiService.getNeights({ zip_code: this.shipment.destination.postalCode, country_code: this.shipment.destination.country, within: 3, unit: "Miles" }).subscribe(
         data => {
+          let getState = this.statesDestination.find(state => state.name === data.data.search_results[0].state);
           this.destinationNeights = data.data.search_results.sort((a, b) => a.place_name.localeCompare(b.place_name));
           this.shipment.destination.city = data.data.search_results[0].province
-          this.shipment.destination.province = data.data.search_results[0].state
+          this.shipment.destination.state = getState.code_2_digits
         },
         err => console.error(err),
         () => {
@@ -245,11 +246,11 @@ export class NewShipmentComponent implements OnInit {
   }
 
   searchNeight() {
-    let n = this.findObjectByKey(this.origenNeights, 'place_name', this.shipment.origin.address2, 1);
+    let n = this.findObjectByKey(this.origenNeights, 'place_name', this.shipment.origin.district, 1);
   }
 
   searchNeightTo() {
-    let n = this.findObjectByKey(this.destinationNeights, 'place_name', this.shipment.destination.address2, 2);
+    let n = this.findObjectByKey(this.destinationNeights, 'place_name', this.shipment.destination.district, 2);
   }
 
   findObjectByKey(array, key, value, x) {
@@ -304,7 +305,7 @@ export class NewShipmentComponent implements OnInit {
 
   getCountries() {
     this._apiService.getCountries().subscribe(
-      data => { 
+      data => {
         console.log(data)
         this.countries = data.data
       },
@@ -319,14 +320,14 @@ export class NewShipmentComponent implements OnInit {
         this.carriers = data.data
       },
       err => console.error(err),
-      () => ''
+      () => console.log(this.carriers)
     );
   }
 
   getStatesOrigin(code) {
     this.getCarriers(code)
     this._apiService.getStates(code).subscribe(
-      data => { 
+      data => {
         console.log(data)
         this.statesOrigin = data.data
       },
@@ -337,7 +338,7 @@ export class NewShipmentComponent implements OnInit {
 
   getStatesDestination(code) {
     this._apiService.getStates(code).subscribe(
-      data => { 
+      data => {
         console.log(data)
         this.statesDestination = data.data
       },
@@ -361,7 +362,7 @@ export class NewShipmentComponent implements OnInit {
   }
 
   getOrigen(id) {
-    if(id == ''){
+    if (id == '') {
       this.shipment.origin.province = ''
       this.shipment.origin.city = ''
       this.shipment.origin.name = ''
@@ -377,7 +378,7 @@ export class NewShipmentComponent implements OnInit {
       this.extraInfo.origen.active = true
       this.extraInfo.origen.nickname = ''
 
-    }else{
+    } else {
       this._apiService.getLocation(id).subscribe(
         data => {
           this.shipment.origin.province = data.data.state
@@ -403,25 +404,25 @@ export class NewShipmentComponent implements OnInit {
   }
 
   getDestination(id) {
-    if(id == ''){
+    if (id == '') {
 
 
-          this.shipment.destination.province = ''
-          this.shipment.destination.city = ''
-          this.shipment.destination.name = ''
-          this.shipment.destination.zip = ''
-          this.shipment.destination.country = ''
-          this.shipment.destination.address1 = ''
-          this.shipment.destination.company = ''
-          this.shipment.destination.address2 = ''
-          this.shipment.destination.phone = ''
-          this.shipment.destination.email = ''
-          this.shipment.destination.reference = ''
-          this.extraInfo.destination.id = null
-          this.extraInfo.destination.active = true
-          this.extraInfo.destination.nickname = ''
+      this.shipment.destination.province = ''
+      this.shipment.destination.city = ''
+      this.shipment.destination.name = ''
+      this.shipment.destination.zip = ''
+      this.shipment.destination.country = ''
+      this.shipment.destination.address1 = ''
+      this.shipment.destination.company = ''
+      this.shipment.destination.address2 = ''
+      this.shipment.destination.phone = ''
+      this.shipment.destination.email = ''
+      this.shipment.destination.reference = ''
+      this.extraInfo.destination.id = null
+      this.extraInfo.destination.active = true
+      this.extraInfo.destination.nickname = ''
 
-    }else{
+    } else {
 
       this._apiService.getLocation(id).subscribe(
         data => {
@@ -445,7 +446,7 @@ export class NewShipmentComponent implements OnInit {
       );
 
     }
-    
+
   }
 
   createShipment() {
@@ -468,7 +469,7 @@ export class NewShipmentComponent implements OnInit {
 
     this.loadingShipment = true;
 
-    this._apiService.createLabel({ shipment: this.shipment, extraInfo: this.extraInfo, label: this.label }).subscribe(
+    this._apiService.createLabel({ shipment: this.shipment, extraInfo: this.extraInfo, price: this.price, label: this.label }).subscribe(
       data => {
         console.log(data)
         this.router.navigate(['admin/shipments'])
@@ -490,15 +491,36 @@ export class NewShipmentComponent implements OnInit {
 
   }
 
-  getQuote(){
-    console.log(this.shipment)
+  getQuote() {
+    this.rate.origin = this.shipment.origin
+    this.rate.destination = this.shipment.destination
+    this.rate.package = this.shipment.package
+    this.rate.origin = this.shipment.origin
+    this.rates = []
+    for (let index = 0; index < this.carriers.length; index++) {
+      this.rate.shipment.carrier = this.carriers[index].name
+      this._apiService.quote(this.rate).subscribe(
+        data => {
+          for (let indey = 0; indey < data.data.data.length; indey++) {
+            this.rates.push(data.data.data[indey])
+          }
+        },
+        err => {
+          console.error(err)
+        },
+        () => {
+          console.log(this.rates)
+        }
+      );
+    }
   }
 
-  selectParcel(id, price, carrier, i) {
-    this.label.rate_id = id
-    this.label.price = price
-    this.label.carrier = carrier
+  selectParcel(carrier, service, price, i) {
+    this.shipment.shipment.carrier = carrier
+    this.shipment.shipment.service = service
     this.index = i
+    this.price = price
+    console.log(this.shipment)
   }
 
 }

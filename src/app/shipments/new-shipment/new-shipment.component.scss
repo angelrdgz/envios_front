@@ -27,20 +27,32 @@
     }
 }
 
+.divider{
+  hr{
+    border-color: #888 !important;
+  }
+  .text-white{
+    color: #fff !important;
+  }
+}
+
 .list-group{
-    border-radius: 0;
+  width: 100%;
 
-    li{
-        border-radius: 0;
-        margin: 5px 0;
+.box-quote{
+    background: #fff;
+    border-radius: 30px;
+    height: auto;
+    width: 100%;
+    margin: 10px auto;
 
-        &:hover{
-            background: #F0F0F0;
-        }
+    .carrier-logo{
+      max-width: 80%;
+      max-height: 35px;
+      display: block;
+      margin: 10px auto;
     }
-    li.selected{
-        border: 2px solid #1500B8; 
-    }
+}
 }
 .switch input { 
     display:none;
@@ -120,7 +132,7 @@
       }
   
       h5 {
-        color: $app-blue !important;
+        color: $app-blue;
         margin-top: auto;
         margin-bottom: auto;
       }

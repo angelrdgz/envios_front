@@ -21,11 +21,11 @@
                     <h5 class="card-title text-center"><span class="text-red">¡Bienvenido</span> nuevamente!</h5>
                 <div class="input-container" [ngClass]="{ 'is-invalid': loginErrors.email !== '' }">
                     <i class="fas fa-envelope"></i>
-                    <input name="email" id="login-email" type="email" class="form-input" placeholder="Email" required ngModel>
+                    <input name="email" id="login-email" type="email" class="form-input" placeholder="Email" required ngModel placement="right" ngbTooltip="{{loginErrors.email}}" tooltipClass="error-tooltip">
                 </div>
                 <div class="input-container" [ngClass]="{ 'is-invalid': loginErrors.password !== '' }">
                     <i class="fas fa-lock-open"></i>
-                    <input name="password" id="login-password" type="password" class="form-input" placeholder="Contraseña" required ngModel>
+                    <input name="password" id="login-password" type="password" class="form-input" placeholder="Contraseña" required ngModel placement="right" ngbTooltip="{{loginErrors.password}}" tooltipClass="error-tooltip">
                 </div>
                 <div class="form-field text-center">
                         <a href="#" class="btn btn-link text-uppercase text-white" href="/forgot-password">¿Olvidaste tu contraseña?</a>
