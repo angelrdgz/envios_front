@@ -56,6 +56,14 @@ export class ApiService {
   forgotPassword(data):Observable<Res>{
     return this.http.post<Res>(ApiEndpoint+'/auth/forgot-password', data);
   }
+
+  resendEmail(data):Observable<Res>{
+    return this.http.post<Res>(ApiEndpoint+'/auth/resend-email', data);
+  }
+
+  contact(data):Observable<Res>{
+    return this.http.post<Res>(ApiEndpoint+'/auth/contact', data);
+  }
   
   newPassword(data):Observable<Res>{
     return this.http.post<Res>(ApiEndpoint+'/auth/restore-password', data);
@@ -77,6 +85,14 @@ export class ApiService {
     return this.http.post<Res>(ApiEndpoint+'/auth/business-info', data);
   }
 
+  getConfiguration():Observable<Res>{
+    return this.http.get<Res>(ApiEndpoint+'/configurations');
+  }
+
+  updateConfiguration(data):Observable<Res>{
+    return this.http.put<Res>(ApiEndpoint+'/configurations', data);
+  }
+
   getBusinessInfo():Observable<Res>{
     return this.http.get<Res>(ApiEndpoint+'/auth/business-info');
   }
@@ -94,7 +110,7 @@ export class ApiService {
   }
 
   createLabel(data){
-    return this.http.post<Shipment>(ApiEndpoint+'/shipments/create-label', data);
+    return this.http.post<Res>(ApiEndpoint+'/shipments/create-label', data);
   }
 
   cancelShipment(id){

@@ -1,0 +1,92 @@
+@import "../../variables.scss";
+#main {
+  width: 100%;
+  height: 250px !important;
+  height: 100%;
+  position: relative;
+  padding-top: 50px;
+  background: #b92b27; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1565c0, #b92b27); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #1565c0,
+    #b92b27
+  );
+
+  img {
+    position: absolute;
+    left: 0;
+    top: 30px;
+    z-index: 0;
+  }
+
+  a {
+    position: absolute;
+    bottom: 30px;
+    left: calc(50% - 75px);
+    z-index: 00;
+    padding: 15px 20px;
+    color: #fff;
+    font-size: 1.4em;
+  }
+
+  .container {
+    padding-top: 100px;
+      h1 {
+        color: #fff;
+        text-align:center;
+        font-size: 3em;
+      }
+  }
+}
+#second {
+  width: 100%;
+  height: auto;
+  padding: 50px 0;
+  .container {
+    /* background:url('../../../assets/imgs/backs/sunset.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;*/
+    background: #fff;
+    height: 100%;
+
+    h5{
+        margin: 15px auto;
+    }
+
+    p{
+        font-weight: lighter;
+        padding-left: 20px;
+    }
+
+    .card {
+      border: 0;
+      transition: all 1s;
+
+      &:hover {
+        filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+        transition: all 1s;
+      }
+
+      .card-img {
+        width: 100%;
+        height: 200px;
+
+        .card-img-top {
+          width: 90%;
+          display: block;
+          margin: auto;
+        }
+      }
+      .card-body {
+        h5 {
+          text-align: center;
+        }
+        p {
+        }
+      }
+    }
+  }
+}

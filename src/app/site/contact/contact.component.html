@@ -5,24 +5,29 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="row">
+                            <form #myform="ngForm" (ngSubmit)="contact(myform)" class="form form-login">
                                 <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="exampleInputEmail1"
-                                         aria-describedby="emailHelp" placeholder="Nombre Completo">
+                                        <input type="text" name="name" class="form-control" [ngClass]="{ 'is-invalid': infoErrors.name !== '' }" [(ngModel)]="info.name" required id="exampleInputEmail1"
+                                         aria-describedby="emailHelp" placeholder="Nombre Completo" placement="right" ngbTooltip="{{infoErrors.name}}" tooltipClass="error-tooltip">
                                 </div>
                                 <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="exampleInputEmail1"
-                                         aria-describedby="emailHelp" placeholder="Email">
+                                        <input type="text" name="email" [ngClass]="{ 'is-invalid': infoErrors.email !== '' }" class="form-control" required [(ngModel)]="info.email" id="exampleInputEmail1"
+                                         aria-describedby="emailHelp" placeholder="Email" placement="right" ngbTooltip="{{infoErrors.email}}" tooltipClass="error-tooltip">
                                 </div>
                                 <div class="col-sm-12">
-                                        <input type="text" class="form-control" id="exampleInputEmail1"
-                                         aria-describedby="emailHelp" placeholder="Teléfono">
+                                        <input type="text" name="phone" [ngClass]="{ 'is-invalid': infoErrors.phone !== '' }" class="form-control" required [(ngModel)]="info.phone" id="exampleInputEmail1"
+                                         aria-describedby="emailHelp" placeholder="Teléfono" placement="right" ngbTooltip="{{infoErrors.phone}}" tooltipClass="error-tooltip">
                                 </div>
                                 <div class="col-sm-12">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="4" placeholder="Dejanos tus comentarios o dudas."></textarea>
+                                    <textarea name="comments" id="" [ngClass]="{ 'is-invalid': infoErrors.comments !== '' }" class="form-control" [(ngModel)]="info.comments" required cols="30" rows="4" placeholder="Dejanos tus comentarios o dudas." placement="right" ngbTooltip="{{infoErrors.comments}}" tooltipClass="error-tooltip"></textarea>
                                 </div>
                                 <div class="col-sm-6 offset-sm-3">
-                                    <button class="btn btn-app-red btn-rounded btn-block">Enviar</button>
+                                    <button type="submit" class="btn btn-app-red btn-rounded btn-block">
+                                        Enviar
+                                        <i class="fas fa-circle-notch fa-spin" *ngIf="loading"></i>
+                                    </button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                         <div class="col-sm-6">

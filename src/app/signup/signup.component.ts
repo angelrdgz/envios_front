@@ -14,37 +14,37 @@ import Swal from 'sweetalert2'
 export class SignupComponent implements OnInit {
 
   registerForm: FormGroup;
-    submitted = false;
-    business=0;
-    public loading:boolean = false;
+  submitted = false;
+  business = 0;
+  public loading: boolean = false;
 
-    public user = {name:'',email:'',password:'',password_confirmation:'',phone:'',company:'',business:0, shipments:0, terms: true}
-    public loginErrors:any = {name:'',email:'',password:'',password_confirm:'',phone:'',company:'',business:0, shipments:0};
+  public user = { name: '', email: '', password: '', password_confirmation: '', phone: '', company: '', business: 0, shipments: 0, terms: true }
+  public loginErrors: any = { name: '', email: '', password: '', password_confirm: '', phone: '', company: '', business: 0, shipments: 0 };
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private router: Router,
-        private _apiService: ApiService
-        ) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private _apiService: ApiService
+  ) { }
 
-    ngOnInit() {
-        this.registerForm = this.formBuilder.group({
-            name: ['', Validators.required],
-            lastname: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
-        });
+  ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      lastname: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
 
-    }
+  }
 
-    onSubmit(){
-      
-    }
+  onSubmit() {
 
-    register(){
-      console.log(this.user)
-      this.loading = true;
+  }
+
+  register() {
+    this.loginErrors = { name: '', email: '', password: '', password_confirm: '', phone: '', company: '', business: 0, shipments: 0 };
+    this.loading = true;
     this._apiService.register(this.user).subscribe(
-      data => { 
+      data => {
         Swal.fire({
           title: 'Registro Exitoso',
           text: 'Hemos enviado un correo de confirmación a tu cuenta',
@@ -53,33 +53,28 @@ export class SignupComponent implements OnInit {
         //this.router.navigate(['admin/shipments']) 
       },
       err => {
-        switch(err.status) { 
-          case 401: { 
-         } 
-          case 422: { 
-             for (const key in this.loginErrors) {
-               for (const error in err.error.errors) {
-                 if (err.error.errors[error].includes(key)) {
-                    this.loginErrors[key] = err.error.errors[error]
-                 }
-               }
-             }
-             break; 
-          } 
-          case 500: { 
-             //statements; 
-             break; 
-          } 
-          default: { 
-          } 
-       }
-       this.loading = false;
+        console.log(err)
+        switch (err.status) {
+          case 401: {
+          }
+          case 422: {
+            this.loginErrors = err.error.errors
+            break;
+          }
+          case 500: {
+            //statements; 
+            break;
+          }
+          default: {
+          }
+        }
+        this.loading = false;
       },
       () => {
         this.loading = false;
-        
+
       }
     );
-    }
+  }
 
 }

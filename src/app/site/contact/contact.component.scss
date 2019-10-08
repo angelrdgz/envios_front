@@ -1,4 +1,12 @@
 @import "../../../variables.scss";
+
+.error-tooltip .tooltip-inner {
+  background-color: $app-red !important;
+}
+.error-tooltip .arrow::before {
+  border-right-color: $app-red !important;
+}
+
 #contact {
   height: auto;
   background: #b92b27; /* fallback for old browsers */
@@ -97,6 +105,9 @@
 }
 section {
   padding: 150px 0;
+}
+.is-invalid{
+  border:2px solid red !important;
 }
 /*.list-group-item {
   margin: 5px 0;

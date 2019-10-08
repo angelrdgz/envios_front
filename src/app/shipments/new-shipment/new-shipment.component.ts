@@ -64,28 +64,66 @@ export class NewShipmentComponent implements OnInit {
     package: {},
     shipment: {}
   }
+  public shipmentErrors: any = {
+    origin: {
+      name: "",
+      company: "",
+      email: "",
+      phone: "",
+      street: "",
+      number: "",
+      district: "",
+      city: "",
+      state: "",
+      country: "",
+      postalCode: ""
+    },
+    destination: {
+      name: "",
+      company: "",
+      email: "",
+      phone: "",
+      street: "",
+      number: "",
+      district: "",
+      city: "",
+      state: "",
+      country: "",
+      postalCode: ""
+    },
+    package: {
+      dimensions: {
+        length: "",
+        width: "",
+        height: ""
+      },
+      content: "",
+      weight: "",
+      insurance: "",
+    }
+  }
 
   public shipment: any = {
     origin: {
       name: "",
       company: "",
       email: "",
-      phone: "1231231231",
-      street: "Av empresarios",
-      number: "255",
+      phone: "",
+      street: "",
+      number: "",
       district: "",
       city: "",
       state: "",
       country: "MX",
-      postalCode: "45116"
+      postalCode: ""
     },
     destination: {
-      name: "Roz",
-      company: "Roz",
-      email: "roz@roz.com",
-      phone: "8181818181",
-      street: "Calle mia",
-      number: "666",
+      name: "",
+      company: "",
+      email: "",
+      phone: "",
+      street: "",
+      number: "",
       district: "",
       city: "",
       state: "",
@@ -119,24 +157,27 @@ export class NewShipmentComponent implements OnInit {
     }
   }
 
-  public price:number = 0;
+  public labelFinish:any = {label: 'http://google.com'}
+
+  public price: number = 0;
 
   public extraInfo = {
     origen: {
       id: null,
       active: true,
       nickname: "",
-      reference:""
+      reference: ""
     },
     destination: {
       id: null,
       active: true,
       nickname: "",
-      reference:""
+      reference: ""
     }
   }
 
   public loadingQoute: boolean = false
+  public shipmentReady: boolean = false
   public loadingShipment: boolean = false
   public user: any
 
@@ -174,6 +215,17 @@ export class NewShipmentComponent implements OnInit {
       $(".next-step").click(function (e) {
 
         var $active = $('.nav-tabs li > a.active');
+        let index = $active.parent().index()
+        switch (index) {
+          case 0:
+            console.log(this.shipment)
+            break;
+          case 1:
+
+            break;
+          default:
+            break;
+        }
         $active.parent().next().find('a').removeClass('disabled');
         nextTab($active);
 
@@ -194,8 +246,160 @@ export class NewShipmentComponent implements OnInit {
     }
   }
 
+  continue(){
+
+    let errorFound = false;
+
+    if(this.shipment.origin.street == ''){
+      this.shipmentErrors.origin.street = 'La calle es requerida';
+      errorFound = true;
+    }
+
+    if(this.shipment.origin.number == ''){
+      this.shipmentErrors.origin.number = 'El numero es requerido';
+      errorFound = true;
+    }
+
+    if(this.shipment.origin.name == ''){
+      this.shipmentErrors.origin.name = 'El nombre es requerido';
+      errorFound = true;
+    }
+
+    if(this.shipment.origin.company == ''){
+      this.shipmentErrors.origin.company = 'La compañia es requerida';
+      errorFound = true;
+    }
+
+    if(this.shipment.origin.state == ''){
+      this.shipmentErrors.origin.state = 'El estado es requerido';
+      errorFound = true;
+    }
+    
+    if(this.shipment.origin.postalCode == ''){
+      this.shipmentErrors.origin.postalCode = 'El código postal es requerido';
+      errorFound = true;
+    }
+
+    if(this.shipment.origin.phone == ''){
+      this.shipmentErrors.origin.phone = 'El teléfono es requerido';
+      errorFound = true;
+    }
+
+    if(this.shipment.origin.email == ''){
+      this.shipmentErrors.origin.email = 'El email es requerido';
+      errorFound = true;
+    }
+
+    if(this.shipment.origin.district == ''){
+      this.shipmentErrors.origin.district = 'La colonia es requerido';
+      errorFound = true;
+    }
+
+    if(this.shipment.origin.city == ''){
+      this.shipmentErrors.origin.city = 'La ciudad es requerida';
+      errorFound = true;
+    }
+    
+    if(this.shipment.destination.street == ''){
+      this.shipmentErrors.destination.street = 'La calle es requerida';
+      errorFound = true;
+    }
+
+    if(this.shipment.destination.number == ''){
+      this.shipmentErrors.destination.number = 'El número es requerido';
+      errorFound = true;
+    }
+
+    if(this.shipment.destination.name == ''){
+      this.shipmentErrors.destination.name = 'El nombre es requerido';
+      errorFound = true;
+    }
+
+    if(this.shipment.destination.company == ''){
+      this.shipmentErrors.destination.company = 'La compañia es requerida';
+      errorFound = true;
+    }
+
+    if(this.shipment.destination.state == ''){
+      this.shipmentErrors.destination.state = 'El estado es requerido';
+      errorFound = true;
+    }
+    
+    if(this.shipment.destination.postalCode == ''){
+      this.shipmentErrors.destination.postalCode = 'El código postal es requerido';
+      errorFound = true;
+    }
+
+    if(this.shipment.destination.phone == ''){
+      this.shipmentErrors.destination.phone = 'El teléfono es requerido';
+      errorFound = true;
+    }
+
+    if(this.shipment.destination.email == ''){
+      this.shipmentErrors.destination.email = 'El email es requerido';
+      errorFound = true;
+    }
+
+    if(this.shipment.destination.district == ''){
+      this.shipmentErrors.destination.district = 'La colonia es requerida';
+      errorFound = true;
+    }
+
+    if(this.shipment.destination.city == ''){
+      this.shipmentErrors.destination.city = 'La ciudad es requerida';
+      errorFound = true;
+    }
+
+    if(errorFound){
+      this.showToast('error', 'Favor de llenar los campos');
+    }else{
+      try {
+        this.shipmentErrors = {
+          origin: {
+            name: "",
+            company: "",
+            email: "",
+            phone: "",
+            street: "",
+            number: "",
+            district: "",
+            city: "",
+            state: "",
+            country: "",
+            postalCode: ""
+          },
+          destination: {
+            name: "",
+            company: "",
+            email: "",
+            phone: "",
+            street: "",
+            number: "",
+            district: "",
+            city: "",
+            state: "",
+            country: "",
+            postalCode: ""
+          },
+          package: {
+            dimensions: {
+              length: "",
+              width: "",
+              height: ""
+            },
+            weight: "",
+            insurance: "",
+          }
+        }
+        $('.firstStep').click();
+      } catch (error) {
+        console.log(error)
+      }
+      
+    }
+  }
+
   onChange(deviceValue) {
-    console.log('Paquete', deviceValue)
     if (deviceValue != '') {
       this.getPackage(deviceValue)
     } else {
@@ -205,6 +409,21 @@ export class NewShipmentComponent implements OnInit {
       this.shipment.package.dimensions.length = 0
       this.shipment.destination.contents = ''
     }
+  }
+
+  showToast(type, message) {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'bottom',
+      showConfirmButton: false,
+      timer: 5000,
+      background: '#000'
+    })
+
+    Toast.fire({
+      type: type,
+      title: message,
+    })
   }
 
   getNeightsFrom() {
@@ -227,7 +446,6 @@ export class NewShipmentComponent implements OnInit {
   }
 
   getNeightsTo() {
-
     if (this.shipment.destination.postalCode.length >= 5) {
       this._apiService.getNeights({ zip_code: this.shipment.destination.postalCode, country_code: this.shipment.destination.country, within: 3, unit: "Miles" }).subscribe(
         data => {
@@ -242,7 +460,6 @@ export class NewShipmentComponent implements OnInit {
         }
       );
     }
-
   }
 
   searchNeight() {
@@ -272,7 +489,9 @@ export class NewShipmentComponent implements OnInit {
   getLocationsOrigin() {
 
     this._apiService.getOrigenes().subscribe(
-      data => { this.origenes = data.data },
+      data => { 
+        this.origenes = data.data 
+      },
       err => console.error(err),
       () => {
         if (this.origenes.length == 0) {
@@ -363,17 +582,16 @@ export class NewShipmentComponent implements OnInit {
 
   getOrigen(id) {
     if (id == '') {
-      this.shipment.origin.province = ''
+      this.shipment.origin.district = ''
       this.shipment.origin.city = ''
       this.shipment.origin.name = ''
-      this.shipment.origin.zip = ''
+      this.shipment.origin.postalCode = ''
       this.shipment.origin.country = ''
-      this.shipment.origin.address1 = ''
+      this.shipment.origin.street = ''
       this.shipment.origin.company = ''
-      this.shipment.origin.address2 = ''
+      this.shipment.origin.number = ''
       this.shipment.origin.phone = ''
       this.shipment.origin.email = ''
-      this.shipment.origin.reference = ''
       this.extraInfo.origen.id = null
       this.extraInfo.origen.active = true
       this.extraInfo.origen.nickname = ''
@@ -381,17 +599,17 @@ export class NewShipmentComponent implements OnInit {
     } else {
       this._apiService.getLocation(id).subscribe(
         data => {
-          this.shipment.origin.province = data.data.state
+          this.shipment.origin.district = data.data.district
           this.shipment.origin.city = data.data.city
-          this.shipment.origin.name = data.data.nickname
-          this.shipment.origin.zip = data.data.zipcode
+          this.shipment.origin.state = data.data.state
+          this.shipment.origin.name = data.data.name
+          this.shipment.origin.postalCode = data.data.zipcode
           this.shipment.origin.country = data.data.country
-          this.shipment.origin.address1 = data.data.address
+          this.shipment.origin.street = data.data.address
           this.shipment.origin.company = data.data.company
-          this.shipment.origin.address2 = data.data.address2
+          this.shipment.origin.number = data.data.number
           this.shipment.origin.phone = data.data.phone
           this.shipment.origin.email = data.data.email
-          this.shipment.origin.reference = data.data.reference
           this.extraInfo.origen.id = data.data.id
           this.extraInfo.origen.active = false
           this.extraInfo.origen.nickname = data.data.nickname
@@ -407,17 +625,16 @@ export class NewShipmentComponent implements OnInit {
     if (id == '') {
 
 
-      this.shipment.destination.province = ''
+      this.shipment.destination.district = ''
       this.shipment.destination.city = ''
       this.shipment.destination.name = ''
-      this.shipment.destination.zip = ''
+      this.shipment.destination.postalCode = ''
       this.shipment.destination.country = ''
-      this.shipment.destination.address1 = ''
+      this.shipment.destination.street = ''
       this.shipment.destination.company = ''
-      this.shipment.destination.address2 = ''
+      this.shipment.destination.number = ''
       this.shipment.destination.phone = ''
       this.shipment.destination.email = ''
-      this.shipment.destination.reference = ''
       this.extraInfo.destination.id = null
       this.extraInfo.destination.active = true
       this.extraInfo.destination.nickname = ''
@@ -426,17 +643,17 @@ export class NewShipmentComponent implements OnInit {
 
       this._apiService.getLocation(id).subscribe(
         data => {
-          this.shipment.destination.province = data.data.state
+          this.shipment.destination.district = data.data.district
           this.shipment.destination.city = data.data.city
-          this.shipment.destination.name = data.data.nickname
-          this.shipment.destination.zip = data.data.zipcode
+          this.shipment.destination.state = data.data.state
+          this.shipment.destination.name = data.data.name
+          this.shipment.destination.postalCode = data.data.zipcode
           this.shipment.destination.country = data.data.country
-          this.shipment.destination.address1 = data.data.address
+          this.shipment.destination.street = data.data.address
           this.shipment.destination.company = data.data.company
-          this.shipment.destination.address2 = data.data.address2
+          this.shipment.destination.number = data.data.number
           this.shipment.destination.phone = data.data.phone
           this.shipment.destination.email = data.data.email
-          this.shipment.destination.reference = data.data.reference
           this.extraInfo.destination.id = data.data.id
           this.extraInfo.destination.active = false
           this.extraInfo.destination.nickname = data.data.nickname
@@ -472,7 +689,9 @@ export class NewShipmentComponent implements OnInit {
     this._apiService.createLabel({ shipment: this.shipment, extraInfo: this.extraInfo, price: this.price, label: this.label }).subscribe(
       data => {
         console.log(data)
-        this.router.navigate(['admin/shipments'])
+        this.labelFinish.label = data.data.label
+        $('.secondStep').click()
+        //this.router.navigate(['admin/shipments'])
       },
       err => {
         console.error(err)
@@ -492,11 +711,55 @@ export class NewShipmentComponent implements OnInit {
   }
 
   getQuote() {
+
+    let errorFound = false;
+
+    if(this.shipment.package.content == ''){
+      this.shipmentErrors.package.content = 'El contenido es requerido'
+      errorFound = true
+    }
+
+    if(this.shipment.package.weight == null){
+      this.shipmentErrors.package.weight = 'El peso es requerido'
+      errorFound = true
+    }
+
+    if(this.shipment.package.dimensions.width == null){
+      this.shipmentErrors.package.dimensions.width = 'El ancho es requerido'
+      errorFound = true
+    }
+
+    if(this.shipment.package.dimensions.length == null){
+      this.shipmentErrors.package.dimensions.length = 'El largo es requerido'
+      errorFound = true
+    }
+
+    if(this.shipment.package.dimensions.height == null){
+      this.shipmentErrors.package.dimensions.height = 'La altura es requerida'
+      errorFound = true
+    }
+
+    if(errorFound){
+      return false;
+    }
+
+    if(this.shipment.package.insurance == null){
+      this.shipmentErrors.package.insurance = 0
+      errorFound = true
+    }
+
     this.rate.origin = this.shipment.origin
     this.rate.destination = this.shipment.destination
     this.rate.package = this.shipment.package
     this.rate.origin = this.shipment.origin
     this.rates = []
+
+    this.rate.package.dimensions.length = parseInt(this.shipment.package.dimensions.length)
+    this.rate.package.dimensions.width = parseInt(this.shipment.package.dimensions.width)
+    this.rate.package.dimensions.height = parseInt(this.shipment.package.dimensions.height)
+    this.rate.package.weight = parseInt(this.shipment.package.weight)
+    this.rate.package.insurance = parseInt(this.shipment.package.insurance)
+
     for (let index = 0; index < this.carriers.length; index++) {
       this.rate.shipment.carrier = this.carriers[index].name
       this._apiService.quote(this.rate).subscribe(
@@ -520,6 +783,7 @@ export class NewShipmentComponent implements OnInit {
     this.shipment.shipment.service = service
     this.index = i
     this.price = price
+    this.shipmentReady = true;
     console.log(this.shipment)
   }
 

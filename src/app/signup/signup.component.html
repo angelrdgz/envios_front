@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-5">
-                    <img src="assets/imgs/logoship2go.png" class="logo" alt="">
+                    <img src="assets/imgs/logoship2go.png" class="logo" routerLink="/" alt="">
                 </div>
                 <div class="col-sm-7 listContainer">
                     <ul>
@@ -31,9 +31,9 @@
                             <h6 *ngIf="user.business == 0">Si vas a realizar un solo envio</h6>
                             <h6 *ngIf="user.business == 1">Si cuentas realizas envios frecuentes</h6>
                         </div>
-                        <div class="input-container" *ngIf="user.business == 1">
+                        <div class="input-container" *ngIf="user.business == 1" [ngClass]="{'is-invalid': loginErrors.company != ''}">
                             <i class="far fa-building"></i>
-                            <input class="input-field" type="text" [(ngModel)]="user.company" placeholder="Empresa">
+                            <input class="input-field" type="text" [(ngModel)]="user.company" placeholder="Empresa" placement="right" ngbTooltip="{{loginErrors.company}}" tooltipClass="error-tooltip">
                         </div>
                         <div class="input-container" [ngClass]="{'is-invalid': loginErrors.name!=''}">
                             <i class="far fa-user"></i>
@@ -59,9 +59,9 @@
                             <input class="input-field" type="password" [(ngModel)]="user.password_confirmation"
                                 placeholder="Confirmar contraseña" name="usrnm" placement="right" ngbTooltip="{{loginErrors.password}}" tooltipClass="error-tooltip">
                         </div>
-                        <div class="input-container" *ngIf="user.business == 1">
+                        <div class="input-container" *ngIf="user.business == 1" [ngClass]="{'is-invalid': loginErrors.shipments != ''}">
                             <i class="far fa-paper-plane"></i>
-                            <select name="" id="" [(ngModel)]="user.shipments" class="input-field">
+                            <select name="" id="" [(ngModel)]="user.shipments" class="input-field" placement="right" ngbTooltip="{{loginErrors.shipments}}" tooltipClass="error-tooltip">
                                 <option value="0" disabled>Envios estimados por mes
                                 </option>
                                 <option value="1">De 1 a 10 envíos por mes</option>
@@ -75,9 +75,11 @@
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" [(ngModel)]="user.terms"
                                 id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Estoy de acuerdo con los <a
-                                    href="">Terminos
-                                    y condiciones</a> de uso de <a href="ship2go.com">ship2go.com</a></label>
+                            <label class="form-check-label" for="exampleCheck1">Estoy de acuerdo con los 
+                                <a routerLink="/terms-and-conditions" target="_blank">Terminos y condiciones</a> 
+                                de uso de
+                                <a href="ship2go.com">ship2go.com</a>
+                            </label>
                         </div>
                 </div>
             </div>

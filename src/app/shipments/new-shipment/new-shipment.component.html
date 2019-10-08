@@ -8,20 +8,26 @@
                         <ul class="nav nav-tabs steps" role="tablist">
                             <li role="presentation" class="nav-item">
                                 <a href="#step1" class="nav-link active" data-toggle="tab" aria-controls="step1"
-                                    role="tab" title="Step 1">
-                                    1
+                                    role="tab" title="Domicilios">
+                                    <i class="fas fa-map-marker"></i>
+                                    <br>
+                                    Domicilios
                                 </a>
                             </li>
                             <li role="presentation" class="nav-item">
-                                <a href="#step2" class="nav-link" data-toggle="tab" aria-controls="step2" role="tab"
-                                    title="Step 2">
-                                    2
+                                <a href="#step2" disbled class="nav-link disabled" data-toggle="tab" aria-controls="step2"
+                                    role="tab" title="Paquete">
+                                    <i class="fas fa-box-open"></i>
+                                    <br>
+                                    Paquete
                                 </a>
                             </li>
                             <li role="presentation" class="nav-item">
-                                <a href="#complete" class="nav-link" data-toggle="tab" aria-controls="complete"
-                                    role="tab" title="Complete">
-                                    4
+                                <a href="#complete" disabled class="nav-link disabled" data-toggle="tab" aria-controls="complete"
+                                    role="tab" title="Finalizar">
+                                    <i class="far fa-check-circle"></i>
+                                    <br>
+                                    Resumen
                                 </a>
                             </li>
                         </ul>
@@ -66,6 +72,10 @@
                                                                 <label for="inputEmail4">Nombre de quien envia</label>
                                                                 <input type="text" class="form-control" id="inputEmail4"
                                                                     [ngModelOptions]="{standalone: true}"
+                                                                    [ngClass]="{ 'is-invalid': shipmentErrors.origin.name != '' }"
+                                                                    placement="bottom"
+                                                                    ngbTooltip="{{shipmentErrors.origin.name}}"
+                                                                    tooltipClass="error-tooltip"
                                                                     [(ngModel)]="shipment.origin.name" placeholder="">
                                                             </div>
                                                             <div class="form-group col-md-6">
@@ -73,13 +83,20 @@
                                                                 <input type="text" class="form-control" id="inputEmail4"
                                                                     [ngModelOptions]="{standalone: true}"
                                                                     [(ngModel)]="shipment.origin.company"
-                                                                    placeholder="">
+                                                                    [ngClass]="{ 'is-invalid': shipmentErrors.origin.company != '' }"
+                                                                    placement="bottom"
+                                                                    ngbTooltip="{{shipmentErrors.origin.company}}"
+                                                                    tooltipClass="error-tooltip" placeholder="">
                                                             </div>
                                                             <div class="form-group col-md-6">
                                                                 <label for="inputPassword4">Teléfono</label>
                                                                 <input type="text" class="form-control"
                                                                     id="inputPassword4"
                                                                     [ngModelOptions]="{standalone: true}"
+                                                                    [ngClass]="{ 'is-invalid': shipmentErrors.origin.phone != '' }"
+                                                                    placement="bottom"
+                                                                    ngbTooltip="{{shipmentErrors.origin.phone}}"
+                                                                    tooltipClass="error-tooltip"
                                                                     [(ngModel)]="shipment.origin.phone" placeholder="">
                                                             </div>
                                                             <div class="form-group col-md-6">
@@ -87,6 +104,10 @@
                                                                 <input type="text" class="form-control"
                                                                     id="inputPassword4"
                                                                     [ngModelOptions]="{standalone: true}"
+                                                                    [ngClass]="{ 'is-invalid': shipmentErrors.origin.email != '' }"
+                                                                    placement="bottom"
+                                                                    ngbTooltip="{{shipmentErrors.origin.email}}"
+                                                                    tooltipClass="error-tooltip"
                                                                     [(ngModel)]="shipment.origin.email" placeholder="">
                                                             </div>
                                                             <div class="form-group col-md-6">
@@ -109,6 +130,10 @@
                                                                     id="inputPassword4"
                                                                     [ngModelOptions]="{standalone: true}"
                                                                     (keyup)="getNeightsFrom()"
+                                                                    [ngClass]="{ 'is-invalid': shipmentErrors.origin.postalCode != '' }"
+                                                                    placement="bottom"
+                                                                    ngbTooltip="{{shipmentErrors.origin.postalCode}}"
+                                                                    tooltipClass="error-tooltip"
                                                                     [(ngModel)]="shipment.origin.postalCode"
                                                                     placeholder="">
                                                             </div>
@@ -117,6 +142,10 @@
                                                                 <input type="text" class="form-control" id="inputEmail4"
                                                                     [ngModelOptions]="{standalone: true}"
                                                                     [(ngModel)]="shipment.origin.street"
+                                                                    [ngClass]="{ 'is-invalid': shipmentErrors.origin.street != '' }"
+                                                                    placement="bottom"
+                                                                    ngbTooltip="{{shipmentErrors.origin.street}}"
+                                                                    tooltipClass="error-tooltip"
                                                                     placeholder="Av. Empresarios #200">
                                                             </div>
                                                             <div class="form-group col-md-3">
@@ -124,7 +153,10 @@
                                                                 <input type="text" class="form-control" id="inputEmail4"
                                                                     [ngModelOptions]="{standalone: true}"
                                                                     [(ngModel)]="shipment.origin.number"
-                                                                    placeholder="123">
+                                                                    [ngClass]="{ 'is-invalid': shipmentErrors.origin.number != '' }"
+                                                                    placement="bottom"
+                                                                    ngbTooltip="{{shipmentErrors.origin.number}}"
+                                                                    tooltipClass="error-tooltip" placeholder="123">
                                                             </div>
                                                             <div class="form-group col-md-6">
                                                                 <label for="inputAddress">Colonia</label>
@@ -134,6 +166,10 @@
                                                                         [ngModelOptions]="{standalone: true}"
                                                                         bindValue="place_name" bindLabel="place_name"
                                                                         placeholder="Selecciona una colonia"
+                                                                        [ngClass]="{ 'is-invalid': shipmentErrors.origin.district != '' }"
+                                                                        placement="bottom"
+                                                                        ngbTooltip="{{shipmentErrors.origin.district}}"
+                                                                        tooltipClass="error-tooltip"
                                                                         [(ngModel)]="shipment.origin.district">
                                                                     </ng-select>
                                                                 </div>
@@ -143,6 +179,10 @@
                                                                 <input type="text" class="form-control"
                                                                     id="inputPassword4"
                                                                     [ngModelOptions]="{standalone: true}"
+                                                                    [ngClass]="{ 'is-invalid': shipmentErrors.origin.city != '' }"
+                                                                    placement="bottom"
+                                                                    ngbTooltip="{{shipmentErrors.origin.city}}"
+                                                                    tooltipClass="error-tooltip"
                                                                     [(ngModel)]="shipment.origin.city" placeholder="">
                                                             </div>
                                                             <div class="form-group col-md-6">
@@ -151,20 +191,16 @@
                                                                     <select name="" id=""
                                                                         [ngModelOptions]="{standalone: true}"
                                                                         [(ngModel)]="shipment.origin.state"
+                                                                        [ngClass]="{ 'is-invalid': shipmentErrors.origin.state != '' }"
+                                                                        placement="bottom"
+                                                                        ngbTooltip="{{shipmentErrors.origin.state}}"
+                                                                        tooltipClass="error-tooltip"
                                                                         class="form-control">
                                                                         <option value="{{state.code_2_digits}}"
                                                                             *ngFor="let state of statesOrigin">
                                                                             {{state.name}}</option>
                                                                     </select>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group col-md-12">
-                                                                <label for="inputPassword4">Referencia</label>
-                                                                <input type="text" class="form-control"
-                                                                    id="inputPassword4"
-                                                                    [ngModelOptions]="{standalone: true}"
-                                                                    [(ngModel)]="extraInfo.origen.reference"
-                                                                    placeholder="">
                                                             </div>
                                                         </div>
                                                     </form>
@@ -203,6 +239,10 @@
                                                             <label for="inputEmail4">Nombre de quien recibe</label>
                                                             <input type="text" class="form-control" id="inputEmail4"
                                                                 [ngModelOptions]="{standalone: true}"
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.destination.name != '' }"
+                                                                placement="bottom"
+                                                                ngbTooltip="{{shipmentErrors.destination.name}}"
+                                                                tooltipClass="error-tooltip"
                                                                 [(ngModel)]="shipment.destination.name" placeholder="">
                                                         </div>
                                                         <div class="form-group col-md-6">
@@ -210,18 +250,29 @@
                                                             <input type="text" class="form-control" id="inputEmail4"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 [(ngModel)]="shipment.destination.company"
-                                                                placeholder="">
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.destination.company != '' }"
+                                                                placement="bottom"
+                                                                ngbTooltip="{{shipmentErrors.destination.company}}"
+                                                                tooltipClass="error-tooltip" placeholder="">
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="inputPassword4">Teléfono</label>
                                                             <input type="text" class="form-control" id="inputPassword4"
                                                                 [ngModelOptions]="{standalone: true}"
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.destination.phone != '' }"
+                                                                placement="bottom"
+                                                                ngbTooltip="{{shipmentErrors.destination.phone}}"
+                                                                tooltipClass="error-tooltip"
                                                                 [(ngModel)]="shipment.destination.phone" placeholder="">
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="inputPassword4">Email</label>
                                                             <input type="text" class="form-control" id="inputPassword4"
                                                                 [ngModelOptions]="{standalone: true}"
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.destination.email != '' }"
+                                                                placement="bottom"
+                                                                ngbTooltip="{{shipmentErrors.destination.email}}"
+                                                                tooltipClass="error-tooltip"
                                                                 [(ngModel)]="shipment.destination.email" placeholder="">
                                                         </div>
                                                         <div class="form-group col-md-6">
@@ -242,6 +293,10 @@
                                                             <input type="text" class="form-control" id="inputPassword4"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 (keyup)="getNeightsTo()"
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.destination.postalCode != '' }"
+                                                                placement="bottom"
+                                                                ngbTooltip="{{shipmentErrors.destination.postalCode}}"
+                                                                tooltipClass="error-tooltip"
                                                                 [(ngModel)]="shipment.destination.postalCode"
                                                                 placeholder="">
                                                         </div>
@@ -249,6 +304,10 @@
                                                             <label for="inputEmail4">Calle</label>
                                                             <input type="text" class="form-control" id="inputEmail4"
                                                                 [ngModelOptions]="{standalone: true}"
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.destination.street != '' }"
+                                                                placement="bottom"
+                                                                ngbTooltip="{{shipmentErrors.destination.street}}"
+                                                                tooltipClass="error-tooltip"
                                                                 [(ngModel)]="shipment.destination.street"
                                                                 placeholder="Av. Empresarios">
                                                         </div>
@@ -256,6 +315,10 @@
                                                             <label for="inputEmail4">Número</label>
                                                             <input type="text" class="form-control" id="inputEmail4"
                                                                 [ngModelOptions]="{standalone: true}"
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.destination.number != '' }"
+                                                                placement="bottom"
+                                                                ngbTooltip="{{shipmentErrors.destination.number}}"
+                                                                tooltipClass="error-tooltip"
                                                                 [(ngModel)]="shipment.destination.number"
                                                                 placeholder="123">
                                                         </div>
@@ -267,6 +330,10 @@
                                                                     [ngModelOptions]="{standalone: true}"
                                                                     bindValue="place_name" bindLabel="place_name"
                                                                     placeholder="Selecciona una colonia"
+                                                                    [ngClass]="{ 'is-invalid': shipmentErrors.destination.district != '' }"
+                                                                    placement="bottom"
+                                                                    ngbTooltip="{{shipmentErrors.destination.district}}"
+                                                                    tooltipClass="error-tooltip"
                                                                     [(ngModel)]="shipment.destination.district">
                                                                 </ng-select>
                                                             </div>
@@ -275,6 +342,10 @@
                                                             <label for="inputPassword4">Ciudad</label>
                                                             <input type="text" class="form-control" id="inputPassword4"
                                                                 [ngModelOptions]="{standalone: true}"
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.destination.city != '' }"
+                                                                placement="bottom"
+                                                                ngbTooltip="{{shipmentErrors.destination.city}}"
+                                                                tooltipClass="error-tooltip"
                                                                 [(ngModel)]="shipment.destination.city" placeholder="">
                                                         </div>
                                                         <div class="form-group col-md-6">
@@ -283,36 +354,32 @@
                                                                 <select name="" id=""
                                                                     [ngModelOptions]="{standalone: true}"
                                                                     [(ngModel)]="shipment.destination.state"
-                                                                    class="form-control">
+                                                                    [ngClass]="{ 'is-invalid': shipmentErrors.destination.state != '' }"
+                                                                    placement="bottom"
+                                                                    ngbTooltip="{{shipmentErrors.destination.state}}"
+                                                                    tooltipClass="error-tooltip" class="form-control">
                                                                     <option value="{{state.code_2_digits}}"
                                                                         *ngFor="let state of statesDestination">
                                                                         {{state.name}}</option>
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group col-md-12">
-                                                            <label for="inputPassword4">Referencia</label>
-                                                            <input type="text" class="form-control" id="inputPassword4"
-                                                                [ngModelOptions]="{standalone: true}"
-                                                                [(ngModel)]="extraInfo.destination.reference"
-                                                                placeholder="">
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <ul class="list-inline pull-xs-right">
-                                        <li class="list-inline-item">
-                                            <button type="button" class="btn btn-primary next-step">Save and
-                                                continue</button>
-                                        </li>
-                                    </ul>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-4 offset-sm-4">
+                                            <button class="next-step firstStep d-none">A</button>
+                                            <button type="button" (click)="continue()"
+                                                class="btn btn-app btn-rounded btn-block">Continuar</button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="tab-pane" role="tabpanel" id="step2">
                                     <br>
-                                    <!--<h3>Step 2</h3>
-                                    <p>This is step 2</p>-->
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="card card-blue">
@@ -331,6 +398,10 @@
                                                         <div class="form-group col-md-3">
                                                             <input type="text" class="form-control"
                                                                 id="exampleInputEmail1"
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.package.content != '' }"
+                                                                placement="bottom"
+                                                                ngbTooltip="{{shipmentErrors.package.content}}"
+                                                                tooltipClass="error-tooltip"
                                                                 [(ngModel)]="shipment.package.content"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Contendio">
@@ -338,6 +409,10 @@
                                                         <div class="form-group col-md-3">
                                                             <input type="text" class="form-control"
                                                                 id="exampleInputEmail1"
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.package.insurance != '' }"
+                                                                placement="bottom"
+                                                                ngbTooltip="{{shipmentErrors.package.insurance}}"
+                                                                tooltipClass="error-tooltip"
                                                                 [(ngModel)]="shipment.package.insurance"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Seguro">
@@ -347,6 +422,10 @@
                                                         <div class="col-sm">
                                                             <input type="text" class="form-control"
                                                                 id="exampleInputEmail1"
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.package.dimensions.height != '' }"
+                                                                placement="bottom"
+                                                                ngbTooltip="{{shipmentErrors.package.dimensions.height}}"
+                                                                tooltipClass="error-tooltip"
                                                                 [(ngModel)]="shipment.package.dimensions.height"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Alto (cm)">
@@ -354,6 +433,10 @@
                                                         <div class="col-sm">
                                                             <input type="text" class="form-control"
                                                                 id="exampleInputEmail1"
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.package.dimensions.width != '' }"
+                                                                placement="bottom"
+                                                                ngbTooltip="{{shipmentErrors.package.dimensions.width}}"
+                                                                tooltipClass="error-tooltip"
                                                                 [(ngModel)]="shipment.package.dimensions.width"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Ancho (cm)">
@@ -361,6 +444,10 @@
                                                         <div class="col-sm">
                                                             <input type="text" class="form-control"
                                                                 id="exampleInputEmail1"
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.package.dimensions.length != '' }"
+                                                                placement="bottom"
+                                                                ngbTooltip="{{shipmentErrors.package.dimensions.length}}"
+                                                                tooltipClass="error-tooltip"
                                                                 [(ngModel)]="shipment.package.dimensions.length"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Largo (cm)">
@@ -368,6 +455,10 @@
                                                         <div class="col-sm">
                                                             <input type="text" class="form-control"
                                                                 id="exampleInputEmail1"
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.package.weight != '' }"
+                                                                placement="bottom"
+                                                                ngbTooltip="{{shipmentErrors.package.weight}}"
+                                                                tooltipClass="error-tooltip"
                                                                 [(ngModel)]="shipment.package.weight"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 aria-describedby="emailHelp" placeholder="Peso (kg)">
@@ -389,77 +480,100 @@
                                                     </div>
                                                     <div class="row divider" *ngIf="rates">
                                                         <div class="col-sm-12">
-                                                                <hr>
-                                                                <h5 class="text-center text-white">Selecciona una paquetería</h5>
+                                                            <hr>
+                                                            <h5 class="text-center text-white">Selecciona una paquetería
+                                                            </h5>
                                                         </div>
                                                     </div>
                                                     <div class="row" *ngIf="rates">
                                                         <div class="col-sm-12">
-                                                                <div class="list-group"  [@listAnimation]="rates.length">
-                                                                        <div class="box-quote list-group-item" (click)="selectParcel(r.carrier, r.service, r.totalPrice, i)" *ngFor="let r of rates; let i = index;">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-3">
-                                                                                    <img src="assets/imgs/carriers/{{r.carrier+'.png'}}" class="carrier-logo" alt="">
-                                                                                </div>
-                                                                                <div class="col-sm-3">
-                                                                                    <h6 class="text-center">{{r.carrier+' '+r.service}}</h6>
-                                                                                </div>
-                                                                                <div class="col-sm-3">
-                                                                                    <h6 class="text-center">{{r.deliveryEstimate}}</h6>
-                                                                                </div>
-                                                                                <div class="col-sm-3">
-                                                                                    <h6 class="text-center">{{r.totalPrice | currency}} {{r.currency}}</h6>
-                                                                                </div>
-                                                                            </div>
+                                                            <div class="list-group" [@listAnimation]="rates.length">
+                                                                <div class="box-quote list-group-item"
+                                                                    [ngClass]="{ 'active': i == this.index }"
+                                                                    (click)="selectParcel(r.carrier, r.service, r.totalPrice, i)"
+                                                                    *ngFor="let r of rates; let i = index;">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-3">
+                                                                            <img src="assets/imgs/carriers/{{r.carrier+'.png'}}"
+                                                                                class="carrier-logo" alt="">
+                                                                        </div>
+                                                                        <div class="col-sm-3">
+                                                                            <h6 class="text-center">
+                                                                                {{r.carrier+' '+r.service}}</h6>
+                                                                        </div>
+                                                                        <div class="col-sm-3">
+                                                                            <h6 class="text-center">
+                                                                                {{r.deliveryEstimate}}</h6>
+                                                                        </div>
+                                                                        <div class="col-sm-3">
+                                                                            <h6 class="text-center">
+                                                                                {{r.totalPrice | currency}}
+                                                                                {{r.currency}}</h6>
                                                                         </div>
                                                                     </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-sm-4 offser-sm-4">
-                                                                <button class="btn btn-app-red btn-block btn-rounded" *ngIf="this.shipment.shipment.carrier != ''"
-                                                                [disabled]="loadingShipment" (click)="createLabel()">
+                                                        <div class="col-sm-2 offset-sm-4">
+                                                            <button type="button"
+                                                                class="btn btn-app-gray btn-rounded btn-block prev-step">Atras</button>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <button class="next-step secondStep d-none"></button>
+                                                            <button class="btn btn-app-red btn-block btn-rounded"
+                                                                [disabled]="!shipmentReady" (click)="createLabel()">
                                                                 Generar Guía
-                                                                <i class="fas fa-circle-notch fa-spin"
-                                                                    *ngIf="loadingShipment"></i>
                                                             </button>
                                                         </div>
-                                                    </div>                                                   
-                                                       
-
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <ul class="pull-xs-right">
-                                        <li class="list-inline-item">
-                                            <button type="button" class="btn btn-default prev-step">Previous</button>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <button type="button" class="btn btn-primary next-step">Save and
-                                                continue</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="tab-pane" role="tabpanel" id="step3">
-                                    <h3>Step 3</h3>
-                                    <p>This is step 3</p>
-                                    <ul class="list-inline pull-xs-right">
-                                        <li class="list-inline-item">
-                                            <button type="button" class="btn btn-default prev-step">Previous</button>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <button type="button" class="btn btn-default next-step">Skip</button>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <button type="button" class="btn btn-primary btn-info-full next-step">Save
-                                                and continue</button>
-                                        </li>
-                                    </ul>
                                 </div>
                                 <div class="tab-pane" role="tabpanel" id="complete">
-                                    <h3>Complete</h3>
-                                    <p>You have successfully completed all steps.</p>
+                                    <div class="row">
+                                        <div class="col-sm-10 offset-sm-1">
+                                            <div class="card card-blue">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <h4 class="text-center">Guía Generada</h4>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <h6 class="text-center">Origen</h6>
+                                                            <p class="text-center">{{shipment.origin.street}} {{shipment.origin.number}}, {{shipment.origin.district}}. {{shipment.origin.state}}, {{shipment.origin.country}}</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <h6 class="text-center">Destino</h6>
+                                                            <p class="text-center">{{shipment.destination.street}} {{shipment.destination.number}}, {{shipment.destination.district}}. {{shipment.destination.state}}, {{shipment.destination.country}}</p>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <h6 class="text-center">Información del paquete</h6>
+                                                            <p class="text-center">{{shipment.package.dimensions.height}} cm Alto X {{shipment.package.dimensions.width}} cm Ancho X {{shipment.package.dimensions.length}} cm Largo - {{shipment.package.weight}} Kg</p>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                                <h6 class="text-center">Seguro</h6>
+                                                                <p class="text-center">{{shipment.package.insurance | currency}}</p>
+                                                            </div>
+                                                        <div class="col-sm-4 offset-sm-2">
+                                                            <a href="{{labelFinish.label}}" target="_blank" class="btn btn-app btn-rounded btn-block finishBtn">
+                                                                <i class="fas fa-download"></i>
+                                                                Descargar Etiqueta
+                                                            </a>
+                                                        </div>  
+                                                        <div class="col-sm-4">
+                                                                <a routerLink="/admin/shipments"class="btn btn-app-red btn-rounded btn-block">
+                                                                    Listado de Guías
+                                                                </a>
+                                                            </div>   
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>

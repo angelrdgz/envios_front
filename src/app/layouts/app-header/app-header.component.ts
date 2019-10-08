@@ -15,6 +15,7 @@ export class AppHeaderComponent implements OnInit {
   ngOnInit() {
     this.userHeader = JSON.parse(localStorage.getItem('user_ses'));
     this.balance = this.userHeader.business == 0 ? this.userHeader.balance:this.userHeader.company.balance
+    console.log(this.userHeader)
   }
 
 }

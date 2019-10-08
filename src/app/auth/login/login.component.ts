@@ -14,6 +14,7 @@ import Swal from 'sweetalert2'
 export class LoginComponent implements OnInit {
 
   toasts: any[] = [];
+  email:string='';
 
   loginForm: FormGroup;
   loginError: string;
@@ -33,7 +34,6 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   ngOnInit() {
-
     if (localStorage.getItem('token_user') !== null) {
       this.router.navigate(['admin/dashboard'])
     }
@@ -42,6 +42,20 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
+  }
+
+  resendEmail(){
+
+    this._apiService.resendEmail({email: this.email}).subscribe(
+      data => {  },
+      err => {
+        this.showSwal('error', err.error.message)
+      },
+      () => {
+        this.showSwal('success', 'Enviamos un email de confirmación a tu cuenta')
+      }
+    );
+
   }
 
   login(form) {
@@ -67,8 +81,25 @@ export class LoginComponent implements OnInit {
             this.loginErrors = err.error.errors
             break;
           }
-          case 500: {
-            this.showSwal('info', err.error.message);
+          case 400: {
+            Swal.fire({
+              title: 'Cuenta no verificada',
+              text: "¿Desea que reenviemos un correo de activación?",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Si',
+              cancelButtonText: 'No',
+              customClass: {
+                confirmButton: 'btn-app-blue',
+                cancelButton: 'btn-app-gray',
+              }
+            }).then((result) => {
+              if (result.value) {
+                this.resendEmail();
+              }
+            })
             break;
           }
           default: {

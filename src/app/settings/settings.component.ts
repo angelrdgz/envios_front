@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UiSwitchModule } from 'ngx-toggle-switch';
 import { ApiService } from '../services/api.service';
 import Swal from 'sweetalert2'
 
@@ -25,12 +26,47 @@ export class SettingsComponent implements OnInit {
     state:'',
   }
 
+  public configuration:any = {
+    email_receiver: true,
+  }
+
+  public onColor:string = '#fff';
+  public offColor:string = '#000';
+  public offText:string = 'No';
+  public onText:string = 'Sí';
+
   constructor(
     private _apiService: ApiService
   ) { }
 
   ngOnInit() {
     this.getBusinessInfo();
+    this.getConfiguration();
+  }
+
+  getConfiguration(){
+
+    this._apiService.getConfiguration().subscribe(
+      data => { 
+        console.log(data)
+        this.configuration = data.data;
+      },
+      err => console.error(err),
+      () => {}
+    );
+
+  }
+
+  updateConfiguration(value, key){
+
+    this._apiService.updateConfiguration({key: key, value: value }).subscribe(
+      data => { 
+        console.log(data)
+      },
+      err => console.error(err),
+      () => ''
+    );
+
   }
 
   getBusinessInfo(){

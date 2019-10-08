@@ -21,7 +21,7 @@
                     <h5 class="card-title text-center"><span class="text-red">¡Bienvenido</span> nuevamente!</h5>
                 <div class="input-container" [ngClass]="{ 'is-invalid': loginErrors.email !== '' }">
                     <i class="fas fa-envelope"></i>
-                    <input name="email" id="login-email" type="email" class="form-input" placeholder="Email" required ngModel placement="right" ngbTooltip="{{loginErrors.email}}" tooltipClass="error-tooltip">
+                    <input name="email" id="login-email" type="email" class="form-input" placeholder="Email" required [(ngModel)]="email" placement="right" ngbTooltip="{{loginErrors.email}}" tooltipClass="error-tooltip">
                 </div>
                 <div class="input-container" [ngClass]="{ 'is-invalid': loginErrors.password !== '' }">
                     <i class="fas fa-lock-open"></i>

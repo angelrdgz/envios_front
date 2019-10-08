@@ -46,6 +46,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import {DataTableModule} from "angular-6-datatable";
 import { HighchartsChartModule } from 'highcharts-angular';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 
 import { SignupComponent } from './signup/signup.component';
 import { ServicesComponent } from './site/services/services.component';
@@ -114,7 +115,8 @@ import { AppLoaderComponent } from './layouts/app-loader/app-loader.component';
     BrowserAnimationsModule,
     DataTableModule,
     HighchartsChartModule,
-    NgbModule
+    NgbModule,
+    JwBootstrapSwitchNg2Module
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
