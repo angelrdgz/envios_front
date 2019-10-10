@@ -50,7 +50,7 @@ export class QuoteComponent implements OnInit {
         "city": "Monterrey",
         "state": "NL",
         "country": "MX",
-        "postalCode": "66236"
+        "postalCode": ""
     },
     "destination": {
         "name": "Gina Colin",
@@ -63,18 +63,18 @@ export class QuoteComponent implements OnInit {
         "city": "Monterrey",
         "state": "NL",
         "country": "MX",
-        "postalCode": "66240"
+        "postalCode": ""
     },
     "package": {
         "content": "jewels",
         "amount": 1,
         "type": "box",
         "dimensions": {
-            "length": 17,
-            "width": 13,
-            "height": 8
+            "length": null,
+            "width": null,
+            "height": null
         },
-        "weight": 3,
+        "weight": null,
         "insurance": 0,
         "declaredValue": 0
     },
@@ -103,6 +103,10 @@ export class QuoteComponent implements OnInit {
 
   getQuote() {
     this.loading = true;
+    this.quote.package.dimensions.width = parseInt(this.quote.package.dimensions.width)
+    this.quote.package.dimensions.length = parseInt(this.quote.package.dimensions.length)
+    this.quote.package.dimensions.height = parseInt(this.quote.package.dimensions.height)
+    this.quote.package.weight = parseInt(this.quote.package.weight)
     this.rates = []
     this._enviaService.quote(this.quote).subscribe(
       data => { 

@@ -1,6 +1,6 @@
 @import "../../variables.scss";
 #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
-    color: #fff;
+    color: $app-blue;
     background-color: transparent;
     border-color: transparent transparent $app-blue;
     border-bottom: 2px solid !important;
@@ -22,12 +22,12 @@
     color: #eee;
     font-size: 20px;
 }
-.card-blue {
-  background: $app-blue !important;
+.card-transparent {
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 30px !important;
 
   .card-body {
-    background: $app-blue !important;
+    background: transparent !important;
     border-radius: 30px !important;
 
     .card-icon {
@@ -71,6 +71,8 @@
       border: 0;
       height: 50px;
       border-radius: 30px !important;
+      border: 1px solid $app-blue;
+      color: $app-blue;
 
       .option {
         color: $app-blue;
@@ -78,19 +80,15 @@
 
       &::-webkit-input-placeholder {
         color: $app-blue;
-        font-size: 0.8em !important;
       }
       &:-moz-placeholder {
         color: $app-blue;
-        font-size: 0.8em !important;
       }
       &::-moz-placeholder {
         color: $app-blue;
-        font-size: 0.8em !important;
       }
       &:-ms-input-placeholder {
         color: $app-blue;
-        font-size: 0.8em !important;
       }
     }
 

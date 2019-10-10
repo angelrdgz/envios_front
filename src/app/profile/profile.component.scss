@@ -1,10 +1,10 @@
 @import "../../variables.scss";
-.card-blue {
-  background: $app-blue !important;
+.card-transparent {
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 30px !important;
 
   .card-body {
-    background: $app-blue !important;
+    background: transparent;
     border-radius: 30px !important;
 
     .card-icon {
@@ -36,6 +36,8 @@
       border: 0;
       height: 50px;
       border-radius: 30px !important;
+      color: $app-blue;
+      border: 1px solid $app-blue;
 
       .option {
         color: $app-blue;

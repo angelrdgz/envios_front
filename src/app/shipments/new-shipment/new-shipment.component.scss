@@ -6,9 +6,9 @@
 .error-tooltip .arrow::before {
   border-right-color: $app-red !important;
 }
-.is-invalid{
-        border:2px solid red !important;
-      }
+.is-invalid {
+  border: 2px solid red !important;
+}
 
 .selectWrapper {
   border-radius: 30px;
@@ -63,7 +63,7 @@
       margin: 10px auto;
     }
   }
-  .box-quote.active{
+  .box-quote.active {
     border: 2px solid $app-red;
     background: #fff;
     border-radius: 30px;
@@ -115,6 +115,16 @@
   }
 }
 
+.ng-value-label {
+  color: $app-blue !important;
+  font-size: 0.8em !important;
+}
+
+.ng-option-label {
+  color: $app-blue !important;
+  font-size: 0.8em !important;
+}
+
 .card-transparent {
   padding: 0;
   background: transparent;
@@ -137,22 +147,19 @@
           height: 40px;
           border: 1px solid #ccc;
           border-radius: 30px;
+          color: $app-blue;
 
           &::-webkit-input-placeholder {
             color: $app-blue;
-            font-size: 0.8em !important;
           }
           &:-moz-placeholder {
             color: $app-blue;
-            font-size: 0.8em !important;
           }
           &::-moz-placeholder {
             color: $app-blue;
-            font-size: 0.8em !important;
           }
           &:-ms-input-placeholder {
             color: $app-blue;
-            font-size: 0.8em !important;
           }
         }
       }
@@ -198,13 +205,13 @@ input:checked + .slider {
   box-shadow: 0 0 0 2px limeGreen, 0 0 2px limeGreen;
 }
 
-#complete{
+#complete {
   color: #fff;
-  h4{
+  h4 {
     background: $app-blue;
     border-radius: 30px;
   }
-  p{
+  p {
     background: #fff;
     padding: 8px;
     border-radius: 30px;
@@ -212,7 +219,7 @@ input:checked + .slider {
   }
 }
 
-.finishBtn{
+.finishBtn {
   border: 1px solid #fff;
 }
 
@@ -244,7 +251,7 @@ section {
         }
       }
 
-      .nav-link:visited{
+      .nav-link:visited {
         color: $app-blue;
 
         i {

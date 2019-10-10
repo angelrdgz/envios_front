@@ -1,6 +1,6 @@
 <div class="card-body">
     <h5 class="card-title title">Perfil</h5>
-    <div class="card card-blue">
+    <div class="card card-transparent">
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-6">
@@ -20,22 +20,26 @@
                             readonly class="form-control"
                                 placeholder="Teléfono" />
                         </div>
-                        <div class="col-sm-12">
-                            <input type="password" name="owner" [(ngModel)]="user.password"
-                            class="form-control"
-                                placeholder="Nueva Contraseña" />
-                        </div>
-                        <div class="col-sm-12">
-                            <input type="password" name="owner" [(ngModel)]="user.password_confirmation"
-                            class="form-control"
-                                placeholder="Confirmar Contraseña" />
-                        </div>
-                        <div class="col-sm-12">
-                                <button class="btn-app-red btn btn-rounded btn-block" (click)="updateProfile()">Enviar</button>
-                            </div>
                     </div>
                 </div>
-                <div class="col-sm-6"></div>
+                <div class="col-sm-6">
+                    <div class="col-sm-12">
+                        <input type="password" name="owner" [(ngModel)]="user.password"
+                        class="form-control"
+                            placeholder="Nueva Contraseña" />
+                    </div>
+                    <div class="col-sm-12">
+                        <input type="password" name="owner" [(ngModel)]="user.password_confirmation"
+                        class="form-control"
+                            placeholder="Confirmar Contraseña" />
+                    </div>
+                </div>
+                <div class="col-sm-4 offset-sm-4">
+                    <br>
+                    <div class="form-group">
+                        <button class="btn-app-red btn btn-rounded btn-block" (click)="updateProfile()">Enviar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

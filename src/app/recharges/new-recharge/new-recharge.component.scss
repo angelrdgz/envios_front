@@ -36,6 +36,7 @@
       border: 0;
       height: 50px;
       border-radius: 30px !important;
+      color: $app-blue;
 
       .option {
         color: $app-blue;
@@ -43,19 +44,15 @@
 
       &::-webkit-input-placeholder {
         color: $app-blue;
-        font-size: 0.8em !important;
       }
       &:-moz-placeholder {
         color: $app-blue;
-        font-size: 0.8em !important;
       }
       &::-moz-placeholder {
         color: $app-blue;
-        font-size: 0.8em !important;
       }
       &:-ms-input-placeholder {
         color: $app-blue;
-        font-size: 0.8em !important;
       }
     }
 

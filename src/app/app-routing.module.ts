@@ -41,7 +41,6 @@ import { PrivacyPoliticsComponent } from './privacy-politics/privacy-politics.co
 
 
 const routes: Routes = [
-  //Site routes goes here 
   {
     path: 'admin',
     component: AppBodyComponent,

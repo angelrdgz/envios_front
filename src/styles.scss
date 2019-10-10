@@ -53,9 +53,9 @@ html {
     }
     .btn-app-red {
       background: $app-red;
-      color: #fff;
+      color: #fff !important;
       &:hover {
-        color: #fff;
+        color: #fff !important;
       }
     }
 

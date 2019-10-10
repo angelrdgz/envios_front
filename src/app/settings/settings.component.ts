@@ -19,7 +19,7 @@ export class SettingsComponent implements OnInit {
     business_name:'',
     rfc:'',
     num_int:'',
-    num_ext:0,
+    num_ext:null,
     zip_code:'',
     neight:'',
     city:'',
