@@ -398,7 +398,7 @@
                                                         <div class="form-group col-md-3">
                                                             <input type="text" class="form-control"
                                                                 id="exampleInputEmail1"
-                                                                [ngClass]="{ 'is-invalid': shipmentErrors.package.content != '' }"
+                                                                [ngClass]="{ 'is-invalid': shipmentErrors.package.content != null }"
                                                                 placement="bottom"
                                                                 ngbTooltip="{{shipmentErrors.package.content}}"
                                                                 tooltipClass="error-tooltip"

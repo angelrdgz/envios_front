@@ -97,7 +97,7 @@ export class NewShipmentComponent implements OnInit {
         width: "",
         height: ""
       },
-      content: "",
+      content: null,
       weight: "",
       insurance: "",
     }
@@ -698,7 +698,8 @@ export class NewShipmentComponent implements OnInit {
         Swal.fire({
           type: 'error',
           position: 'center',
-          title: err.error.error,
+          title: 'Error',
+          text: 'lo sentimos, la paquetería no puede generar la guía',
         })
 
         this.loadingShipment = false;
