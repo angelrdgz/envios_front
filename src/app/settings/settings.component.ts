@@ -85,7 +85,6 @@ export class SettingsComponent implements OnInit {
         this.business.state = data.data.state
         this.business.neight = data.data.neight
         this.business.city = data.data.city
-        console.log(data)
       },
       err => console.error(err),
       () => console.log('Hola')

@@ -84,6 +84,7 @@ export class QuoteComponent implements OnInit {
 };
 
   public rates:any
+  public carriers:any;
 
   constructor(
     private _apiService: ApiService,
@@ -94,6 +95,7 @@ export class QuoteComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCarriers('MX');
     //console.log(this.quote.parcel.length)
   }
 
@@ -101,14 +103,44 @@ export class QuoteComponent implements OnInit {
     //this.volumetric =  (this.quote.parcel.width * this.quote.parcel.length * this.quote.parcel.height) / 5000;
   }
 
+  getCarriers(code) {
+    this._apiService.getCarriers(code).subscribe(
+      data => {
+        this.carriers = data.data
+      },
+      err => console.error(err),
+      () => console.log(this.carriers)
+    );
+  }
+
   getQuote() {
     this.loading = true;
+
     this.quote.package.dimensions.width = parseInt(this.quote.package.dimensions.width)
     this.quote.package.dimensions.length = parseInt(this.quote.package.dimensions.length)
     this.quote.package.dimensions.height = parseInt(this.quote.package.dimensions.height)
     this.quote.package.weight = parseInt(this.quote.package.weight)
     this.rates = []
-    this._enviaService.quote(this.quote).subscribe(
+
+    for (let index = 0; index < this.carriers.length; index++) {
+      this.quote.shipment.carrier = this.carriers[index].name
+      this._apiService.quoteSite(this.quote).subscribe(
+        data => {
+          for (let indey = 0; indey < data.data.data.length; indey++) {
+            this.rates.push(data.data.data[indey])
+          }
+        },
+        err => {
+          console.error(err)
+        },
+        () => {
+          console.log(this.rates)
+        }
+      );
+    }
+
+    this.loading = false;
+    /*this._enviaService.quote(this.quote).subscribe(
       data => { 
         this.rates = data.data;
         this.loading = false;
@@ -117,7 +149,7 @@ export class QuoteComponent implements OnInit {
       () => {
         this.loading = false;
       }
-    );
+    );*/
   }
 
 }

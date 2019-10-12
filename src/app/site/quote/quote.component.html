@@ -69,14 +69,14 @@
                 <div class="list-group" [@listAnimation]="rates.length">
                     <div class="box-quote list-group-item" *ngFor="let rate of rates">
                         <div class="row">
-                            <div class="col-sm-2">
+                            <div class="col-sm-4">
                                 <img src="assets/imgs/carriers/{{rate.carrier+'.png'}}" class="carrier-logo" alt="">
                             </div>
                             <div class="col-sm-4">
-                                <h4 class="text-center">{{rate.deliveryEstimate}}</h4>
+                                <h4 class="text-center" style="line-height: 60px;">{{rate.deliveryEstimate}}</h4>
                             </div>
                             <div class="col-sm-4">
-                                <h4 class="text-center">{{rate.totalPrice | currency}} {{rate.currency}}</h4>
+                                <h4 class="text-center" style="line-height: 60px;">{{rate.totalPrice | currency}} {{rate.currency}}</h4>
                             </div>
                         </div>
                     </div>

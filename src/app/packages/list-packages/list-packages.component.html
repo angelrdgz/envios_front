@@ -13,7 +13,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Nombre</th>
+                        <th scope="col">Contenido</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">Medidas (cm)</th>
                         <th scope="col">Peso (kg)</th>
@@ -23,7 +23,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let package of packages">
-                        <td>{{package.name}}</td>
+                        <td>{{package.contents}}</td>
                         <td>{{package.type}}</td>
                         <td>{{package.height}} x {{package.width}} x {{package.length}}</td>
                         <td>{{package.weight}}</td>

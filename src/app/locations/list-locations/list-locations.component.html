@@ -1,1 +1,53 @@
-<p>list-locations works!</p>
+<div class="card-body">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-9">
+                    <h5 class="card-title align-self-center">Domicilios</h5>
+                </div>
+                <div class="col-sm-3">
+                    <div class="selectWrapper">
+                        <select name="" (change)="getLocations($event.target.value)" id=""
+                            class="form-control">
+                            <option value="1">Origenes</option>
+                            <option value="2">Destinos</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Ciudad</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">País</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let location of locations">
+                        <td>{{location.nickname}}</td>
+                        <td>{{location.address}} {{location.number}}, {{location.district}}</td>
+                        <td>{{location.city}}</td>
+                        <td>{{location.state}}</td>
+                        <td>{{location.country}}</td>
+                        <td>
+                            <!--<a routerLink="/admin/packages/{{package.id}}/edit" class="btn btn-icon btn-rounded btn-warning">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>-->
+                            <button type="button" (click)="deleteLocation(location.id)" class="btn btn-icon btn-rounded btn-danger">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="locations.length == 0">
+                        <td colspan="6" class="text-center">No se encontraron domicilios</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

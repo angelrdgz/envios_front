@@ -1,49 +1,41 @@
 <div class="card-body">
-    <h5 class="card-title">Nuevo Empaque</h5>
+    <h5 class="card-title">Modificar Empaque</h5>
     <div class="card card-blue">
         <div class="card-body">
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="package.name"
-                        placeholder="Identificador">
-                </div>
-                <div class="form-group col-md-4">
-                        <div class="selectWrapper">
-                                <select name="" id="" [(ngModel)]="package.type" class="form-control">
-                                        <option value="" class="option">Seleccionar Tipo</option>
-                                        <option value="Caja" class="option">Caja</option>
-                                        <option value="Sobre" class="option">Sobre</option>
-                                    </select>
-                        </div>
+                    <div class="selectWrapper">
+                        <select name="" id="" [(ngModel)]="package.type" class="form-control">
+                            <option value="" class="option">Seleccionar Tipo</option>
+                            <option value="Caja" class="option">Caja</option>
+                            <option value="Sobre" class="option">Sobre</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group col-md-4">
                     <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="package.contents"
                         placeholder="Contenido">
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="package.weight" placeholder="Peso (cm)">
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
                     <div class="input-group">
 
                         <input type="text" class="form-control" placeholder="Alto (cm)" [(ngModel)]="package.height">
                     </div>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                     <div class="input-group">
 
                         <input type="text" class="form-control" [(ngModel)]="package.width" placeholder="Ancho (cm)">
                     </div>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                     <div class="input-group">
-
                         <input type="text" class="form-control" [(ngModel)]="package.length" placeholder="Largo (cm)">
-                    </div>
-                </div>
-                <div class="form-group col-md-3">
-                    <!--<input type="text" class="form-control" id="inputPassword4" 
-                            placeholder="">-->
-                    <div class="input-group">
-
-                        <input type="text" class="form-control" [(ngModel)]="package.weight" placeholder="Peso (cm)">
                     </div>
                 </div>
                 <div class="col-sm-3 offset-sm-3">

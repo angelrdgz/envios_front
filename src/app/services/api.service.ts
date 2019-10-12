@@ -41,6 +41,10 @@ export class ApiService {
     return this.http.post<Res>(ApiEndpoint+'/rates', data, httpOptions);
   }
 
+  quoteSite(data){
+    return this.http.post<Res>(ApiEndpoint+'/site/rates', data, httpOptions);
+  }
+
   login(data):Observable<User>{
     return this.http.post<User>(ApiEndpoint+'/auth/login', data);
   }
@@ -179,6 +183,10 @@ export class ApiService {
 
   getLocation(id){
     return this.http.get<Res>(ApiEndpoint+'/locations/'+id);
+  }
+
+  deleteLocation(id){
+    return this.http.delete<Res>(ApiEndpoint+'/locations/'+id);
   }
 
   getCountries(){

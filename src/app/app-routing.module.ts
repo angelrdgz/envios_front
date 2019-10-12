@@ -85,6 +85,11 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
+        path: 'locations',
+        component: ListLocationsComponent,
+        pathMatch: 'full',
+      },
+      {
         path: 'recharges',
         component: ListRechargesComponent,
         pathMatch: 'full',
