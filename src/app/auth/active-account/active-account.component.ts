@@ -21,7 +21,6 @@ export class ActiveAccountComponent implements OnInit {
 
   ngOnInit() {
     this.hash = this.route.snapshot.paramMap.get("hash")
-    alert(this.hash)
     this.activeAccount(this.hash)
   }
 

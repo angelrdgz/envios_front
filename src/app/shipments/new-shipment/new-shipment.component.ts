@@ -695,12 +695,25 @@ export class NewShipmentComponent implements OnInit {
       },
       err => {
         console.error(err)
-        Swal.fire({
-          type: 'error',
-          position: 'center',
-          title: 'Error',
-          text: 'lo sentimos, la paquetería no puede generar la guía',
-        })
+        switch (err.status) {
+          case 406:
+              Swal.fire({
+                type: 'error',
+                position: 'center',
+                title: 'Error',
+                text: 'Fondos Insuficientes',
+              })            
+            break;        
+          default:
+              Swal.fire({
+                type: 'error',
+                position: 'center',
+                title: 'Error',
+                text: 'lo sentimos, la paquetería no puede generar la guía',
+              })
+
+            break;
+        }
 
         this.loadingShipment = false;
       },

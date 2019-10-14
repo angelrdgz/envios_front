@@ -61,6 +61,7 @@ import { DetailShipmentComponent } from './shipments/detail-shipment/detail-ship
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { PrivacyPoliticsComponent } from './privacy-politics/privacy-politics.component';
 import { AppLoaderComponent } from './layouts/app-loader/app-loader.component';
+import { ListStatementComponent } from './statements/list-statement/list-statement.component';
 
 
 @NgModule({
@@ -104,6 +105,7 @@ import { AppLoaderComponent } from './layouts/app-loader/app-loader.component';
     TermsAndConditionsComponent,
     PrivacyPoliticsComponent,
     AppLoaderComponent,
+    ListStatementComponent,
   ],
   imports: [
     BrowserModule,

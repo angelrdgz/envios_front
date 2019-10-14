@@ -1,0 +1,33 @@
+<div class="card-body">
+        <div class="row">
+            <div class="col-sm-9">
+                <h5 class="card-title align-self-center">Estado de Cuenta</h5>
+            </div>
+            <div class="col-sm-3">
+                    <a routerLink="/admin/shipments/new" routerLinkActive="active"
+                    class="btn btn-app btn-rounded btn-block">Generar Guía</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Saldo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let logbook of logbooks">
+                            <td class="text-center">{{logbook.created_at}}</td>
+                            <td class="text-center">{{logbook.type}}</td>
+                            <td class="text-center">{{logbook.total | currency }}</td>
+                            <td class="text-center"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

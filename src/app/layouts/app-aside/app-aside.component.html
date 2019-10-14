@@ -58,6 +58,12 @@
             </a>
         </li>
         <li routerLinkActive="active">
+                <a routerLink="/admin/statements" routerLinkActive="active">
+                    <i class="fas fa-tasks"></i>
+                    <span>Estado de Cuenta</span>
+                </a>
+            </li>
+        <li routerLinkActive="active">
             <a routerLink="/admin/invoices" routerLinkActive="active">
                 <i class="far fa-file-alt"></i>
                 <span>Facturas</span>
@@ -81,18 +87,6 @@
        <!--<li class="divider">
             <span>Support</span>
         </li>-->
-        <li routerLinkActive="active">
-            <a routerLink="/admin/profile" routerLinkActive="active">
-                <i class="fas fa-id-card"></i>
-                <span>Perfil</span>
-            </a>
-        </li>
-        <li routerLinkActive="active">
-            <a routerLink="/admin/settings" routerLinkActive="active">
-                <i class="fas fa-user-cog"></i>
-                <span>Configuraciones</span>
-            </a>
-        </li>
         <li routerLinkActive="active">
                 <a (click)="signOut()">
                     <i class="fas fa-power-off"></i>

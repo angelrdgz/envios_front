@@ -32,6 +32,8 @@ import { NewCardComponent } from './cards/new-card/new-card.component';
 
 import { ListLocationsComponent } from './locations/list-locations/list-locations.component';
 
+import { ListStatementComponent } from './statements/list-statement/list-statement.component';
+
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileComponent } from './profile/profile.component';
 import { InvoicesComponent } from './invoices/invoices.component';
@@ -92,6 +94,11 @@ const routes: Routes = [
       {
         path: 'recharges',
         component: ListRechargesComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'statements',
+        component: ListStatementComponent,
         pathMatch: 'full',
       },
       {

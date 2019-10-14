@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
   public loading: boolean = false;
 
   public user = { name: '', email: '', password: '', password_confirmation: '', phone: '', company: '', business: 0, shipments: 0, terms: true }
-  public loginErrors: any = { name: '', email: '', password: '', password_confirm: '', phone: '', company: '', business: 0, shipments: 0 };
+  public loginErrors: any = { name: null, email: null, password: null, password_confirm: null, phone: null, company: null, shipments: null };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
   }
 
   register() {
-    this.loginErrors = { name: '', email: '', password: '', password_confirm: '', phone: '', company: '', business: 0, shipments: 0 };
+    this.loginErrors = { name: null, email: null, password: null, password_confirm: null, phone: null, company: null, shipments: null };
     this.loading = true;
     this._apiService.register(this.user).subscribe(
       data => {

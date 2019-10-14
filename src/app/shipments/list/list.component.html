@@ -38,7 +38,7 @@
                                 class="btn btn-icon btn-rounded btn-info"><i class="fas fa-eye"></i></a>
                             <a href="{{shipment.label_url}}" *ngIf="shipment.status !='CANCELLED'" target="_blank"
                                 class="btn btn-icon btn-rounded btn-success"><i class="fas fa-download"></i></a>
-                            <button type="button" *ngIf="shipment.status !='CANCELLED'" (click)="cancelShipment(shipment.id)"
+                            <button type="button" *ngIf="shipment.status !='CANCELLED' || shipment.picked == false" (click)="cancelShipment(shipment.id)"
                                 class="btn btn-icon btn-rounded btn-danger"><i
                                     class="fas fa-trash"></i></button>
                         </td>

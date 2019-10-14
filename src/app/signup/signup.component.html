@@ -28,38 +28,38 @@
                             <label class="form-check-label" for="inlineRadio2">Empresarial</label>
                         </div>
                         <div>
-                            <h6 *ngIf="user.business == 0">Si vas a realizar un solo envio</h6>
-                            <h6 *ngIf="user.business == 1">Si cuentas realizas envios frecuentes</h6>
+                            <h6 *ngIf="user.business == 0">Si vas a realizar un solo envío</h6>
+                            <h6 *ngIf="user.business == 1">Si realizas envíos frecuentes</h6>
                         </div>
-                        <div class="input-container" *ngIf="user.business == 1" [ngClass]="{'is-invalid': loginErrors.company != ''}">
+                        <div class="input-container" *ngIf="user.business == 1" [ngClass]="{'is-invalid': loginErrors.company != null}">
                             <i class="far fa-building"></i>
                             <input class="input-field" type="text" [(ngModel)]="user.company" placeholder="Empresa" placement="right" ngbTooltip="{{loginErrors.company}}" tooltipClass="error-tooltip">
                         </div>
-                        <div class="input-container" [ngClass]="{'is-invalid': loginErrors.name!=''}">
+                        <div class="input-container" [ngClass]="{'is-invalid': loginErrors.name!=null}">
                             <i class="far fa-user"></i>
                             <input class="input-field" type="text" [(ngModel)]="user.name" placeholder="Nombre completo" placement="right" ngbTooltip="{{loginErrors.name}}" tooltipClass="error-tooltip">
                         </div>
-                        <div class="input-container" [ngClass]="{'is-invalid': loginErrors.phone !=''}">
+                        <div class="input-container" [ngClass]="{'is-invalid': loginErrors.phone !=null}">
                             <i class="fas fa-mobile-alt"></i>
                             <input class="input-field" type="text" [(ngModel)]="user.phone" placeholder="Teléfono"
                                 name="usrnm" placement="right" ngbTooltip="{{loginErrors.phone}}" tooltipClass="error-tooltip">
                         </div>
-                        <div class="input-container" [ngClass]="{'is-invalid': loginErrors.email!=''}">
+                        <div class="input-container" [ngClass]="{'is-invalid': loginErrors.email!=null}">
                             <i class="fas fa-envelope"></i>
                             <input class="input-field" type="text" [(ngModel)]="user.email" placeholder="Email"
                                 name="usrnm" placement="right" ngbTooltip="{{loginErrors.email}}" tooltipClass="error-tooltip">
                         </div>
-                        <div class="input-container" [ngClass]="{'is-invalid': loginErrors.password!=''}">
+                        <div class="input-container" [ngClass]="{'is-invalid': loginErrors.password!=null}">
                             <i class="fas fa-lock-open"></i>
                             <input class="input-field" type="password" [(ngModel)]="user.password"
                                 placeholder="Contraseña" name="usrnm" placement="right" ngbTooltip="{{loginErrors.password}}" tooltipClass="error-tooltip">
                         </div>
-                        <div class="input-container" [ngClass]="{'is-invalid': loginErrors.password!=''}">
+                        <div class="input-container" [ngClass]="{'is-invalid': loginErrors.password!=null}">
                             <i class="fas fa-check"></i>
                             <input class="input-field" type="password" [(ngModel)]="user.password_confirmation"
                                 placeholder="Confirmar contraseña" name="usrnm" placement="right" ngbTooltip="{{loginErrors.password}}" tooltipClass="error-tooltip">
                         </div>
-                        <div class="input-container" *ngIf="user.business == 1" [ngClass]="{'is-invalid': loginErrors.shipments != ''}">
+                        <div class="input-container" *ngIf="user.business == 1" [ngClass]="{'is-invalid': loginErrors.shipments != null}">
                             <i class="far fa-paper-plane"></i>
                             <select name="" id="" [(ngModel)]="user.shipments" class="input-field" placement="right" ngbTooltip="{{loginErrors.shipments}}" tooltipClass="error-tooltip">
                                 <option value="0" disabled>Envios estimados por mes

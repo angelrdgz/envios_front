@@ -153,6 +153,10 @@ export class ApiService {
     return this.http.delete<Invoice>(ApiEndpoint+'/invoices/'+id);
   }
 
+  getLogbook(month){
+    return this.http.get<Res>(ApiEndpoint+'/logbooks?month='+month);
+  }
+
   getPackages() {
     return this.http.get<Res>(ApiEndpoint+'/packages');
   }

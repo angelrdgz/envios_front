@@ -17,6 +17,7 @@ export class NewRechargeComponent implements OnInit {
   cardNumber: string = '4075595716483764';
   bin: string = '';
   doSubmit: boolean = false;
+  userHeader:any;
   public card: any = { cardNumber: '4075595716483764', email: '', owner: '', token: '', paymentMethod: '', }
 
 
@@ -32,6 +33,8 @@ export class NewRechargeComponent implements OnInit {
     /*Mercadopago.getPaymentMethod({
       "bin": this.bin
   }, this.setPaymentMethodInfo);*/
+    this.userHeader = JSON.parse(localStorage.getItem('user_ses'));
+    console.log(this.userHeader)
   }
 
   cc_format(value) {
@@ -130,16 +133,22 @@ export class NewRechargeComponent implements OnInit {
     for(let i in document.getElementsByTagName('input')) {
      dataForm[document.getElementsByTagName('input')[i].name] = document.getElementsByTagName('input')[i].value;
    }
-   console.log(dataForm);
+
     this._apiService.makePayment(dataForm).subscribe(
       data => { console.log(data)
+        if(this.userHeader.business == 1){
+          this.userHeader.company.balance = data.data
+        }else{
+          this.userHeader.balance = data.data
+        }
         Swal.fire({
-          title: 'Raecarga Exitoso',
+          title: 'Recarga Exitosa',
           text: 'Hemos completado tu recarga correctamente',
           type: 'success',
         }).then((result) => {
           this.router.navigate(['admin/recharges'])
         })
+        localStorage.setItem('user_ses', JSON.stringify(this.userHeader))
       },
       err => {
         console.log(err)
