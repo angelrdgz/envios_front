@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
     this._apiService.login(form.value).subscribe(
       data => { this.data = data },
       err => {
+        console.log(err)
 
         switch (err.status) {
           case 0: {
@@ -74,7 +75,7 @@ export class LoginComponent implements OnInit {
             break;
           }
           case 401: {
-            this.showSwal('error', 'Email o contraseña incorrectos')
+            this.showSwal('error', err.error.errors.credentials)
             break;
           }
           case 422: {
