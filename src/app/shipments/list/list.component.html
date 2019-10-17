@@ -27,8 +27,8 @@
                     <tr *ngFor="let shipment of mf.data">
                         <td>{{shipment.id}}</td>
                         <td>{{shipment.created_at | date:'medium' }}</td>
-                        <td></td>
-                        <td></td>
+                        <td>{{shipment.origen.address}} {{shipment.origen.number}}. {{shipment.origen.district}}, {{shipment.origen.city}}, {{shipment.origen.state}}, {{shipment.origen.country}}</td>
+                        <td>{{shipment.destination.address}} {{shipment.destination.number}}. {{shipment.destination.district}}, {{shipment.destination.city}}, {{shipment.destination.state}}, {{shipment.destination.country}}</td>
                         <td>{{shipment.carrier}}</td>
                         <td>{{shipment.status}}</td>
                         <td>{{shipment.price | currency}}</td>
