@@ -24,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let shipment of mf.data">
+                    <tr [ngClass]="{ 'canceled': shipment.status == 'CANCELLED' }" *ngFor="let shipment of mf.data">
                         <td>{{shipment.id}}</td>
                         <td>{{shipment.created_at | date:'medium' }}</td>
                         <td>{{shipment.origen.address}} {{shipment.origen.number}}. {{shipment.origen.district}}, {{shipment.origen.city}}, {{shipment.origen.state}}, {{shipment.origen.country}}</td>
@@ -38,7 +38,7 @@
                                 class="btn btn-icon btn-rounded btn-info"><i class="fas fa-eye"></i></a>
                             <a href="{{shipment.label_url}}" *ngIf="shipment.status !='CANCELLED'" target="_blank"
                                 class="btn btn-icon btn-rounded btn-success"><i class="fas fa-download"></i></a>
-                            <button type="button" *ngIf="shipment.status !='CANCELLED' || shipment.picked == false" (click)="cancelShipment(shipment.id)"
+                            <button type="button" *ngIf="shipment.status !='CANCELLED' || shipment.picked == true" (click)="cancelShipment(shipment.id)"
                                 class="btn btn-icon btn-rounded btn-danger"><i
                                     class="fas fa-trash"></i></button>
                         </td>

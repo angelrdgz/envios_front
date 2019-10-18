@@ -8,6 +8,12 @@
     background: transparent;
     border: 0;
 
+    tr.canceled{
+      td{
+        color: $app-red;
+      }
+    }
+
     h5 {
       color: $app-blue !important;
       margin-top: auto;

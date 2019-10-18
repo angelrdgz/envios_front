@@ -119,7 +119,8 @@ export class QuoteComponent implements OnInit {
     this.quote.package.dimensions.width = parseInt(this.quote.package.dimensions.width)
     this.quote.package.dimensions.length = parseInt(this.quote.package.dimensions.length)
     this.quote.package.dimensions.height = parseInt(this.quote.package.dimensions.height)
-    this.quote.package.weight = parseInt(this.quote.package.weight)
+    this.volumetric =  (this.quote.package.dimensions.width * this.quote.package.dimensions.length * this.quote.package.dimensions.height) / 5000;
+    this.quote.package.weight = this.volumetric > parseFloat(this.quote.package.weight) ? this.volumetric:parseFloat(this.quote.package.weight)
     this.rates = []
 
     for (let index = 0; index < this.carriers.length; index++) {

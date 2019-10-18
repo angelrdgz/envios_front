@@ -38,6 +38,7 @@
     border: 0;
     background: transparent;
     filter:drop-shadow(5px 5px 10px black);
+    overflow-y: auto;
     
     .card-header {
       background: #fff;

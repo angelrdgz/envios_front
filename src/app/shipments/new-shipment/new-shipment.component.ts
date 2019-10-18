@@ -771,7 +771,9 @@ export class NewShipmentComponent implements OnInit {
     this.rate.package.dimensions.length = parseInt(this.shipment.package.dimensions.length)
     this.rate.package.dimensions.width = parseInt(this.shipment.package.dimensions.width)
     this.rate.package.dimensions.height = parseInt(this.shipment.package.dimensions.height)
-    this.rate.package.weight = parseInt(this.shipment.package.weight)
+    this.volumetric = (this.shipment.package.dimensions.width * this.shipment.package.dimensions.length * this.shipment.package.dimensions.height) / 5000;
+    this.rate.package.weight = this.volumetric > parseFloat(this.shipment.package.weight) ? this.volumetric:parseFloat(this.shipment.package.weight)
+    this.shipment.package.weight = this.volumetric > parseFloat(this.shipment.package.weight) ? this.volumetric:parseFloat(this.shipment.package.weight)
     this.rate.package.insurance = parseInt(this.shipment.package.insurance)
 
     for (let index = 0; index < this.carriers.length; index++) {

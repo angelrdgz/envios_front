@@ -32,7 +32,7 @@
                             <a routerLink="/admin/packages/{{package.id}}/edit" class="btn btn-icon btn-rounded btn-warning">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
-                            <button type="button" class="btn btn-icon btn-rounded btn-danger">
+                            <button type="button" (click)="deletePackage(package.id)" class="btn btn-icon btn-rounded btn-danger">
                                     <i class="fas fa-trash"></i>
                             </button>
                         </td>

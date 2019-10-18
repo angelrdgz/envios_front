@@ -16,6 +16,16 @@ export class ListPackagesComponent implements OnInit {
     this.getPackages();
   }
 
+  deletePackage(id){
+
+    this._apiService.deletePackage(id).subscribe(
+      data => { this.packages = data.data},
+      err => console.error(err),
+      () => console.log(this.packages)
+    );
+
+  }
+
   getPackages(){
     this._apiService.getPackages().subscribe(
       data => { this.packages = data.data},
